@@ -25,6 +25,8 @@ import {
 	GET_TICKET_FAIL,
 } from '../types';
 
+import { apiUrl } from './userActions';
+
 // **********************************************************************
 //    						GET ALL TICKETS
 // **********************************************************************
@@ -33,7 +35,7 @@ export const getTickets = () => async (dispatch) => {
 	try {
 		dispatch({ type: GET_TICKETS_REQUEST });
 
-		const { data } = await axios.get('tickets');
+		const { data } = await axios.get(`${apiUrl}/tickets`);
 
 		dispatch({
 			type: GET_TICKETS_SUCCESS,
@@ -53,6 +55,7 @@ export const getTickets = () => async (dispatch) => {
  * @param: ticket id
  * @returns
  * ********************************************************************* */
+
 export const createTicket = (newTicket) => async (dispatch, getState) => {
 	try {
 		dispatch({ type: CREATE_TICKET_REQUEST });
@@ -69,7 +72,7 @@ export const createTicket = (newTicket) => async (dispatch, getState) => {
 		};
 
 		const response = await axios.post(
-			'tickets',
+			`${apiUrl}/ticket`,
 			{
 				newTicket,
 			},
@@ -144,7 +147,7 @@ export const deleteTicket = (id) => async (dispatch, getState) => {
 			},
 		};
 
-		const { data } = await axios.delete(`tickets/${id}`, config);
+		const { data } = await axios.delete(`${apiUrl}/${id}`, config);
 		dispatch({
 			type: DELETE_TICKET_SUCCESS,
 			payload: data,
@@ -173,7 +176,7 @@ export const ticketComment = (comment, id) => async (dispatch, getState) => {
 		};
 
 		const newComment = { comment, userInfo };
-		const { data } = await axios.put(`comment/${id}`, { newComment }, config);
+		const { data } = await axios.put(`${apiUrl}/${id}`, { newComment }, config);
 
 		dispatch({ type: TICKET_COMMENT_SUCCESS, payload: data });
 	} catch (error) {
@@ -201,7 +204,7 @@ export const getTicket = (id) => async (dispatch, getState) => {
 			},
 		};
 
-		const { data } = await axios.get(`tickets/${id}`, config);
+		const { data } = await axios.get(`${apiUrl}/${id}`, config);
 
 		dispatch({
 			type: GET_TICKET_SUCCESS,
@@ -233,7 +236,7 @@ export const editTicket = (title, description, developer, project, priority, sta
 		};
 
 		const { data } = await axios.put(
-			`tickets/${id}`,
+			`${apiUrl}/${id}`,
 			{
 				title,
 				description,

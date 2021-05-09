@@ -23,10 +23,9 @@ import {
 	EDIT_PROJECT_FAIL,
 } from '../types';
 
-export const createProject = (title, description, status, id) => async (
-	dispatch,
-	getState,
-) => {
+import { apiUrl } from './userActions';
+
+export const createProject = (title, description, status, id) => async (dispatch, getState) => {
 	try {
 		dispatch({
 			type: CREATE_PROJECT_REQUEST,
@@ -43,11 +42,7 @@ export const createProject = (title, description, status, id) => async (
 			},
 		};
 
-		const { data } = await axios.post(
-			'projects',
-			{ title, description, status, id },
-			config,
-		);
+		const { data } = await axios.post(`${apiUrl}/project`, { title, description, status, id }, config);
 
 		await dispatch({
 			type: CREATE_PROJECT_SUCCESS,
@@ -56,10 +51,7 @@ export const createProject = (title, description, status, id) => async (
 	} catch (error) {
 		dispatch({
 			type: CREATE_PROJECT_FAIL,
-			payload:
-				error.message && error.response.data.message
-					? error.response.data.message
-					: error.message,
+			payload: error.message && error.response.data.message ? error.response.data.message : error.message,
 		});
 		console.log(error);
 	}
@@ -80,7 +72,7 @@ export const fetchSingleProject = (projectId) => async (dispatch, getState) => {
 			},
 		};
 
-		const { data } = await axios.get(`project/${projectId}`, config);
+		const { data } = await axios.get(`${apiUrl}/project/${projectId}`, config);
 		dispatch({
 			type: GET_SINGLE_PROJECT_SUCCESS,
 			payload: data,
@@ -104,7 +96,7 @@ export const getProjects = () => async (dispatch, getState) => {
 			},
 		};
 
-		const { data } = await axios.get('projects', config);
+		const { data } = await axios.get(`${apiUrl}/projects`, config);
 
 		dispatch({
 			type: GET_PROJECTS_SUCCESS,
@@ -113,10 +105,7 @@ export const getProjects = () => async (dispatch, getState) => {
 	} catch (error) {
 		dispatch({
 			type: GET_PROJECTS_FAIL,
-			payload:
-				error.message && error.response.data.message
-					? error.response.data.message
-					: error.message,
+			payload: error.message && error.response.data.message ? error.response.data.message : error.message,
 		});
 	}
 };
@@ -135,26 +124,19 @@ export const deleteProjectAction = (id) => async (dispatch, getState) => {
 			},
 		};
 
-		await axios.delete(`project/${id}`, config);
+		await axios.delete(`${apiUrl}/project/${id}`, config);
 
 		dispatch({ type: DELETE_PROJECT_SUCCESS });
 	} catch (error) {
 		dispatch({
 			type: DELETE_PROJECT_FAIL,
-			payload:
-				error.message && error.response.data.message
-					? error.response.data.message
-					: error.message,
+			payload: error.message && error.response.data.message ? error.response.data.message : error.message,
 		});
 	}
 };
 
-export const editProject = (title, description, status, id) => async (
-	dispatch,
-	getState,
-) => {
+export const editProject = (title, description, status, id) => async (dispatch, getState) => {
 	try {
-		console.log(`status: ${status}`)
 		dispatch({ type: EDIT_PROJECT_REQUEST });
 
 		const {
@@ -167,20 +149,13 @@ export const editProject = (title, description, status, id) => async (
 			},
 		};
 
-		await axios.put(
-			`project/${id}`,
-			{ title, description, status, id },
-			config,
-		);
+		await axios.put(`${apiUrl}/${id}`, { title, description, status, id }, config);
 
 		dispatch({ type: EDIT_PROJECT_SUCCESS });
 	} catch (error) {
 		dispatch({
 			type: EDIT_PROJECT_FAIL,
-			payload:
-				error.message && error.response.data.message
-					? error.response.data.message
-					: error.message,
+			payload: error.message && error.response.data.message ? error.response.data.message : error.message,
 		});
 	}
 };

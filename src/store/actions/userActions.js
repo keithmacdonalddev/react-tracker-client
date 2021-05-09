@@ -25,7 +25,7 @@ import {
 	USER_UPDATE_PROFILE_REQUEST,
 } from '../types';
 
-const apiUrl = 'https://react-tracker-server.herokuapp.com';
+export const apiUrl = 'https://react-tracker-server.herokuapp.com';
 
 export const login = (email, password) => async (dispatch) => {
 	try {
@@ -59,7 +59,7 @@ export const register = (name, username, email, password) => async (dispatch) =>
 			},
 		};
 
-		const { data } = await axios.post('register', { name, username, email, password }, config);
+		const { data } = await axios.post(`${apiUrl}/register`, { name, username, email, password }, config);
 
 		dispatch({
 			type: USER_REGISTER_SUCCESS,
@@ -95,7 +95,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
 			},
 		};
 
-		const { data } = await axios.get(`profile/${id}`, config);
+		const { data } = await axios.get(`${apiUrl}/profile/${id}`, config);
 
 		dispatch({
 			type: USER_DETAILS_SUCCESS,
@@ -124,7 +124,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
 			},
 		};
 
-		const { data } = await axios.put('profile', user, config);
+		const { data } = await axios.put(`${apiUrl}/profile`, user, config);
 
 		dispatch({
 			type: USER_UPDATE_PROFILE_SUCCESS,

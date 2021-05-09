@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { apiUrl } from './userActions';
 
 import {
 	SEND_FRIEND_REQUEST_REQUEST,
@@ -29,9 +30,9 @@ export const sendFriendRequest = (friend) => async (dispatch, getState) => {
 				Authorization: `Bearer ${userInfo.token}`,
 			},
 		};
-		const { data } = await axios.put(`friends/request`, friendAndUser, config);
+		const { data } = await axios.put(`${apiUrl}/friends/request`, friendAndUser, config);
 
-		const response = await axios.put(`friends/requestB`, userAndFriend, config);
+		const response = await axios.put(`${apiUrl}/friends/requestB`, userAndFriend, config);
 
 		const sendToReducer = { data, data2: response.data };
 
@@ -48,11 +49,9 @@ export const sendFriendRequest = (friend) => async (dispatch, getState) => {
 };
 
 export const cancelFriendRequest = (friend, loggedInUser) => async (dispatch, getState) => {
-	console.log('cancel friend request started for approved vars');
 	try {
 		dispatch({ type: CANCEL_FRIEND_REQUEST_REQUEST });
-		console.log(`friend: ${friend}`);
-		console.log(`loggedInUser: ${loggedInUser}`);
+
 		const {
 			userLogin: { userInfo },
 		} = getState();
@@ -65,10 +64,9 @@ export const cancelFriendRequest = (friend, loggedInUser) => async (dispatch, ge
 				Authorization: `Bearer ${userInfo.token}`,
 			},
 		};
-		console.log(friendAndUser);
-		console.log(userAndFriend);
-		const { data } = await axios.put(`friends/cancel`, friendAndUser, config);
-		const response = await axios.put(`friends/cancelB`, userAndFriend, config);
+
+		const { data } = await axios.put(`${apiUrl}/friends/cancel`, friendAndUser, config);
+		const response = await axios.put(`${apiUrl}/friends/cancelB`, userAndFriend, config);
 		console.log(response);
 		dispatch({
 			type: CANCEL_FRIEND_REQUEST_SUCCESS,
@@ -99,17 +97,13 @@ export const approveFriendRequest = (friend) => async (dispatch, getState) => {
 			},
 		};
 
-		await axios.put(`friends/approve`, friendAndUser, config);
-		await axios.put(`friends/approveB`, userAndFriend, config);
+		await axios.put(`${apiUrl}/friends/approve`, friendAndUser, config);
+		await axios.put(`${apiUrl}/friends/approveB`, userAndFriend, config);
 
 		dispatch({ type: CANCEL_FRIEND_REQUEST_REQUEST });
-		console.log(`friend: ${friend}`);
-		console.log(`loggedInUser: ${loggedInUser}`);
 
-		console.log(friendAndUser);
-		console.log(userAndFriend);
-		await axios.put(`friends/cancel`, friendAndUser, config);
-		await axios.put(`friends/cancelB`, userAndFriend, config);
+		await axios.put(`${apiUrl}/friends/cancel`, friendAndUser, config);
+		await axios.put(`${apiUrl}/friends/cancelB`, userAndFriend, config);
 
 		dispatch({
 			type: CANCEL_FRIEND_REQUEST_SUCCESS,
