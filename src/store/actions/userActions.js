@@ -25,11 +25,13 @@ import {
 	USER_UPDATE_PROFILE_REQUEST,
 } from '../types';
 
+const apiUrl = 'https://react-tracker-server.herokuapp.com';
+
 export const login = (email, password) => async (dispatch) => {
 	try {
 		dispatch({ type: USER_LOGIN_REQUEST });
 		const config = { headers: { 'Content-Type': 'application/json' } };
-		const { data } = await axios.post('login', { email, password }, config);
+		const { data } = await axios.post(`${apiUrl}/login`, { email, password }, config);
 		dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
 		localStorage.setItem('userInfo', JSON.stringify(data));
 	} catch (error) {
@@ -164,24 +166,29 @@ export const getUsers = () => async (dispatch, getState) => {
 		/**
 		 * send request for data to API
 		 */
-		const { data } = await axios.get('profile', config);
-		const loggedInUser = me(data, userInfo);
-		const usersWithoutLoggedInUser = removeUser(data, userInfo);
-		const userListNotFriends = nonFriendUsers(data, loggedInUser);
-		const userListFriends = friendsList(data, loggedInUser);
-		const userListSentRequest = sentRequest(data, loggedInUser);
-		const userListReceivedRequest = receivedRequest(data, loggedInUser);
+		const { data } = await axios.get(`${apiUrl}/profile`, config);
+		// const loggedInUser = me(data, userInfo);
+		// const loggedInUser = []
+		// const usersWithoutLoggedInUser = removeUser(data, userInfo);
+		// const usersWithoutLoggedInUser = []
+		// const userListNotFriends = nonFriendUsers(data, loggedInUser);
+		// const userListNotFriends = []
+		// const userListFriends = friendsList(data, loggedInUser);
+		// const userListFriends = []
+		// const userListSentRequest = sentRequest(data, loggedInUser);
+		// const userListSentRequest = []
+		// const userListReceivedRequest = receivedRequest(data, loggedInUser);
 
-		const allLists = {
-			loggedInUser,
-			usersWithoutLoggedInUser,
-			userListNotFriends,
-			userListFriends,
-			userListSentRequest,
-			userListReceivedRequest,
-		};
+		// const allLists = {
+		// 	loggedInUser,
+		// 	usersWithoutLoggedInUser,
+		// 	userListNotFriends,
+		// 	userListFriends,
+		// 	userListSentRequest,
+		// 	userListReceivedRequest,
+		// };
 
-		dispatch({ type: USER_LIST_SUCCESS, payload: allLists });
+		dispatch({ type: USER_LIST_SUCCESS, payload: data });
 
 		/**
 		 * Catch Error
@@ -212,7 +219,7 @@ export const setFeaturedProfile = (id) => async (dispatch, getState) => {
 			},
 		};
 
-		const { data } = await axios.get(`https://3.97.255.253:5000/profile/${id}`, config);
+		const { data } = await axios.get(`${apiUrl}/profile/${id}`, config);
 
 		dispatch({
 			type: SET_FEATURED_PROFILE_SUCCESS,
