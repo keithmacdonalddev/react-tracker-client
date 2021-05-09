@@ -226,94 +226,94 @@ export const setFeaturedProfile = (id) => async (dispatch, getState) => {
 	}
 };
 
-function me(data, userInfo) {
-	const myInfo = data.find((user) => {
-		if (user._id === userInfo._id) {
-			return user;
-		}
-	});
-	return myInfo;
-}
+// function me(data, userInfo) {
+// 	const myInfo = data.find((user) => {
+// 		if (user._id === userInfo._id) {
+// 			return user;
+// 		}
+// 	});
+// 	return myInfo;
+// }
 
-function removeUser(data, userInfo) {
-	const newList = data.filter((user) => {
-		if (user._id !== userInfo._id) {
-			return user;
-		}
-	});
-	return newList;
-}
+// function removeUser(data, userInfo) {
+// 	const newList = data.filter((user) => {
+// 		if (user._id !== userInfo._id) {
+// 			return user;
+// 		}
+// 	});
+// 	return newList;
+// }
 
-function nonFriendUsers(data, loggedInUser) {
-	const useList = removeUser(data, loggedInUser);
-	const friends = loggedInUser.friends;
-	const pendingSent = loggedInUser.sent;
-	const pendingReceived = loggedInUser.received;
-	const nonFriends = useList.filter((user) => {
-		let count = 0;
-		friends.map((friend) => {
-			if (user._id === friend) {
-				return (count = count + 1);
-			}
-		});
-		pendingSent.map((sent) => {
-			if (user._id === sent) {
-				return (count = count + 1);
-			}
-		});
+// function nonFriendUsers(data, loggedInUser) {
+// 	const useList = removeUser(data, loggedInUser);
+// 	const friends = loggedInUser.friends;
+// 	const pendingSent = loggedInUser.sent;
+// 	const pendingReceived = loggedInUser.received;
+// 	const nonFriends = useList.filter((user) => {
+// 		let count = 0;
+// 		friends.map((friend) => {
+// 			if (user._id === friend) {
+// 				return (count = count + 1);
+// 			}
+// 		});
+// 		pendingSent.map((sent) => {
+// 			if (user._id === sent) {
+// 				return (count = count + 1);
+// 			}
+// 		});
 
-		if (count === 0) {
-			return user;
-		}
-	});
+// 		if (count === 0) {
+// 			return user;
+// 		}
+// 	});
 
-	return nonFriends;
-}
+// 	return nonFriends;
+// }
 
-function friendsList(data, loggedInUser) {
-	const useList = removeUser(data, loggedInUser);
-	const friends = loggedInUser.friends;
-	const isPending = useList.filter((user) => {
-		const checkPend = friends.find((friend) => {
-			if (user._id === friend) {
-				return true;
-			}
-		});
-		if (checkPend) {
-			return user;
-		}
-	});
+// function friendsList(data, loggedInUser) {
+// 	const useList = removeUser(data, loggedInUser);
+// 	const friends = loggedInUser.friends;
+// 	const isPending = useList.filter((user) => {
+// 		const checkPend = friends.find((friend) => {
+// 			if (user._id === friend) {
+// 				return true;
+// 			}
+// 		});
+// 		if (checkPend) {
+// 			return user;
+// 		}
+// 	});
 
-	return isPending;
-}
+// 	return isPending;
+// }
 
-function sentRequest(data, loggedInUser) {
-	const useList = removeUser(data, loggedInUser);
-	const pending = loggedInUser.sent;
-	const isPending = useList.filter((user) => {
-		const checkPend = pending.find((pend) => {
-			if (user._id === pend) {
-				return true;
-			}
-		});
-		if (checkPend) {
-			return user;
-		}
-	});
-	return isPending;
-}
-function receivedRequest(data, loggedInUser) {
-	const useList = removeUser(data, loggedInUser);
-	const pending = loggedInUser.received;
-	const isPending = useList.filter((user) => {
-		const checkPend = pending.find((pend) => {
-			if (user._id === pend) {
-				return true;
-			}
-		});
-		if (checkPend) {
-			return user;
-		}
-	});
-	return isPending;
-}
+// function sentRequest(data, loggedInUser) {
+// 	const useList = removeUser(data, loggedInUser);
+// 	const pending = loggedInUser.sent;
+// 	const isPending = useList.filter((user) => {
+// 		const checkPend = pending.find((pend) => {
+// 			if (user._id === pend) {
+// 				return true;
+// 			}
+// 		});
+// 		if (checkPend) {
+// 			return user;
+// 		}
+// 	});
+// 	return isPending;
+// }
+// function receivedRequest(data, loggedInUser) {
+// 	const useList = removeUser(data, loggedInUser);
+// 	const pending = loggedInUser.received;
+// 	const isPending = useList.filter((user) => {
+// 		const checkPend = pending.find((pend) => {
+// 			if (user._id === pend) {
+// 				return true;
+// 			}
+// 		});
+// 		if (checkPend) {
+// 			return user;
+// 		}
+// 	});
+// 	return isPending;
+// }
