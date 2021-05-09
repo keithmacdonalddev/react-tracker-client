@@ -1,0 +1,25 @@
+.logoIconContainer {
+	display: grid;
+	justify-content: center;
+	align-items: center;
+	width: 60px;
+	height: 50px;
+}
+
+.logoIcon {
+	display: grid;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	color: #242221;
+	background: white;
+	height: 35px;
+	width: 35px;
+	font-size: 19px;
+	font-weight: 600;
+}
+
+.logoText {
+	font-weight: 400;
+	font-size: 18px;
+}

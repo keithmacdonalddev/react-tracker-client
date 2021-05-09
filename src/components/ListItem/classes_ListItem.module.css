@@ -1,0 +1,66 @@
+.icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #242221;
+	background: #c1c1c9;
+	height: 60px;
+	min-width: 60px;
+	padding: 10px;
+	line-height: 60px;
+	transition: 399ms;
+}
+
+.icon:focus-within {
+	color: f8f8f8;
+	background: #242221;
+}
+
+.li {
+	position: relative;
+	width: 100%;
+	list-style: none;
+}
+.container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 5px;
+}
+
+.container::focus-within {
+	background: 242221;
+	color: white;
+}
+
+.container:hover {
+	background: #9174d8;
+	color: white;
+}
+.a {
+	position: relative;
+	width: 100%;
+	display: flex;
+	text-decoration: none;
+	color: blue;
+}
+
+.fa {
+	font-size: 24px;
+}
+.title {
+	position: relative;
+	display: block;
+	padding: 0 10px;
+	height: 60px;
+	line-height: 60px;
+	text-align: start;
+	white-space: nowrap;
+}
+
+.title:hover {
+	color: white;
+	font-weight: 500;
+}

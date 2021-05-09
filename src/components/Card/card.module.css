@@ -1,0 +1,14 @@
+.cardContainer {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	background: #f2f2f5;
+	border: 2px solid white;
+	padding: 10px;
+	border-radius: 10px;
+	box-shadow: 0 1px 3px 1px rgb(0, 0, 0, 0.3);
+}
+
+.cardContainer:hover {
+	background: #9174d8;
+}

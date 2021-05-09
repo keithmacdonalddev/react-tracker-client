@@ -1,0 +1,9 @@
+.cardBodyContainer {
+	grid-row: 2 / 3;
+	display: flex;
+	font-size: 30px;
+	font-weight: 500;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}

@@ -1,0 +1,12 @@
+* {
+	border: 1px dashed black;
+}
+.main_view_container {
+	grid-row: 2/3;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: calc(100vh - 50px);
+	background: #f2f2f5;
+	overflow: hidden;
+}

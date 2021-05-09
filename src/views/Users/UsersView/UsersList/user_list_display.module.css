@@ -1,0 +1,129 @@
+.ticketsContainer::-webkit-scrollbar-track {
+	background: #f8f8f800;
+}
+.ticketsContainer::-webkit-scrollbar-thumb {
+	background: #f8f8f83b;
+}
+
+.users_box_list_container {
+	width: 80%;
+	display: flex;
+
+	flex-direction: column;
+	align-items: center;
+}
+.usersBox {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 80%;
+	margin-top: 10px;
+	height: 50px;
+	background: #f4f4f4;
+	border-radius: 10px;
+
+	padding: 15px;
+	transition: all 400ms;
+	box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1);
+}
+
+.usersBox:hover {
+	background: #9174d8;
+	box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.3);
+	transition: all 400ms;
+}
+
+.avatar {
+	border-radius: 50%;
+	width: 33px;
+	height: 33px;
+	background-color: rgb(232, 232, 232);
+	border: 0;
+	color: rgb(43, 43, 43);
+	outline: 0;
+	object-fit: cover;
+	box-shadow: 1px 1px 3px rgb(0 0 0 / 30%),
+		inset 0 1px 1px rgb(255 255 255 / 10%);
+}
+
+.nameContainer {
+	display: flex;
+	margin-left: 10px;
+	width: 100%;
+	text-align: left;
+}
+
+.accept_button {
+	padding: 3px 10px;
+	height: auto;
+	border-radius: 10px;
+	border: none;
+	background: rgba(90, 90, 255, 0.838);
+	color: white;
+	font-size: 12px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: 300ms;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+.add_button {
+	padding: 3px 10px;
+	height: auto;
+	border-radius: 10px;
+	border: none;
+	background: rgba(90, 90, 255, 0.838);
+	color: white;
+	font-size: 12px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: 300ms;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+.cancel_button {
+	/* padding: 3px 10px; */
+	display: grid;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	border: none;
+	width: 30px;
+	height: 30px;
+	background: rgb(241, 90, 90);
+	color: white;
+	/* font-size: 12px;
+	font-weight: 400; */
+	cursor: pointer;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.right_arrow_icon {
+	color: blue;
+}
+/* 
+.deleteButton {
+	display: grid;
+	align-content: center;
+	width: 80px;
+	height: 25px;
+	border-radius: 10px;
+	border: none;
+	font-size: 12px;
+
+	margin-left: 10px;
+	color: rgb(39, 39, 39);
+	cursor: pointer;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+	background: linear-gradient(rgb(250, 250, 250), #d5d7d8);
+}
+
+.deleteButton:hover {
+	filter: brightness(0.9);
+	transform: scale(0.95);
+	background-color: rgba(255, 90, 90, 0.262);
+	color: rgb(255, 90, 90);
+	border: 1px solid rgb(255, 90, 90);
+	transition: 500ms;
+	cursor: pointer;
+} */

@@ -1,0 +1,61 @@
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+	faUserCircle,
+	faSearch,
+	faTrash,
+	faRocket,
+	faCamera,
+	faBug,
+	faCheckCircle,
+	faChevronCircleLeft,
+	faCloudUploadAlt,
+	faChevronRight,
+	faBorderStyle,
+	faEdit,
+	faFolderPlus,
+	faPlus,
+	faSave,
+	faStop,
+	faUsers,
+	faBars,
+	faTimes,
+	faArrowAltCircleLeft,
+	faArrowAltCircleRight,
+	faArrowLeft,
+	faArrowRight,
+	faFileMedical,
+	faAngleDoubleRight,
+} from '@fortawesome/free-solid-svg-icons';
+
+export const Icon = ({ type, style = {} }) => {
+	return <FontAwesomeIcon icon={type} style={style} />;
+};
+
+export {
+	faUserCircle,
+	faSearch,
+	faTrash,
+	faRocket,
+	faCamera,
+	faBug,
+	faCheckCircle,
+	faChevronRight,
+	faChevronCircleLeft,
+	faCloudUploadAlt,
+	faEdit,
+	faFolderPlus,
+	faPlus,
+	faSave,
+	faStop,
+	faUsers,
+	faBars,
+	faTimes,
+	faBorderStyle,
+	faArrowAltCircleLeft,
+	faArrowAltCircleRight,
+	faArrowLeft,
+	faArrowRight,
+	faFileMedical,
+	faAngleDoubleRight,
+};

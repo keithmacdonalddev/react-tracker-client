@@ -1,0 +1,13 @@
+.section_two_container {
+	width: 90%;
+	border-radius: 10px;
+	justify-content: center;
+}
+
+.section_two_content {
+	display: contents;
+	border-radius: 10px;
+	width: auto;
+	background: #c1c1c983;
+	box-shadow: 1px 3px 9px rgba(0, 0, 0, 0.2), 3px 1px 12px rgba(0, 0, 0, 0.2);
+}

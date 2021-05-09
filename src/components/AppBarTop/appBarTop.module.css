@@ -1,0 +1,61 @@
+.appBarContainer {
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: center;
+	height: 100%;
+	background: #c7c7cf;
+	transition: 500ms;
+	box-shadow: 1px 0 2px rgba(0, 0, 0, 0.1), 1px 0 3px rgba(0, 0, 0, 0.2);
+}
+.welcomeNameContainer {
+	display: none;
+}
+.global_borders {
+	/* border: 1px dashed black !important; */
+	background: yellow;
+}
+.iconWrapper {
+	display: flex;
+}
+.profileButton {
+	background: none;
+	color: blue;
+	border: none;
+}
+.profileButton:hover {
+	background: blue;
+	color: white;
+	border-radius: 50%;
+	padding: 1px;
+}
+
+.profileIcon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: blue;
+	font-size: 24px;
+	margin: 0 4px;
+	border: 1px solid white;
+	border-radius: 50%;
+	height: 30px;
+	width: 30px;
+	background: white;
+	box-shadow: inset -1px 1px 3px rgba(0, 0, 0, 0.3),
+		inset 1px -1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.profileIcon:hover {
+	filter: brightness(2);
+}
+
+@media (min-width: 500px) {
+	/* .welcomeNameContainer {
+		display: flex;
+		margin-left: 1rem;
+	}
+	.welcomeName {
+		font-weight: 500;
+		margin-left: 0.5rem;
+	} */
+}

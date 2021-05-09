@@ -1,0 +1,38 @@
+/* ----- MOBILE ----- */
+.dashboard_home_grid_layout {
+	display: grid;
+	grid-template-rows: 160px calc(100vh - 210px);
+	width: 100%;
+	height: 100%;
+	background: #f1f1f375;
+	overflow: hidden;
+}
+
+/* ----- SECTION ONE ----- */
+.section_one {
+	grid-row: 1/2;
+	display: flex;
+	justify-content: center;
+	overflow: hidden;
+}
+
+/* ----- SECTION TWO ----- */
+.section_two {
+	grid-row: 2/3;
+	display: flex;
+	width: 100%;
+	max-height: 80%;
+	justify-content: center;
+}
+
+/* ----- TABLET ----- */
+@media (min-width: 500px) {
+	.dashBoard_home_grid_layout {
+		grid-template-columns: 100%;
+	}
+}
+
+/* ----- LAPTOP ----- */
+@media (min-width: 840px) {
+	/* No change in CSS */
+}

@@ -1,0 +1,77 @@
+.sidebar_wrapper_closed {
+	position: absolute;
+
+	width: 0px;
+	height: 100%;
+	overflow: hidden;
+	background: #c1c1c942;
+	z-index: 99;
+	transition: all 500ms;
+}
+
+.sidebar_wrapper_open {
+	position: absolute;
+	width: 100vw;
+	height: 100%;
+	overflow: hidden;
+	background: #080808b8;
+	z-index: 99;
+	transition: all 500ms;
+}
+
+.togglebutton_wrapper {
+	display: flex;
+	align-items: center;
+	width: 60px;
+	height: 50px;
+	overflow: hidden;
+}
+
+.ul {
+	width: 220px;
+	text-align: left;
+	padding-inline-start: 0;
+	background: #c1c1c9;
+	height: 100%;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+/* TABLET */
+@media (min-width: 500px) {
+	.sidebar_wrapper_closed {
+		position: relative;
+
+		width: 60px;
+		height: 100%;
+		overflow: hidden;
+		background: #c1c1c9;
+		z-index: 99;
+		transition: all 500ms;
+	}
+
+	.sidebar_wrapper_open {
+		position: relative;
+		width: 220px;
+		height: 100%;
+		overflow: hidden;
+		background: #c1c1c9;
+	}
+
+	.togglebutton_wrapper {
+		display: flex;
+		align-items: center;
+		width: 220px;
+		height: 50px;
+		overflow: hidden;
+	}
+
+	.ul {
+		width: 220px;
+		text-align: left;
+		padding-inline-start: 0;
+		height: 100%;
+		overflow: hidden;
+		cursor: pointer;
+	}
+}
