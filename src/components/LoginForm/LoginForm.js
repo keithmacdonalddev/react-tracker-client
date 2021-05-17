@@ -2,14 +2,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
+import { login, logout } from '../../store/actions/userActions';
 
 // Actions
-import { login } from '../../store/actions/userActions';
 import { showComponent } from 'store/actions/navigationActions';
 
 // 	Styles
-import style from './loginform.module.css';
-
+import classname from './loginform.module.css';
 
 const LoginForm = () => {
 	const dispatch = useDispatch();
@@ -25,19 +24,29 @@ const LoginForm = () => {
 		dispatch(login(email, password));
 	};
 
+	const handleReLogin = (event) => {
+		event.preventDefault();
+		dispatch(login(userInfo.email, password));
+	};
+
+	const handleLogout = () => {
+		dispatch(logout());
+	};
+
 	const { userInfo, loading, error } = useSelector((state) => state.userLogin);
+	const loggedIn = useSelector((state) => state.loggedIn);
 
 	useEffect(() => {
-		if (userInfo) {
+		if (userInfo && loggedIn) {
 			dispatch(showComponent('home'));
 			history.push('/dashboard');
 		}
-	}, [history, userInfo, dispatch]);
+	}, [history, userInfo, loggedIn, dispatch]);
 
 	return (
-		<div className={style.loginFormContainer}>
-			<div className={style.loginHeaderContainer}>
-				<h1 className={style.loginTitle}>Sign In</h1>
+		<div className={classname.loginFormContainer}>
+			<div className={classname.loginHeaderContainer}>
+				<h1 className={classname.loginTitle}>Sign In</h1>
 			</div>
 			{error && (
 				<div
@@ -58,45 +67,76 @@ const LoginForm = () => {
 			)}
 			{loading && <h6>loading...</h6>}
 
-			{!userInfo && (
+			{userInfo ? (
+				<form className={classname.formContainer} onSubmit={handleReLogin}>
+					<div className={classname.inputBox}>
+						<div className={classname.welcome_back_container}>
+							<div className={classname.welcome_back_line_one}>
+								Welcome back <span className={classname.welcome_back_username_span}>@{userInfo.username}</span>
+							</div>
+							<div className={classname.welcome_back_line_two}>please enter password to continue.</div>
+						</div>
+					</div>
+					<div className={classname.inputBox}>
+						<span className={classname.inputSpan}>
+							<label>Password</label>
+						</span>
+						<input
+							type='password'
+							value={password}
+							className={classname.input}
+							placeholder='Enter Password'
+							onChange={(e) => setPassword(e.target.value)}
+						/>
+					</div>
+
+					<button className={classname.inputSubmit} type='submit'>
+						Sign In
+					</button>
+					<div className={classname.not_correct_user_question}>
+						Not <span className={classname.welcome_back_username_span}>@{userInfo.username}</span>?
+					</div>
+					<button onClick={() => handleLogout()} className={classname.logout_button}>
+						Log Out
+					</button>
+				</form>
+			) : (
 				<>
-					<form className={style.formContainer} onSubmit={handleSubmit}>
-						<div className={style.inputBox}>
-							<span className={style.inputSpan}>
+					<form className={classname.formContainer} onSubmit={handleSubmit}>
+						<div className={classname.inputBox}>
+							<span className={classname.inputSpan}>
 								<label>Email</label>
 							</span>
 
 							<input
 								type='email'
 								value={email}
-								className={style.input}
+								className={classname.input}
 								placeholder='Enter Email'
 								onChange={(e) => setEmail(e.target.value)}
 							/>
 						</div>
-						<div className={style.inputBox}>
-							<span className={style.inputSpan}>
+						<div className={classname.inputBox}>
+							<span className={classname.inputSpan}>
 								<label>Password</label>
 							</span>
 							<input
 								type='password'
 								value={password}
-								className={style.input}
+								className={classname.input}
 								placeholder='Enter Password'
 								onChange={(e) => setPassword(e.target.value)}
 							/>
 						</div>
 
-						<button className={style.inputSubmit} type='submit'>
+						<button className={classname.inputSubmit} type='submit'>
 							Sign In
 						</button>
 					</form>
-					<div className={style.registerContainer}>
+					<div className={classname.registerContainer}>
 						Don't have an account?
-						<Link to='/register' className={style.a}>
-							<button className={style.registerButton}>
-								Create an Account
-							</button>
+						<Link to='/register' className={classname.a}>
+							<button className={classname.registerButton}>Create an Account</button>
 						</Link>
 					</div>
 				</>
@@ -104,5 +144,5 @@ const LoginForm = () => {
 		</div>
 	);
 };
-<h6>May need extra error handing if this gets displayed</h6>;
+
 export default LoginForm;

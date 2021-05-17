@@ -11,6 +11,8 @@
 -------------------------------------------------------------------------------- */
 
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import Modal from 'components/Modal';
 import ToggleButton from 'components/ToggleButton';
@@ -21,7 +23,11 @@ import MainView from './MainView';
 import classname from './dashboard.module.css';
 
 const Dashboard = () => {
+	const history = useHistory();
 	const [toggleSidebar, setToggleSidebar] = useState(false);
+
+	const { userInfo } = useSelector((state) => state.userLogin);
+	const loggedIn = useSelector((state) => state.loggedIn);
 
 	const closeSidebarOnAction = () => {
 		if (toggleSidebar) {
@@ -29,35 +35,37 @@ const Dashboard = () => {
 		}
 	};
 
+	if (!userInfo || !loggedIn) {
+		history.push('/login');
+	}
+
 	return (
-		<div className={classname.grid}>
-			{/* -------------------- Modal -------------------- */}
-			<Modal />
-
-			{/* -------------------- ToggleButton -------------------- */}
-			<div
-				onClick={() => setToggleSidebar(!toggleSidebar)}
-				className={classname.togglebutton_wrapper}>
-				<ToggleButton toggleSidebar={toggleSidebar} />
-			</div>
-
-			{/* -------------------- AppBarTop -------------------- */}
-			<div className={classname.appbartop_wrapper}>
-				<AppBarTop />
-			</div>
-
-			{/* -------------------- Sidebar -------------------- */}
-			<div
-				onClick={() => closeSidebarOnAction()}
-				className={ toggleSidebar ? classname.sidebar_open : classname.sidebar_closed }>
-				<Sidebar toggleSidebar={toggleSidebar} />
-			</div>
-
-			{/* -------------------- MAIN CONTENT AREA -------------------- */}
-			<div className={classname.main_wrapper}>
-				<MainView />
-			</div>
-		</div>
+		<>
+			{userInfo ? (
+				<div className={classname.grid}>
+					{/* -------------------- Modal -------------------- */}
+					<Modal />
+					{/* -------------------- ToggleButton -------------------- */}
+					<div div onClick={() => setToggleSidebar(!toggleSidebar)} className={classname.togglebutton_wrapper}>
+						<ToggleButton toggleSidebar={toggleSidebar} />
+					</div>
+					{/* -------------------- AppBarTop -------------------- */}
+					<div className={classname.appbartop_wrapper}>
+						<AppBarTop />
+					</div>
+					{/* -------------------- Sidebar -------------------- */}
+					<div
+						onClick={() => closeSidebarOnAction()}
+						className={toggleSidebar ? classname.sidebar_open : classname.sidebar_closed}>
+						<Sidebar toggleSidebar={toggleSidebar} />
+					</div>
+					{/* -------------------- MAIN CONTENT AREA -------------------- */}
+					<div className={classname.main_wrapper}>
+						<MainView />
+					</div>
+				</div>
+			) : null}
+		</>
 	);
 };
 

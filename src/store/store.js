@@ -47,11 +47,9 @@ import {
 	userDetailsReducer,
 	userUpdateProfileReducer,
 	featuredUserReducer,
+	userIsLoggedInReducer,
 } from './reducers/userReducers';
-import {
-	getPresignedURLReducer,
-	sendImageToS3Reducer,
-} from './reducers/uploadReducers';
+import { getPresignedURLReducer, sendImageToS3Reducer } from './reducers/uploadReducers';
 
 const reducer = combineReducers({
 	logs: getLogsReducer,
@@ -86,6 +84,7 @@ const reducer = combineReducers({
 	userDetails: userDetailsReducer,
 	userUpdateProfile: userUpdateProfileReducer,
 	usersNavState: usersNavActiveReducer,
+	loggedIn: userIsLoggedInReducer,
 	uploadURL: getPresignedURLReducer,
 	sendImageToS3: sendImageToS3Reducer,
 	debugging: deBuggerReducer,
@@ -94,9 +93,7 @@ const reducer = combineReducers({
 	pendingRequest: pendingFriendRequestReducer,
 });
 
-const userInfoFromStorage = localStorage.getItem('userInfo')
-	? JSON.parse(localStorage.getItem('userInfo'))
-	: null;
+const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;
 
 const initialState = {
 	userLogin: { userInfo: userInfoFromStorage },
@@ -104,10 +101,6 @@ const initialState = {
 
 const middleware = [thunk];
 
-const store = createStore(
-	reducer,
-	initialState,
-	composeWithDevTools(applyMiddleware(...middleware)),
-);
+const store = createStore(reducer, initialState, composeWithDevTools(applyMiddleware(...middleware)));
 
 export default store;

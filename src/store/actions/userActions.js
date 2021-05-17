@@ -23,6 +23,7 @@ import {
 	USER_UPDATE_PROFILE_FAIL,
 	USER_UPDATE_PROFILE_SUCCESS,
 	USER_UPDATE_PROFILE_REQUEST,
+	USER_IS_LOGGED_IN,
 } from '../types';
 
 export const apiUrl = 'https://react-tracker-server.herokuapp.com';
@@ -33,6 +34,7 @@ export const login = (email, password) => async (dispatch) => {
 		const config = { headers: { 'Content-Type': 'application/json' } };
 		const { data } = await axios.post(`${apiUrl}/login`, { email, password }, config);
 		dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
+		dispatch({ type: USER_IS_LOGGED_IN, payload: true });
 		localStorage.setItem('userInfo', JSON.stringify(data));
 	} catch (error) {
 		dispatch({

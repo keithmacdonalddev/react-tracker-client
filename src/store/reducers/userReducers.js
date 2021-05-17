@@ -22,6 +22,7 @@ import {
 	USER_UPDATE_PROFILE_FAIL,
 	USER_UPDATE_PROFILE_SUCCESS,
 	USER_UPDATE_PROFILE_REQUEST,
+	USER_IS_LOGGED_IN,
 	// SET_FEATURED_PROFILE_RESET,
 } from '../types';
 
@@ -53,10 +54,16 @@ export const userLoginReducer = (state = {}, action) => {
 	}
 };
 
-export const userDetailsReducer = (
-	state = { loading: false, success: false, user: null },
-	action,
-) => {
+export const userIsLoggedInReducer = (state = false, action) => {
+	switch (action.type) {
+		case USER_IS_LOGGED_IN:
+			return action.payload;
+		default:
+			return state;
+	}
+};
+
+export const userDetailsReducer = (state = { loading: false, success: false, user: null }, action) => {
 	switch (action.type) {
 		case USER_DETAILS_REQUEST:
 			return { loading: true };
@@ -84,10 +91,7 @@ export const userUpdateProfileReducer = (state = {}, action) => {
 	}
 };
 
-export const userListReducer = (
-	state = { loading: false, error: false, success: false, users: null },
-	action,
-) => {
+export const userListReducer = (state = { loading: false, error: false, success: false, users: null }, action) => {
 	switch (action.type) {
 		case USER_LIST_REQUEST:
 			return { loading: true };

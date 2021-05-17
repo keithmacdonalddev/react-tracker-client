@@ -8,12 +8,29 @@
 	border: 2px solid white;
 	padding: 20px;
 	border-radius: 10px;
-	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5),
-		inset 0 1px 1px rgba(255, 255, 255, 0.1);
+	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
 }
 
 .loginHeaderContainer {
 	margin-top: 10px;
+}
+
+.welcome_back_username_span {
+	color: blue;
+	font-style: italic;
+	font-weight: 500;
+}
+
+.not_correct_user_question {
+	margin-top: 20px;
+}
+
+.logout_button {
+	padding: 5px 10px;
+	border-radius: 10px;
+	background: #484848;
+	color: white;
+	cursor: pointer;
 }
 
 .formContainer {
