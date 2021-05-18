@@ -43,7 +43,7 @@ const Friends = () => {
 
 	useEffect(() => {
 		dispatch(getUsers());
-	}, []);
+	}, [dispatch]);
 
 	return (
 		<div className={classname.users_box_list_container}>

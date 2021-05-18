@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import { getUserDetails, login, logout } from '../../store/actions/userActions';
+import { getUserDetails, login } from '../../store/actions/userActions';
 
 // Actions
 import { showComponent } from 'store/actions/navigationActions';
@@ -24,14 +24,14 @@ const LoginForm = () => {
 		dispatch(login(email, password));
 	};
 
-	const handleReLogin = (event) => {
-		event.preventDefault();
-		dispatch(login(userInfo.email, password));
-	};
+	// const handleReLogin = (event) => {
+	// 	event.preventDefault();
+	// 	dispatch(login(userInfo.email, password));
+	// };
 
-	const handleLogout = () => {
-		dispatch(logout());
-	};
+	// const handleLogout = () => {
+	// 	dispatch(logout());
+	// };
 
 	const { userInfo, loading, error } = useSelector((state) => state.userLogin);
 	const loggedIn = useSelector((state) => state.loggedIn);
@@ -69,39 +69,6 @@ const LoginForm = () => {
 			{loading && <h6>loading...</h6>}
 
 			{userInfo ? (
-				<form className={classname.formContainer} onSubmit={handleReLogin}>
-					<div className={classname.inputBox}>
-						<div className={classname.welcome_back_container}>
-							<div className={classname.welcome_back_line_one}>
-								Welcome back <span className={classname.welcome_back_username_span}>@{userInfo.username}</span>
-							</div>
-							<div className={classname.welcome_back_line_two}>please enter password to continue.</div>
-						</div>
-					</div>
-					<div className={classname.inputBox}>
-						<span className={classname.inputSpan}>
-							<label>Password</label>
-						</span>
-						<input
-							type='password'
-							value={password}
-							className={classname.input}
-							placeholder='Enter Password'
-							onChange={(e) => setPassword(e.target.value)}
-						/>
-					</div>
-
-					<button className={classname.inputSubmit} type='submit'>
-						Sign In
-					</button>
-					<div className={classname.not_correct_user_question}>
-						Not <span className={classname.welcome_back_username_span}>@{userInfo.username}</span>?
-					</div>
-					<button onClick={() => handleLogout()} className={classname.logout_button}>
-						Log Out
-					</button>
-				</form>
-			) : (
 				<>
 					<form className={classname.formContainer} onSubmit={handleSubmit}>
 						<div className={classname.inputBox}>
@@ -141,7 +108,7 @@ const LoginForm = () => {
 						</Link>
 					</div>
 				</>
-			)}
+			) : null}
 		</div>
 	);
 };
