@@ -8,7 +8,6 @@
 .users_box_list_container {
 	width: 80%;
 	display: flex;
-
 	flex-direction: column;
 	align-items: center;
 }
@@ -21,12 +20,36 @@
 	height: 50px;
 	background: #f4f4f4;
 	border-radius: 10px;
-
 	padding: 15px;
 	transition: all 400ms;
 	box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1);
 }
 
+.getting_started_text {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	margin-bottom: 100px;
+	font-weight: 600;
+	font-size: 18px;
+}
+
+.find_users_button {
+	background: #f1f1f1;
+	border-radius: 5px;
+	padding: 5px 10px;
+	margin-top: 10px;
+	border: 1px solid black;
+	cursor: pointer;
+	transition: all 300ms;
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3), inset 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.find_users_button:hover {
+	filter: brightness(0.9);
+}
 .usersBox:hover {
 	background: #9174d8;
 	box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.3);
@@ -42,8 +65,7 @@
 	color: rgb(43, 43, 43);
 	outline: 0;
 	object-fit: cover;
-	box-shadow: 1px 1px 3px rgb(0 0 0 / 30%),
-		inset 0 1px 1px rgb(255 255 255 / 10%);
+	box-shadow: 1px 1px 3px rgb(0 0 0 / 30%), inset 0 1px 1px rgb(255 255 255 / 10%);
 }
 
 .nameContainer {

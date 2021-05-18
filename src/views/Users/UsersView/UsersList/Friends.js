@@ -1,17 +1,18 @@
 // Packages
-import React from "react";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Icons
-import { Icon, faChevronRight } from "components/Icon";
+import { Icon, faChevronRight } from 'components/Icon';
 
 // Redux
-import { getUsers } from "store/actions/userActions";
-import { CANCEL_FRIEND_REQUEST_RESET } from "store/types";
+import { getUsers } from 'store/actions/userActions';
+import { CANCEL_FRIEND_REQUEST_RESET } from 'store/types';
 
 // CSS
-import classname from "./user_list_display.module.css";
+import classname from './user_list_display.module.css';
+import { usersNavActiveAction } from 'store/actions/navigationActions';
 
 // ********* Default exported component ***********
 const Friends = () => {
@@ -40,6 +41,10 @@ const Friends = () => {
 		}
 	}, [success, dispatch]);
 
+	useEffect(() => {
+		dispatch(getUsers());
+	}, []);
+
 	return (
 		<div className={classname.users_box_list_container}>
 			{loading ? (
@@ -47,21 +52,30 @@ const Friends = () => {
 			) : error ? (
 				<h6>{error}</h6>
 			) : users ? (
-				users.userListFriends.map((user) => (
-					<div key={user._id} className={classname.usersBox}>
-						{/* users avatar photo */}
-						<img src={user.avatar} className={classname.avatar} alt="" />
-
-						{/* users name */}
-						<div className={classname.nameContainer}>
-							<h5>{user.name}</h5>
+				users.userListFriends.length === 0 ? (
+					<div className={classname.getting_started_text}>
+						Get started by sending friend requests!
+						<div onClick={() => dispatch(usersNavActiveAction('Find Users'))} className={classname.find_users_button}>
+							Find Users
 						</div>
-
-						<button className={classname.right_arrow_icon}>
-							<Icon type={faChevronRight} />
-						</button>
 					</div>
-				))
+				) : (
+					users.userListFriends.map((user) => (
+						<div key={user._id} className={classname.usersBox}>
+							{/* users avatar photo */}
+							<img src={user.avatar} className={classname.avatar} alt='' />
+
+							{/* users name */}
+							<div className={classname.nameContainer}>
+								<h5>{user.name}</h5>
+							</div>
+
+							<button className={classname.right_arrow_icon}>
+								<Icon type={faChevronRight} />
+							</button>
+						</div>
+					))
+				)
 			) : (
 				<h6>Data not found</h6>
 			)}

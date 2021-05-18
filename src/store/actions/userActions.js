@@ -165,8 +165,8 @@ export const getUsers = () => async (dispatch, getState) => {
 		/**
 		 * send request for data to API
 		 */
-		const { data } = await axios.get(`${apiUrl}/profile`, config);
-		console.log(data);
+		const { data } = await axios.get(`${apiUrl}/users`, config);
+		console.log(`data: ${data}`);
 		const loggedInUser = me(data, userInfo);
 		const usersWithoutLoggedInUser = removeUser(data, userInfo);
 		const userListNotFriends = nonFriendUsers(data, loggedInUser);
@@ -179,7 +179,7 @@ export const getUsers = () => async (dispatch, getState) => {
 		// const userListNotFriends = [];
 		// const userListFriends = [];
 		// const userListSentRequest = [];
-
+		console.log(`userListFriends: ${userListFriends}`);
 		const allLists = {
 			loggedInUser,
 			usersWithoutLoggedInUser,

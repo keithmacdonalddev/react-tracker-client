@@ -1,12 +1,24 @@
 /* MOBILE */
 .section_one_grid_container {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: 1fr 3fr;
 	width: 90%;
 	height: 90%;
 	grid-gap: 20px;
-	background: green;
+	background: #c1c1c983;
 	border-radius: 10px;
 	align-items: center;
+
 	justify-content: center;
+}
+
+.welcome_text_container {
+	display: grid;
+}
+
+.totals_container {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 20px;
+	padding: 20px;
 }

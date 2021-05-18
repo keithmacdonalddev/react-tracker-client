@@ -1,20 +1,19 @@
 .users_card_component_wrapper {
 	display: flex;
-    flex-direction: column;
-    position: relative;
-    background: #f2f2f5;
-    border: 2px solid white;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 1px 3px 1px rgb(0 0 0 / 30%);
+	flex-direction: column;
+	position: relative;
+	background: #f2f2f5;
+	border: 2px solid white;
+	padding: 10px;
+	border-radius: 10px;
+	box-shadow: 0 1px 3px 1px rgb(0 0 0 / 30%);
 }
 
 .floating_icon_container {
 	grid-row: 3 / 4;
-    display: flex;
-    width: 100%;
+	display: flex;
+	width: 100%;
 	height: 0;
-
 }
 
 .floating_icon {
@@ -42,14 +41,14 @@
 
 .users_card_title {
 	grid-row: 1 / 2;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    font-weight: 300;
-    font-size: 16px;
-    width: 100%;
-    height: 100%;
-    color: black;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	font-weight: 300;
+	font-size: 16px;
+	width: 100%;
+	height: 100%;
+	color: black;
 }
 
 .number_of_users {
@@ -62,5 +61,8 @@
 	width: 100%;
 }
 
-
-
+.no_data_returned {
+	display: grid;
+	justify-content: center;
+	color: red;
+}
