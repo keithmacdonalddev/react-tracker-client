@@ -2,8 +2,11 @@
 .section_one_grid_container {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
-	width: 80%;
+	width: 90%;
+	height: 90%;
 	grid-gap: 20px;
+	background: green;
+	border-radius: 10px;
 	align-items: center;
 	justify-content: center;
 }

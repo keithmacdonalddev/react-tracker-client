@@ -51,7 +51,7 @@ export const logout = () => (dispatch) => {
 	dispatch({ type: USER_DETAILS_RESET });
 };
 
-export const register = (name, username, email, password) => async (dispatch) => {
+export const register = (firstName, lastName, username, email, password) => async (dispatch) => {
 	try {
 		dispatch({ type: USER_REGISTER_REQUEST });
 
@@ -61,17 +61,12 @@ export const register = (name, username, email, password) => async (dispatch) =>
 			},
 		};
 
-		const { data } = await axios.post(`${apiUrl}/register`, { name, username, email, password }, config);
+		const { data } = await axios.post(`${apiUrl}/register`, { firstName, lastName, username, email, password }, config);
 
 		dispatch({
 			type: USER_REGISTER_SUCCESS,
 			payload: data,
 		});
-
-		// dispatch({
-		// 	type: USER_LOGIN_SUCCESS,
-		// 	payload: data,
-		// });
 
 		localStorage.setItem('userInfo', JSON.stringify(data));
 	} catch (error) {
@@ -169,26 +164,26 @@ export const getUsers = () => async (dispatch, getState) => {
 		 * send request for data to API
 		 */
 		const { data } = await axios.get(`${apiUrl}/profile`, config);
-		// const loggedInUser = me(data, userInfo);
-		// const loggedInUser = []
-		// const usersWithoutLoggedInUser = removeUser(data, userInfo);
-		// const usersWithoutLoggedInUser = []
-		// const userListNotFriends = nonFriendUsers(data, loggedInUser);
-		// const userListNotFriends = []
-		// const userListFriends = friendsList(data, loggedInUser);
-		// const userListFriends = []
-		// const userListSentRequest = sentRequest(data, loggedInUser);
-		// const userListSentRequest = []
-		// const userListReceivedRequest = receivedRequest(data, loggedInUser);
+		const loggedInUser = me(data, userInfo);
+		const usersWithoutLoggedInUser = removeUser(data, userInfo);
+		const userListNotFriends = nonFriendUsers(data, loggedInUser);
+		const userListFriends = friendsList(data, loggedInUser);
+		const userListSentRequest = sentRequest(data, loggedInUser);
+		const userListReceivedRequest = receivedRequest(data, loggedInUser);
+		// const loggedInUser = [];
+		// const usersWithoutLoggedInUser = [];
+		// const userListNotFriends = [];
+		// const userListFriends = [];
+		// const userListSentRequest = [];
 
-		// const allLists = {
-		// 	loggedInUser,
-		// 	usersWithoutLoggedInUser,
-		// 	userListNotFriends,
-		// 	userListFriends,
-		// 	userListSentRequest,
-		// 	userListReceivedRequest,
-		// };
+		const allLists = {
+			loggedInUser,
+			usersWithoutLoggedInUser,
+			userListNotFriends,
+			userListFriends,
+			userListSentRequest,
+			userListReceivedRequest,
+		};
 
 		dispatch({ type: USER_LIST_SUCCESS, payload: data });
 
@@ -235,94 +230,94 @@ export const setFeaturedProfile = (id) => async (dispatch, getState) => {
 	}
 };
 
-// function me(data, userInfo) {
-// 	const myInfo = data.find((user) => {
-// 		if (user._id === userInfo._id) {
-// 			return user;
-// 		}
-// 	});
-// 	return myInfo;
-// }
+function me(data, userInfo) {
+	const myInfo = data.find((user) => {
+		if (user._id === userInfo._id) {
+			return user;
+		}
+	});
+	return myInfo;
+}
 
-// function removeUser(data, userInfo) {
-// 	const newList = data.filter((user) => {
-// 		if (user._id !== userInfo._id) {
-// 			return user;
-// 		}
-// 	});
-// 	return newList;
-// }
+function removeUser(data, userInfo) {
+	const newList = data.filter((user) => {
+		if (user._id !== userInfo._id) {
+			return user;
+		}
+	});
+	return newList;
+}
 
-// function nonFriendUsers(data, loggedInUser) {
-// 	const useList = removeUser(data, loggedInUser);
-// 	const friends = loggedInUser.friends;
-// 	const pendingSent = loggedInUser.sent;
-// 	const pendingReceived = loggedInUser.received;
-// 	const nonFriends = useList.filter((user) => {
-// 		let count = 0;
-// 		friends.map((friend) => {
-// 			if (user._id === friend) {
-// 				return (count = count + 1);
-// 			}
-// 		});
-// 		pendingSent.map((sent) => {
-// 			if (user._id === sent) {
-// 				return (count = count + 1);
-// 			}
-// 		});
+function nonFriendUsers(data, loggedInUser) {
+	const useList = removeUser(data, loggedInUser);
+	const friends = loggedInUser.friends;
+	const pendingSent = loggedInUser.sent;
+	const pendingReceived = loggedInUser.received;
+	const nonFriends = useList.filter((user) => {
+		let count = 0;
+		friends.map((friend) => {
+			if (user._id === friend) {
+				return (count = count + 1);
+			}
+		});
+		pendingSent.map((sent) => {
+			if (user._id === sent) {
+				return (count = count + 1);
+			}
+		});
 
-// 		if (count === 0) {
-// 			return user;
-// 		}
-// 	});
+		if (count === 0) {
+			return user;
+		}
+	});
 
-// 	return nonFriends;
-// }
+	return nonFriends;
+}
 
-// function friendsList(data, loggedInUser) {
-// 	const useList = removeUser(data, loggedInUser);
-// 	const friends = loggedInUser.friends;
-// 	const isPending = useList.filter((user) => {
-// 		const checkPend = friends.find((friend) => {
-// 			if (user._id === friend) {
-// 				return true;
-// 			}
-// 		});
-// 		if (checkPend) {
-// 			return user;
-// 		}
-// 	});
+function friendsList(data, loggedInUser) {
+	const useList = removeUser(data, loggedInUser);
+	const friends = loggedInUser.friends;
+	const isPending = useList.filter((user) => {
+		const checkPend = friends.find((friend) => {
+			if (user._id === friend) {
+				return true;
+			}
+		});
+		if (checkPend) {
+			return user;
+		}
+	});
 
-// 	return isPending;
-// }
+	return isPending;
+}
 
-// function sentRequest(data, loggedInUser) {
-// 	const useList = removeUser(data, loggedInUser);
-// 	const pending = loggedInUser.sent;
-// 	const isPending = useList.filter((user) => {
-// 		const checkPend = pending.find((pend) => {
-// 			if (user._id === pend) {
-// 				return true;
-// 			}
-// 		});
-// 		if (checkPend) {
-// 			return user;
-// 		}
-// 	});
-// 	return isPending;
-// }
-// function receivedRequest(data, loggedInUser) {
-// 	const useList = removeUser(data, loggedInUser);
-// 	const pending = loggedInUser.received;
-// 	const isPending = useList.filter((user) => {
-// 		const checkPend = pending.find((pend) => {
-// 			if (user._id === pend) {
-// 				return true;
-// 			}
-// 		});
-// 		if (checkPend) {
-// 			return user;
-// 		}
-// 	});
-// 	return isPending;
-// }
+function sentRequest(data, loggedInUser) {
+	const useList = removeUser(data, loggedInUser);
+	const pending = loggedInUser.sent;
+	const isPending = useList.filter((user) => {
+		const checkPend = pending.find((pend) => {
+			if (user._id === pend) {
+				return true;
+			}
+		});
+		if (checkPend) {
+			return user;
+		}
+	});
+	return isPending;
+}
+function receivedRequest(data, loggedInUser) {
+	const useList = removeUser(data, loggedInUser);
+	const pending = loggedInUser.received;
+	const isPending = useList.filter((user) => {
+		const checkPend = pending.find((pend) => {
+			if (user._id === pend) {
+				return true;
+			}
+		});
+		if (checkPend) {
+			return user;
+		}
+	});
+	return isPending;
+}

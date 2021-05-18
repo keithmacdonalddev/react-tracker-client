@@ -13,7 +13,8 @@ import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import style from './registerPage.module.css';
 
 const RegisterPage = () => {
-	const [name, setName] = useState('');
+	const [firstsName, setFirstName] = useState('');
+	const [lastName, setLastName] = useState('');
 	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -39,7 +40,7 @@ const RegisterPage = () => {
 		if (password !== confirmPassword) {
 			setMessage('Passwords do not match');
 		} else {
-			dispatch(register(name, username, email, password));
+			dispatch(register(firstsName, lastName, username, email, password));
 		}
 	};
 
@@ -61,13 +62,24 @@ const RegisterPage = () => {
 
 					<div className={style.inputGroup}>
 						<div className={style.inputBox}>
-							<label>Name</label>
+							<label>First Name</label>
 							<input
 								type='text'
-								value={name}
+								value={firstsName}
 								className={style.input}
-								placeholder='Enter Name'
-								onChange={(e) => setName(e.target.value)}
+								placeholder='Enter First Name'
+								onChange={(e) => setFirstName(e.target.value)}
+							/>
+						</div>
+
+						<div className={style.inputBox}>
+							<label>Last Name</label>
+							<input
+								type='text'
+								value={lastName}
+								className={style.input}
+								placeholder='Enter Last Name'
+								onChange={(e) => setLastName(e.target.value)}
 							/>
 						</div>
 
@@ -122,8 +134,7 @@ const RegisterPage = () => {
 						</button>
 
 						<Link to='/login'>
-							Already registered?{' '}
-							<span className={style.footerSpan}>Login</span>
+							Already registered? <span className={style.footerSpan}>Login</span>
 						</Link>
 					</div>
 				</form>

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import { login, logout } from '../../store/actions/userActions';
+import { getUserDetails, login, logout } from '../../store/actions/userActions';
 
 // Actions
 import { showComponent } from 'store/actions/navigationActions';
@@ -38,6 +38,7 @@ const LoginForm = () => {
 
 	useEffect(() => {
 		if (userInfo && loggedIn) {
+			dispatch(getUserDetails(userInfo._id));
 			dispatch(showComponent('home'));
 			history.push('/dashboard');
 		}

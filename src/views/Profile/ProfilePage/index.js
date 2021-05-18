@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Components
-import ProfileAvatar from './ProfileAvatar';
+import Avatar from 'components/Avatar';
 import ProfileHeader from './ProfileHeader';
 import ProfileNavbar from './ProfileNavbar';
 import ProfileBody from './ProfileBody';
@@ -13,7 +13,7 @@ import style from './profile_page.module.css';
 const ProfilePage = () => {
 	return (
 		<div className={style.profilePageContainer}>
-			<ProfileAvatar />
+			<Avatar />
 			<ProfileHeader />
 			<ProfileNavbar />
 			<ProfileBody />

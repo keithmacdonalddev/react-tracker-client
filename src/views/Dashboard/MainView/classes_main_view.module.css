@@ -1,6 +1,3 @@
-* {
-	border: 1px dashed black;
-}
 .main_view_container {
 	grid-row: 2/3;
 	display: flex;
