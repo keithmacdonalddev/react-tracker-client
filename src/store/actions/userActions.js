@@ -173,6 +173,7 @@ export const getUsers = () => async (dispatch, getState) => {
 		const userListFriends = friendsList(data, loggedInUser);
 		const userListSentRequest = sentRequest(data, loggedInUser);
 		const userListReceivedRequest = receivedRequest(data, loggedInUser);
+		console.log(`usersWithoutLoggedInUser: ${usersWithoutLoggedInUser}`);
 		// const loggedInUser = [];
 		// const usersWithoutLoggedInUser = [];
 		// const userListNotFriends = [];
