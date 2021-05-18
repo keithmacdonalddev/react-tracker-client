@@ -1,5 +1,7 @@
 /** @format */
 
+/* eslint-disable array-callback-return */
+
 import axios from 'axios';
 
 import {
@@ -164,6 +166,7 @@ export const getUsers = () => async (dispatch, getState) => {
 		 * send request for data to API
 		 */
 		const { data } = await axios.get(`${apiUrl}/profile`, config);
+		console.log(data);
 		const loggedInUser = me(data, userInfo);
 		const usersWithoutLoggedInUser = removeUser(data, userInfo);
 		const userListNotFriends = nonFriendUsers(data, loggedInUser);
@@ -185,7 +188,7 @@ export const getUsers = () => async (dispatch, getState) => {
 			userListReceivedRequest,
 		};
 
-		dispatch({ type: USER_LIST_SUCCESS, payload: data });
+		dispatch({ type: USER_LIST_SUCCESS, payload: allLists });
 
 		/**
 		 * Catch Error
@@ -252,7 +255,7 @@ function nonFriendUsers(data, loggedInUser) {
 	const useList = removeUser(data, loggedInUser);
 	const friends = loggedInUser.friends;
 	const pendingSent = loggedInUser.sent;
-	const pendingReceived = loggedInUser.received;
+	// const pendingReceived = loggedInUser.received;
 	const nonFriends = useList.filter((user) => {
 		let count = 0;
 		friends.map((friend) => {

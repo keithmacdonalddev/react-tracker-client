@@ -5,10 +5,10 @@ import ProjectsCard from '../ProjectsCard';
 import Avatar from 'components/Avatar';
 
 import classname from './classes_sectionOne.module.css';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 const SectionOne = () => {
-	const { userInfo } = useSelector((state) => state.userLogin);
+	// const { userInfo } = useSelector((state) => state.userLogin);
 	return (
 		<div className={classname.section_one_grid_container}>
 			<Avatar />
