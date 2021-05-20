@@ -5,6 +5,7 @@
 	width: auto;
 	height: 100%;
 	background: #c1c1c983;
+	border: 1px solid #e9e9e9;
 	box-shadow: 1px 3px 9px rgb(0 0 0 / 20%), 3px 1px 12px rgb(0 0 0 / 20%);
 }
 
@@ -12,10 +13,14 @@
 	display: flex;
 	align-items: flex-end;
 	justify-content: space-between;
+	background: #2e2e79;
+	color: white;
 	margin: auto;
-	width: 90%;
+	width: 100%;
+	padding: 10px;
 	height: 45px;
-	border-bottom: 2px solid rgba(128, 128, 128, 0.527);
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
 }
 
 .header_title {
@@ -30,7 +35,7 @@
 	padding: 5px 20px;
 	margin-bottom: 2px;
 	border: 3px solid #dae6e0;
-	border-radius: 10px;
+	border-radius: 50%;
 	transition: transform 500ms;
 }
 

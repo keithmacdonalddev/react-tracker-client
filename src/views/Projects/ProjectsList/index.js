@@ -29,38 +29,37 @@ const ProjectsList = () => {
 		dispatch(showComponent('createTicket'));
 	};
 
-	if (loading) {
-		return <h6>Loading...</h6>;
-	}
+	return (
+		<>
+			{loading ? (
+				<div>loading...</div>
+			) : error ? (
+				<div>{error}</div>
+			) : projects ? (
+				<div className={classname.projects_container}>
+					{projects.map((project, index) => {
+						return project.administrator === userInfo._id ? (
+							<div key={project._id} className={classname.card}>
+								<div className={classname.project_title}>{project.title}</div>
 
-	if (error) {
-		return <h6>{error}</h6>;
-	}
+								<div className={classname.project_description}>{project.description}</div>
 
-	if (projects) {
-		return (
-			<div className={classname.projects_container}>
-				{projects.map((project, index) => {
-					return project.administrator === userInfo._id ? (
-						<div key={project._id} className={classname.card}>
-							<div className={classname.project_title}>{project.title}</div>
-
-							<div className={classname.project_description}>{project.description}</div>
-
-							<Moment className={classname.date} format='MMM-DD'>
-								{project.date}
-							</Moment>
-							<div onClick={() => newTicketClickHandler(project.title)} className={classname.icon_container}>
-								<span className={classname.new_ticket_text}> New Ticket</span>
+								<Moment className={classname.date} format='MMM-DD'>
+									{project.date}
+								</Moment>
+								<div onClick={() => newTicketClickHandler(project.title)} className={classname.icon_container}>
+									<span className={classname.new_ticket_text}> New Ticket</span>
+								</div>
+								<div onClick={() => singleProjectClickHandler(project._id)} className={classname.go_icon}>
+									<Icon type={faChevronRight} />
+								</div>
 							</div>
-							<div onClick={() => singleProjectClickHandler(project._id)} className={classname.go_icon}>
-								<Icon type={faChevronRight} />
-							</div>
-						</div>
-					) : null;
-				})}
-			</div>
-		);
-	}
+						) : null;
+					})}
+				</div>
+			) : null}
+		</>
+	);
 };
+
 export default ProjectsList;

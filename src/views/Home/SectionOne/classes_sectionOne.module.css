@@ -8,12 +8,20 @@
 	background: #c1c1c983;
 	border-radius: 10px;
 	align-items: center;
-
 	justify-content: center;
 }
 
 .welcome_text_container {
 	display: grid;
+}
+
+.section_one_welcome_text {
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.first_name {
+	color: blue;
 }
 
 .totals_container {

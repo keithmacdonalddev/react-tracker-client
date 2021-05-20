@@ -166,20 +166,20 @@ export const getUsers = () => async (dispatch, getState) => {
 		 * send request for data to API
 		 */
 		const { data } = await axios.get(`${apiUrl}/users`, config);
-		console.log(`data: ${data}`);
+
 		const loggedInUser = me(data, userInfo);
 		const usersWithoutLoggedInUser = removeUser(data, userInfo);
 		const userListNotFriends = nonFriendUsers(data, loggedInUser);
 		const userListFriends = friendsList(data, loggedInUser);
 		const userListSentRequest = sentRequest(data, loggedInUser);
 		const userListReceivedRequest = receivedRequest(data, loggedInUser);
-		console.log(`usersWithoutLoggedInUser: ${usersWithoutLoggedInUser}`);
+
 		// const loggedInUser = [];
 		// const usersWithoutLoggedInUser = [];
 		// const userListNotFriends = [];
 		// const userListFriends = [];
 		// const userListSentRequest = [];
-		console.log(`userListFriends: ${userListFriends}`);
+
 		const allLists = {
 			loggedInUser,
 			usersWithoutLoggedInUser,

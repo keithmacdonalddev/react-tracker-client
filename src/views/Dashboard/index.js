@@ -10,9 +10,10 @@
 		MainView  	 - main content displayed to the use based on user selection
 -------------------------------------------------------------------------------- */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { useSpring, animated, config } from 'react-spring';
 
 import Modal from 'components/Modal';
 import ToggleButton from 'components/ToggleButton';
@@ -23,48 +24,62 @@ import MainView from './MainView';
 import classname from './dashboard.module.css';
 
 const Dashboard = () => {
+	const styles = useSpring({
+		from: { y: -100, opacity: 0 },
+		to: { x: 0, y: 0, opacity: 1 },
+		config: config.slow,
+	});
+	const sideBarAnimation = useSpring({
+		from: { x: -400, opacity: 0, delay: 5000 },
+		to: { x: 0, opacity: 1 },
+	});
 	const history = useHistory();
 	const [toggleSidebar, setToggleSidebar] = useState(false);
 
 	const { userInfo } = useSelector((state) => state.userLogin);
-	const loggedIn = useSelector((state) => state.loggedIn);
 
 	const closeSidebarOnAction = () => {
 		if (toggleSidebar) {
 			setToggleSidebar(!toggleSidebar);
 		}
 	};
-
-	if (!userInfo || !loggedIn) {
-		history.push('/login');
-	}
+	useEffect(() => {
+		if (!userInfo) {
+			history.push('/login');
+		}
+	}, [userInfo, history]);
 
 	return (
 		<>
+			<Modal />
 			{userInfo ? (
-				<div className={classname.grid}>
-					{/* -------------------- Modal -------------------- */}
-					<Modal />
-					{/* -------------------- ToggleButton -------------------- */}
-					<div div onClick={() => setToggleSidebar(!toggleSidebar)} className={classname.togglebutton_wrapper}>
-						<ToggleButton toggleSidebar={toggleSidebar} />
-					</div>
-					{/* -------------------- AppBarTop -------------------- */}
-					<div className={classname.appbartop_wrapper}>
-						<AppBarTop />
-					</div>
+				<div className={classname.app_container}>
+					<>
+						<animated.div style={styles} className={classname.appbartop_container}>
+							<div className={classname.appbartop_container}>
+								<AppBarTop />
+
+								<div div onClick={() => setToggleSidebar(!toggleSidebar)} className={classname.togglebutton_wrapper}>
+									<ToggleButton toggleSidebar={toggleSidebar} />
+								</div>
+							</div>
+						</animated.div>
+						<animated.div
+							onClick={() => closeSidebarOnAction()}
+							style={sideBarAnimation}
+							className={toggleSidebar ? classname.sidebar_open : classname.sidebar_closed}>
+							<Sidebar toggleSidebar={toggleSidebar} />
+						</animated.div>
+					</>
 					{/* -------------------- Sidebar -------------------- */}
-					<div
-						onClick={() => closeSidebarOnAction()}
-						className={toggleSidebar ? classname.sidebar_open : classname.sidebar_closed}>
-						<Sidebar toggleSidebar={toggleSidebar} />
-					</div>
 					{/* -------------------- MAIN CONTENT AREA -------------------- */}
 					<div className={classname.main_wrapper}>
 						<MainView />
 					</div>
 				</div>
-			) : null}
+			) : (
+				<div className={classname.not_logged_in_container}>You must be logged in to view this page</div>
+			)}
 		</>
 	);
 };

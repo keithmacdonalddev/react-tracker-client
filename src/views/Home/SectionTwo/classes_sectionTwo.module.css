@@ -5,9 +5,11 @@
 }
 
 .section_two_content {
-	display: contents;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 30px;
 	border-radius: 10px;
 	width: auto;
-	background: #c1c1c983;
-	box-shadow: 1px 3px 9px rgba(0, 0, 0, 0.2), 3px 1px 12px rgba(0, 0, 0, 0.2);
+	/* background: #c1c1c983; */
+	/* box-shadow: 1px 3px 9px rgba(0, 0, 0, 0.2), 3px 1px 12px rgba(0, 0, 0, 0.2); */
 }

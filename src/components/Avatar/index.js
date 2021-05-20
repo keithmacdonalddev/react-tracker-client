@@ -17,7 +17,7 @@ const iconStyle = {
 const Avatar = () => {
 	const dispatch = useDispatch();
 
-	const { user, loading, success, error } = useSelector((state) => state.userDetails);
+	const { user, loading, error } = useSelector((state) => state.userDetails);
 
 	const editAvatarClickHandler = () => {
 		dispatch(modalStatusAction(true, 'editAvatar'));
@@ -29,7 +29,7 @@ const Avatar = () => {
 				<div> loading...</div>
 			) : error ? (
 				<div>{error}</div>
-			) : success ? (
+			) : (
 				<div className={classname.avatarContainer}>
 					<div className={classname.avatarBox}>
 						<img
@@ -45,8 +45,6 @@ const Avatar = () => {
 						</div>
 					</div>
 				</div>
-			) : (
-				<div> No data found</div>
 			)}
 		</>
 	);

@@ -1,11 +1,11 @@
 import React from 'react';
 
-import style from './editProfile.module';
+import classname from './edit_profile.module.css';
 
 const EditProfile = () => {
 	return (
-		<div className={style.editProfileContainer}>
-			<div className={style.title}>Editing Profile...</div>
+		<div className={classname.edit_profile_container}>
+			<div className={classname.title}>Editing Profile...</div>
 		</div>
 	);
 };

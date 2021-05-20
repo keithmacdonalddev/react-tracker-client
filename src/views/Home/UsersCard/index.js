@@ -10,7 +10,7 @@ const UsersCard = () => {
 	const dispatch = useDispatch();
 
 	const { users, loading, error } = useSelector((state) => state.users);
-	console.log(`users: ${users}`);
+
 	useEffect(() => {
 		dispatch(getUsers());
 	}, [dispatch]);
@@ -26,10 +26,14 @@ const UsersCard = () => {
 			{loading ? (
 				<h6>Loading...</h6>
 			) : error ? (
-				<h6 className={classname.no_data_returned}>No data returned</h6>
+				<h6 className={classname.no_data_returned}>{error} No data returned</h6>
 			) : (
 				<div className={classname.number_of_users}>
-					{users === null ? <div className={classname.no_data_returned}>No data returned</div> : users.length}
+					{users === null ? (
+						<div className={classname.no_data_returned}>No data returned</div>
+					) : (
+						<div>{users.length > 0 ? users.length : 0}</div>
+					)}
 				</div>
 			)}
 		</div>

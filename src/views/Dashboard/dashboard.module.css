@@ -1,14 +1,32 @@
 /*  ----- MOBILE ----- */
-.grid {
+.app_container {
 	display: grid;
 	grid-template-columns: auto 1fr;
+	grid-template-rows: 50px 1fr;
 	position: relative;
 	width: 100vw;
 	height: 100vh;
 	overflow: hidden;
-	padding-top: 50px;
 }
+/* 
+.dashboard_wrapper {
+	position: relative;
+	grid-column: 1/3;
+	grid-row: 1/2;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+} */
+.appbartop_container {
+	display: grid;
+	grid-column: 1/3;
+	grid-row: 1/2;
+	width: 100%;
 
+	position: relative;
+}
 .togglebutton_wrapper {
 	display: flex;
 	position: absolute;
@@ -17,23 +35,16 @@
 	height: 50px;
 	overflow: hidden;
 	z-index: 99;
-	background: #c1c1c9;
+	background: #2e2e79;
 }
 
-.appbartop_wrapper {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 50px;
-	overflow: hidden;
-}
 .sidebar {
 	grid-column: 1/2;
+	grid-row: 2/3;
 	width: auto;
 	overflow: hidden;
 
-	background: #c1c1c9;
+	background: #2e2e79;
 }
 
 .main_wrapper {
@@ -49,16 +60,18 @@
 
 	.sidebar_open {
 		grid-column: 1/2;
+		grid-row: 2/3;
 		width: 220px;
-		background: #bababa;
+		background: #2e2e79;
 		transition: all 500ms;
 	}
 
 	.sidebar_closed {
 		grid-column: 1/2;
+		grid-row: 2/3;
 		width: 60px;
 		transition: all 500ms;
-		background: #c1c1c9;
+		background: #2e2e79;
 	}
 	.main_wrapper {
 		grid-column: 2/3;
@@ -103,9 +116,9 @@
 
 /*  ----- LAPTOP / DESKTOP ----- */
 
-@media (min-width: 840px) {
-	/* no changes necessary */
-}
+/* @media (min-width: 840px) { */
+/* no changes necessary */
+/* } */
 
 /* .sidebar {
 	position: relative;

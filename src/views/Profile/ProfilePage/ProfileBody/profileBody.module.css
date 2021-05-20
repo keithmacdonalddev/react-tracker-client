@@ -1,5 +1,6 @@
-.profileBodyContainer {
-	display: flex;
+.profile_body_container {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
 	width: 100%;
 	height: 100%;
 	background: var(--main-bg-one);
@@ -7,5 +8,5 @@
 }
 
 .column {
-	max-width: 100%;
+	width: 100%;
 }

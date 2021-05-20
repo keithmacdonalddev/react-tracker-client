@@ -4,19 +4,24 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { getUserDetails, login } from '../../store/actions/userActions';
 
-// Actions
+// Redux Store
 import { showComponent } from 'store/actions/navigationActions';
 
-// 	Styles
+// CSS
 import classname from './loginform.module.css';
 
 const LoginForm = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 
+	// local state
 	// Controlling user inputs via local state variables
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+
+	// global state
+	const { userInfo, loading, error } = useSelector((state) => state.userLogin);
+	// const loggedIn = useSelector((state) => state.loggedIn);
 
 	//
 	const handleSubmit = (event) => {
@@ -33,16 +38,13 @@ const LoginForm = () => {
 	// 	dispatch(logout());
 	// };
 
-	const { userInfo, loading, error } = useSelector((state) => state.userLogin);
-	const loggedIn = useSelector((state) => state.loggedIn);
-
 	useEffect(() => {
-		if (userInfo && loggedIn) {
+		if (userInfo) {
 			dispatch(getUserDetails(userInfo._id));
 			dispatch(showComponent('home'));
 			history.push('/dashboard');
 		}
-	}, [history, userInfo, loggedIn, dispatch]);
+	}, [history, userInfo, dispatch]);
 
 	return (
 		<div className={classname.loginFormContainer}>
@@ -68,47 +70,43 @@ const LoginForm = () => {
 			)}
 			{loading && <h6>loading...</h6>}
 
-			{userInfo ? (
-				<>
-					<form className={classname.formContainer} onSubmit={handleSubmit}>
-						<div className={classname.inputBox}>
-							<span className={classname.inputSpan}>
-								<label>Email</label>
-							</span>
+			<form className={classname.formContainer} onSubmit={handleSubmit}>
+				<div className={classname.inputBox}>
+					<span className={classname.inputSpan}>
+						<label>Email</label>
+					</span>
 
-							<input
-								type='email'
-								value={email}
-								className={classname.input}
-								placeholder='Enter Email'
-								onChange={(e) => setEmail(e.target.value)}
-							/>
-						</div>
-						<div className={classname.inputBox}>
-							<span className={classname.inputSpan}>
-								<label>Password</label>
-							</span>
-							<input
-								type='password'
-								value={password}
-								className={classname.input}
-								placeholder='Enter Password'
-								onChange={(e) => setPassword(e.target.value)}
-							/>
-						</div>
+					<input
+						type='email'
+						value={email}
+						className={classname.input}
+						placeholder='Enter Email'
+						onChange={(e) => setEmail(e.target.value)}
+					/>
+				</div>
+				<div className={classname.inputBox}>
+					<span className={classname.inputSpan}>
+						<label>Password</label>
+					</span>
+					<input
+						type='password'
+						value={password}
+						className={classname.input}
+						placeholder='Enter Password'
+						onChange={(e) => setPassword(e.target.value)}
+					/>
+				</div>
 
-						<button className={classname.inputSubmit} type='submit'>
-							Sign In
-						</button>
-					</form>
-					<div className={classname.registerContainer}>
-						Don't have an account?
-						<Link to='/register' className={classname.a}>
-							<button className={classname.registerButton}>Create an Account</button>
-						</Link>
-					</div>
-				</>
-			) : null}
+				<button className={classname.inputSubmit} type='submit'>
+					Sign In
+				</button>
+			</form>
+			<div className={classname.registerContainer}>
+				Don't have an account?
+				<Link to='/register' className={classname.a}>
+					<button className={classname.registerButton}>Create an Account</button>
+				</Link>
+			</div>
 		</div>
 	);
 };

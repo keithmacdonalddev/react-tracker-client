@@ -72,7 +72,7 @@ export const createTicket = (newTicket) => async (dispatch, getState) => {
 		};
 
 		const response = await axios.post(
-			`${apiUrl}/ticket`,
+			`${apiUrl}/tickets`,
 			{
 				newTicket,
 			},
@@ -110,7 +110,6 @@ export const createTicket = (newTicket) => async (dispatch, getState) => {
  */
 
 export const singleTicketId = (id) => async (dispatch) => {
-	//
 	try {
 		dispatch({ type: SINGLE_TICKET_ID_REQUEST });
 

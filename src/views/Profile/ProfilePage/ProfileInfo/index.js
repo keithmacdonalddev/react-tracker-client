@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Moment from 'react-moment';
 
-import style from './profileInfo.module.css';
+import classname from './profileInfo.module.css';
 import { getUserDetails } from 'store/actions/userActions';
 
 const ProfileInfo = () => {
@@ -14,33 +14,44 @@ const ProfileInfo = () => {
 		dispatch(getUserDetails(userInfo._id));
 	}, [dispatch, userInfo._id]);
 	return (
-		<div className={style.profileInfoContainer}>
+		<div className={classname.profile_info_container}>
 			{!user ? (
 				<h6>loading...</h6>
 			) : (
 				<>
-					<div className={style.title}>Profile</div>
+					<div className={classname.title}>Profile</div>
 
-					<div className={style.userInfoSection}>
-						<div className={style.profileDataItem}>
-							<div className={style.profileInput}> My name is {user.name}.</div>
-						</div>
-						<div className={style.profileDataItem}>
-							<label className={style.profileLabel}></label>
-							<div className={style.profileInput}>
-								My username is {user.username}.
+					<div className={classname.user_info_section}>
+						<div className={classname.profile_data_item}>
+							<div className={classname.profile_input}>
+								{' '}
+								<label className={classname.label}>Name:</label>
+								<span className={classname.span}>{(user.firstName, user.lastName)}</span>
 							</div>
 						</div>
-						<div className={style.profileDataItem}>
-							<div className={style.profileInput}>My role is {user.role}.</div>
+						<div className={classname.profile_data_item}>
+							<div className={classname.profile_input}>
+								<label className={classname.label}>Username:</label>
+								<span className={classname.span}>{user.username}</span>
+							</div>
 						</div>
-						<div className={style.profileDataItem}>
-							<div className={style.profileInput}>{user.email}.</div>
+						<div className={classname.profile_data_item}>
+							<div className={classname.profile_input}>
+								<label className={classname.label}>Role:</label> <span className={classname.span}>{user.role}</span>
+							</div>
+						</div>
+						<div className={classname.profile_data_item}>
+							<div className={classname.profile_input}>
+								<label className={classname.label}>Email:</label> <span className={classname.span}>{user.email}</span>
+							</div>
 						</div>
 
-						<div className={style.profileDataItem}>
-							<div className={style.profileInput}>
-								Joined <Moment format='MMMM YYYY'>{user.joined}</Moment>
+						<div className={classname.profile_data_item}>
+							<div className={classname.profile_input}>
+								<label className={classname.label}>Joined:</label>
+								<span className={classname.span}>
+									<Moment format='MMMM YYYY'>{user.joined}</Moment>
+								</span>
 							</div>
 						</div>
 					</div>
