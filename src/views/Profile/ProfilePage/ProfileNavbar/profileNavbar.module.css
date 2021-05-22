@@ -1,9 +1,10 @@
 .profileNavbarContainer {
 	display: flex;
-	width: 90%;
+	width: 100%;
 	height: auto;
 	padding: 3px 20px;
 	border-top: 1px solid rgba(150, 148, 148, 0.568);
+	border-top-right-radius: 10px;
 	justify-content: space-between;
 }
 
@@ -28,6 +29,7 @@
 	cursor: pointer;
 	font-weight: 400;
 	color: rgb(32, 32, 32);
+	transition: all 500ms;
 }
 
 .navTab:hover {
@@ -54,8 +56,11 @@
 	color: white;
 	font-weight: 500;
 	border-radius: 10px;
+	cursor: pointer;
+	box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
+	transition: all 500ms;
 }
 
 .editButtonContainer:hover {
-	background: #6ca0ff;
+	filter: brightness(1.2);
 }

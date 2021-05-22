@@ -2,21 +2,23 @@
 import React from 'react';
 
 // Components
-import Avatar from 'components/Avatar';
-import ProfileHeader from './ProfileHeader';
+import ProfileInfo from './ProfileInfo';
 import ProfileNavbar from './ProfileNavbar';
 import ProfileBody from './ProfileBody';
 
-// Styles
-import style from './profile_page.module.css';
+// classnames
+import classname from './profile_page.module.css';
 
 const ProfilePage = () => {
 	return (
-		<div className={style.profilePageContainer}>
-			<Avatar />
-			<ProfileHeader />
-			<ProfileNavbar />
-			<ProfileBody />
+		<div className={classname.profilePageContainer}>
+			<div className={classname.profile_info_card}>
+				<ProfileInfo />
+			</div>
+			<div className={classname.profile_content}>
+				<ProfileNavbar />
+				<ProfileBody />
+			</div>
 		</div>
 	);
 };

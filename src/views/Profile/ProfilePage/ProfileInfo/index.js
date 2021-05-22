@@ -4,6 +4,7 @@ import Moment from 'react-moment';
 
 import classname from './profileInfo.module.css';
 import { getUserDetails } from 'store/actions/userActions';
+import Avatar from 'components/Avatar';
 
 const ProfileInfo = () => {
 	const dispatch = useDispatch();
@@ -19,14 +20,15 @@ const ProfileInfo = () => {
 				<h6>loading...</h6>
 			) : (
 				<>
-					<div className={classname.title}>Profile</div>
+					<Avatar />
+					<div className={classname.title}>{userInfo.firstName}'s Profile </div>
 
 					<div className={classname.user_info_section}>
 						<div className={classname.profile_data_item}>
 							<div className={classname.profile_input}>
 								{' '}
 								<label className={classname.label}>Name:</label>
-								<span className={classname.span}>{(user.firstName, user.lastName)}</span>
+								<span className={classname.span}>{`${user.firstName} ${user.lastName}`}</span>
 							</div>
 						</div>
 						<div className={classname.profile_data_item}>

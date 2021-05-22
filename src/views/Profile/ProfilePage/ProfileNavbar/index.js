@@ -1,10 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-	PROFILE_NAV_KEY,
-	SET_EDITING_TRUE,
-	SET_MODAL_STATUS,
-} from 'store/types';
+import { PROFILE_NAV_KEY, SET_EDITING_TRUE, SET_MODAL_STATUS } from 'store/types';
 
 import style from './profileNavbar.module.css';
 
@@ -38,24 +34,16 @@ const ProfileNavbar = () => {
 		<div className={style.profileNavbarContainer}>
 			<div className={style.navLeft}>
 				<div
-					onClick={() => setActiveKey('profile')}
-					className={
-						profileKey === 'profile' ? style.active : style.navTab
-					}>
-					Profile
+					onClick={() => setActiveKey('activity')}
+					className={profileKey === 'activity' ? style.active : style.navTab}>
+					Activity
 				</div>
-				<div
-					onClick={() => setActiveKey('friends')}
-					className={
-						profileKey === 'friends' ? style.active : style.navTab
-					}>
+				<div onClick={() => setActiveKey('friends')} className={profileKey === 'friends' ? style.active : style.navTab}>
 					Friends
 				</div>
 			</div>
 			<div className={style.navRight}>
-				<div
-					onClick={() => editClickHandler()}
-					className={style.editButtonContainer}>
+				<div onClick={() => editClickHandler()} className={style.editButtonContainer}>
 					Edit Profile
 				</div>
 			</div>
