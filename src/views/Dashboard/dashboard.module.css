@@ -2,58 +2,57 @@
 .app_container {
 	display: grid;
 	grid-template-columns: auto 1fr;
-	grid-template-rows: 50px 1fr;
+	grid-template-rows: 70px 1fr;
 	position: relative;
 	width: 100vw;
 	height: 100vh;
-	overflow: hidden;
+	transition: all 500ms;
 }
-/* 
-.dashboard_wrapper {
-	position: relative;
-	grid-column: 1/3;
-	grid-row: 1/2;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	overflow: hidden;
-} */
+
 .appbartop_container {
 	display: grid;
 	grid-column: 1/3;
 	grid-row: 1/2;
 	width: 100%;
-
 	position: relative;
 }
+
 .togglebutton_wrapper {
 	display: flex;
 	position: absolute;
 	align-items: center;
 	width: 60px;
-	height: 50px;
+	height: 70px;
 	overflow: hidden;
 	z-index: 99;
-	background: #2e2e79;
+	background: var(--blk);
 }
 
 .sidebar {
 	grid-column: 1/2;
 	grid-row: 2/3;
 	width: auto;
-	overflow: hidden;
+	/* background: #2e2e79; */
+	transition: all 500ms;
+}
 
-	background: #2e2e79;
+.sidebar_closed {
+	grid-column: 1/2;
+	grid-row: 2/3;
+	/* background: #2e2e79; */
+	height: 100%;
+	transition: all 500ms;
 }
 
 .main_wrapper {
 	grid-column: 2/3;
 	display: grid;
+	width: 100%;
+	overflow-y: auto;
 }
 
 /*  ----- TABLET ----- */
-@media (min-width: 500px) {
+@media (max-width: 500px) {
 	.grid {
 		grid-template-columns: minmax(20px, auto) 1fr;
 	}
@@ -61,9 +60,12 @@
 	.sidebar_open {
 		grid-column: 1/2;
 		grid-row: 2/3;
-		width: 220px;
-		background: #2e2e79;
+		width: 100vw;
+		height: 100%;
+		/* background: #242221d7; */
 		transition: all 500ms;
+		position: absolute;
+		top: 0;
 	}
 
 	.sidebar_closed {
@@ -71,11 +73,12 @@
 		grid-row: 2/3;
 		width: 60px;
 		transition: all 500ms;
-		background: #2e2e79;
-	}
-	.main_wrapper {
-		grid-column: 2/3;
-		width: 100%;
+		/* background: #2e2e79; */
+		position: absolute;
+		width: 0;
+		top: 0;
+		left: -100px;
+		height: 100%;
 	}
 }
 /* 

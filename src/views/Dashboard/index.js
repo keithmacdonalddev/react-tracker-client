@@ -55,6 +55,7 @@ const Dashboard = () => {
 			{userInfo ? (
 				<div className={classname.app_container}>
 					<>
+						{/* -------------------- TOP NAV BAR -------------------- */}
 						<animated.div style={styles} className={classname.appbartop_container}>
 							<div className={classname.appbartop_container}>
 								<AppBarTop />
@@ -64,6 +65,7 @@ const Dashboard = () => {
 								</div>
 							</div>
 						</animated.div>
+						{/* -------------------- Sidebar -------------------- */}
 						<animated.div
 							onClick={() => closeSidebarOnAction()}
 							style={sideBarAnimation}
@@ -71,7 +73,6 @@ const Dashboard = () => {
 							<Sidebar toggleSidebar={toggleSidebar} />
 						</animated.div>
 					</>
-					{/* -------------------- Sidebar -------------------- */}
 					{/* -------------------- MAIN CONTENT AREA -------------------- */}
 					<div className={classname.main_wrapper}>
 						<MainView />

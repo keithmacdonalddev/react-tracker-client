@@ -1,38 +1,15 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React from 'react';
 
-// Components
-import { showComponent } from "store/actions/navigationActions";
-import ProjectsList from "views/Projects/ProjectsList";
+import ProjectsComponent from './ProjectsComponent';
 
 // CSS ~ styles
-import classname from "./MyProjectsPage.module.css";
+import classname from './MyProjectsPage.module.css';
 
 // Default export
 const MyProjectsPage = () => {
-	// initialize dispatch
-	const dispatch = useDispatch();
-
-	// event handlers
-	const clickHandler = () => {
-		dispatch(showComponent("Create Project"));
-	};
-
 	return (
-		<div className={classname.projects_page_container}>
-			{/* *************** HEADER *************** */}
-			<div className={classname.header_container}>
-				<div className={classname.header_title}>My Projects</div>
-				<button
-					className={classname.create_project_button}
-					onClick={() => clickHandler()}
-				>
-					Create Project
-				</button>
-			</div>
-
-			{/* *************** LIST OF USERS PROJECTS *************** */}
-			<ProjectsList />
+		<div className={classname.projects_main_layout}>
+			<ProjectsComponent />
 		</div>
 	);
 };

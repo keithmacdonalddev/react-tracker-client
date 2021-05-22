@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Icon, faPlus } from 'components/Icon';
 import { getUsers } from 'store/actions/userActions';
 
-import classname from './usersCard.module.css';
+import Card from 'components/Card';
 
 const UsersCard = () => {
 	const dispatch = useDispatch();
@@ -15,29 +14,38 @@ const UsersCard = () => {
 		dispatch(getUsers());
 	}, [dispatch]);
 
-	return (
-		<div className={classname.users_card_component_wrapper}>
-			<div className={classname.floating_icon_container}>
-				<div className={classname.floating_icon}>
-					<Icon type={faPlus} />
-				</div>
-			</div>
-			<div className={classname.users_card_title}>Friends</div>
-			{loading ? (
-				<h6>Loading...</h6>
-			) : error ? (
-				<h6 className={classname.no_data_returned}>{error} No data returned</h6>
-			) : (
-				<div className={classname.number_of_users}>
-					{users === null ? (
-						<div className={classname.no_data_returned}>No data returned</div>
-					) : (
-						<div>{users.length > 0 ? users.length : 0}</div>
-					)}
-				</div>
-			)}
-		</div>
-	);
+	return <Card title={'Users'} subTitle1={'Friends'} subQuantity1={'0'} subTitle2={'Pending'} subQuantity2={'0'} />;
 };
 
 export default UsersCard;
+
+// <div className={classname.users_card_component_wrapper}>
+// 	<div className={classname.floating_icon_container}>
+// 		<div className={classname.floating_icon}>
+// 			<Icon type={faPlus} />
+// 		</div>
+// 	</div>
+// 	<div className={classname.title}>Users</div>
+// 	{loading ? (
+// 		<h6>Loading...</h6>
+// 	) : error ? (
+// 		<h6 className={classname.no_data_returned}>{error} No data returned</h6>
+// 	) : (
+// 		<div className={classname.content}>
+// 			{users === null ? (
+// 				<div className={classname.no_data_returned}>No data returned</div>
+// 			) : (
+// 				<>
+// 					<div className={classname.content_item}>
+// 						<div className={classname.sub_title}>Friends</div>
+// 						<div className={classname.completed_quantity}>{users.length > 0 ? users.length : 0}</div>
+// 					</div>
+// 					<div className={classname.content_item}>
+// 						<div className={classname.sub_title}>Pending</div>
+// 						<div className={classname.completed_quantity}>{users.length > 0 ? users.length : 0}</div>
+// 					</div>
+// 				</>
+// 			)}
+// 		</div>
+// 	)}
+// </div>;

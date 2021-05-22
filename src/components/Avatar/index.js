@@ -30,7 +30,7 @@ const Avatar = () => {
 			) : error ? (
 				<div>{error}</div>
 			) : (
-				<div className={classname.avatarContainer}>
+				<div className={classname.avatar_container}>
 					<div className={classname.avatarBox}>
 						<img
 							src={
@@ -39,7 +39,8 @@ const Avatar = () => {
 									: 'https://png.pngtree.com/png-clipart/20210310/original/pngtree-graphic-default-avatar-png-image_5938131.jpg'
 							}
 							className={classname.largeAvatar}
-							alt=''></img>
+							alt=''
+						/>
 						<div onClick={() => editAvatarClickHandler()} className={classname.iconContainer}>
 							<Icon type={faCamera} style={iconStyle} className={classname.cameraIcon} />
 						</div>

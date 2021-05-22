@@ -203,7 +203,7 @@ export const getTicket = (id) => async (dispatch, getState) => {
 			},
 		};
 
-		const { data } = await axios.get(`${apiUrl}/${id}`, config);
+		const { data } = await axios.get(`${apiUrl}/tickets/${id}`, config);
 
 		dispatch({
 			type: GET_TICKET_SUCCESS,

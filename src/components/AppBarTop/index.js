@@ -14,12 +14,6 @@ const AppBarTop = () => {
 		<div className={style.appBarContainer}>
 			<div className={style.iconWrapper}>
 				<div className={style.profileIcon}>
-					<Icon type={faBorderStyle} />
-				</div>
-				<div className={style.profileIcon}>
-					<Icon onClick={() => dispatch(showComponent('My Profile'))} type={faUserCircle} />
-				</div>
-				<div className={style.profileIcon}>
 					<Icon onClick={() => dispatch(showComponent('My Profile'))} type={faUserCircle} />
 				</div>
 			</div>

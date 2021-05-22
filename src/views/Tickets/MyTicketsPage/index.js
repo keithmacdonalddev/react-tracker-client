@@ -55,13 +55,15 @@ const MyTicketsPage = () => {
 
 	if (tickets) {
 		return (
-			<div className={classname.tickets_page}>
+			<div className={classname.tickets_page_container}>
 				{/* *************** HEADER *************** */}
 				<div className={classname.header_container}>
 					<div className={classname.header_title}>My Tickets</div>
-					<button className={classname.create_ticket_button} onClick={() => createTicketButtonClickHandler()}>
-						+
-					</button>
+					<div className={classname.button_background}>
+						<div className={classname.create_ticket_button} onClick={() => createTicketButtonClickHandler()}>
+							+
+						</div>
+					</div>
 				</div>
 
 				{/* Ticket list wrapper */}
