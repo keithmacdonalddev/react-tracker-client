@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { showComponent } from 'store/actions/navigationActions';
 
-import { Icon, faUserCircle, faBorderStyle } from 'components/Icon';
+import { Icon, faUserCircle } from 'components/Icon';
 
 import style from './appBarTop.module.css';
 

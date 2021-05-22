@@ -2,20 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Card from 'components/Card';
-import CardHeader from 'components/Card/CardHeader';
-import CardBody from 'components/Card/CardBody';
-import CardFooter from 'components/Card/CardFooter';
+
 import { getTickets } from 'store/actions/ticketActions';
-
-import {
-	// createAlert,
-	// modalStatusAction,
-	showWidgetItem,
-} from 'store/actions/navigationActions';
-
-import { Icon, faPlus } from 'components/Icon';
-
-import classname from './ticketsCard.module.css';
 
 const TicketsCard = () => {
 	const dispatch = useDispatch();
