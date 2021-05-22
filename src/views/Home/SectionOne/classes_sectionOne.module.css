@@ -2,8 +2,11 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	grid-gap: 30px;
 	align-items: center;
+}
+
+.card_spacer {
+	padding: 20px;
 }
 
 .content_container {
