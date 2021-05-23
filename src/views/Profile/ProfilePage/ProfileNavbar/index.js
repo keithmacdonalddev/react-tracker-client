@@ -17,19 +17,6 @@ const ProfileNavbar = () => {
 		});
 	};
 
-	const editClickHandler = () => {
-		setActiveKey('edit');
-		dispatch({
-			type: SET_EDITING_TRUE,
-			payload: { isEditing: true, id: userInfo._id },
-		});
-
-		dispatch({
-			type: SET_MODAL_STATUS,
-			payload: { open: true, component: 'editProfile' },
-		});
-	};
-
 	return (
 		<div className={style.profileNavbarContainer}>
 			<div className={style.navLeft}>
@@ -40,11 +27,6 @@ const ProfileNavbar = () => {
 				</div>
 				<div onClick={() => setActiveKey('friends')} className={profileKey === 'friends' ? style.active : style.navTab}>
 					Friends
-				</div>
-			</div>
-			<div className={style.navRight}>
-				<div onClick={() => editClickHandler()} className={style.editButtonContainer}>
-					Edit Profile
 				</div>
 			</div>
 		</div>

@@ -22,7 +22,6 @@ const CreateProjectPage = () => {
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
 	const [status, setStatus] = useState('Active');
-	console.log(`status: ${status}`);
 
 	// Global state
 	const { userInfo } = useSelector((state) => state.userLogin);
@@ -30,7 +29,7 @@ const CreateProjectPage = () => {
 	// submit form for create a project
 	const handleSubmit = (event) => {
 		event.preventDefault();
-
+		console.log(`from projects handle submit: ${(title, description, status, userInfo._id)}`);
 		dispatch(createProject(title, description, status, userInfo._id));
 	};
 

@@ -26,10 +26,12 @@ const TicketsCard = () => {
 		return (
 			<Card
 				title={'Tickets'}
-				subTitle1={'open'}
+				subTitle1={'Open'}
 				subQuantity1={tickets.length}
 				subTitle2={'Completed'}
 				subQuantity2={'0'}
+				loading={loading}
+				error={error}
 			/>
 		);
 	}

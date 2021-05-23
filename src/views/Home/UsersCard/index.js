@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { getUsers } from 'store/actions/userActions';
 
@@ -8,7 +8,7 @@ import Card from 'components/Card';
 const UsersCard = () => {
 	const dispatch = useDispatch();
 
-	// const { users, loading, error } = useSelector((state) => state.users);
+	const { users, loading, error } = useSelector((state) => state.users);
 
 	useEffect(() => {
 		dispatch(getUsers());

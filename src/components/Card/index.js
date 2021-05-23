@@ -1,8 +1,7 @@
 import React from 'react';
 import classname from './card.module.css';
 
-const Card = ({ title, quantity, subTitle1, subQuantity1, subTitle2, subQuantity2 }) => {
-	console.log(title, quantity, subTitle1, subQuantity1, subTitle2, subQuantity2);
+const Card = ({ title = 'Loading...', quantity, subTitle1, subQuantity1, subTitle2, subQuantity2 }) => {
 	return (
 		<div className={classname.card_container}>
 			<div className={classname.card_title}>{title}</div>

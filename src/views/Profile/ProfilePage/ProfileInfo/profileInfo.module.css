@@ -8,6 +8,10 @@
 	box-shadow: -1px 1px 2px 1px rgba(0, 0, 0, 0.05), 1px -1px 2px 1px rgba(0, 0, 0, 0.05);
 }
 
+.avatar {
+	padding-bottom: 20px;
+}
+
 .title {
 	display: grid;
 	align-items: center;
@@ -17,21 +21,36 @@
 	width: 100%;
 	color: white;
 	border-bottom: 1px solid blue;
+	padding-bottom: 20px;
+}
+
+.editButtonContainer {
+	display: grid;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 37px;
+	background: #1877f2;
+	color: white;
+	font-weight: 500;
+	border-radius: 10px;
+	cursor: pointer;
+	box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
+	transition: all 500ms;
+}
+
+.editButtonContainer:hover {
+	filter: brightness(1.2);
 }
 
 .user_info_section {
 	display: grid;
 	grid-gap: 0.3em;
-	margin-top: 10px;
-}
-
-.profile_data_item {
-	display: flex;
-	width: auto;
-	align-items: center;
+	padding: 20px;
 }
 
 .profile_input {
+	display: flex;
 	width: 100%;
 	height: auto;
 	font-size: 14px;
@@ -42,6 +61,7 @@
 	color: white;
 	font-weight: 500;
 	font-size: 16px;
+	width: 100px;
 }
 
 .span {
