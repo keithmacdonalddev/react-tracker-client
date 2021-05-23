@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Moment from 'react-moment';
-import { PROFILE_NAV_KEY, SET_EDITING_TRUE, SET_MODAL_STATUS } from 'store/types';
+import { SET_EDITING_TRUE, SET_MODAL_STATUS } from 'store/types';
+// import { PROFILE_NAV_KEY } from 'store/types';
 import classname from './profileInfo.module.css';
 import { getUserDetails } from 'store/actions/userActions';
 import Avatar from 'components/Avatar';
@@ -11,7 +12,7 @@ const ProfileInfo = () => {
 	const { userInfo } = useSelector((state) => state.userLogin);
 	const { user } = useSelector((state) => state.userDetails);
 
-	const profileKey = useSelector((state) => state.profileKey);
+	// const profileKey = useSelector((state) => state.profileKey);
 
 	const editClickHandler = () => {
 		// setActiveKey('edit');

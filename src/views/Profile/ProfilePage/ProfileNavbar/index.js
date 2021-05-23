@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { PROFILE_NAV_KEY, SET_EDITING_TRUE, SET_MODAL_STATUS } from 'store/types';
+import { PROFILE_NAV_KEY } from 'store/types';
+// import { SET_EDITING_TRUE, SET_MODAL_STATUS } from 'store/types';
 
 import style from './profileNavbar.module.css';
 
@@ -8,7 +9,7 @@ const ProfileNavbar = () => {
 	const dispatch = useDispatch();
 	const profileKey = useSelector((state) => state.profileKey);
 
-	const { userInfo } = useSelector((state) => state.userLogin);
+	// const { userInfo } = useSelector((state) => state.userLogin);
 
 	const setActiveKey = (activeKey) => {
 		dispatch({
