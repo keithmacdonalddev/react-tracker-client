@@ -27,12 +27,6 @@
 	min-height: 300px;
 }
 
-/* .profile_content_background {
-	
-	border-radius: 10px;
-	min-height: 100%;
-} */
-
 @media (max-width: 900px) {
 	.profilePageContainer {
 		max-width: 100%;

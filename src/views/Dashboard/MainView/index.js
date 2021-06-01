@@ -1,56 +1,59 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React from 'react';
+import { useSelector } from 'react-redux';
 
-import Users from "views/Users";
-import MyProjectsPage from "views/Projects";
-import Home from "views/Home/";
-import SignOut from "views/Authentication/SignOut";
-import ProfilePage from "views/Profile/ProfilePage";
-import ActivityMonitor from "views/ActivityMonitor";
-import MyTicketsPage from "views/Tickets/MyTicketsPage";
-import CreateProjectPage from "views/Projects/CreateProjectPage";
-import SingleTicket from "views/Tickets/MyTicketsPage/SingleTicket";
-import CreateTicketPage from "views/Tickets/MyTicketsPage/CreateTicket";
-import DeleteTicket from "views/Tickets/MyTicketsPage/DeleteTicket";
+import Users from 'views/Users';
+import MyProjectsPage from 'views/Projects';
+import Home from 'views/Home/';
+import SignOut from 'views/Authentication/SignOut';
+import ProfilePage from 'views/Profile/ProfilePage';
+import ActivityMonitor from 'views/ActivityMonitor';
+import MyTicketsPage from 'views/Tickets/MyTicketsPage';
+import CreateProjectPage from 'views/Projects/CreateProjectPage';
+import SingleTicket from 'views/Tickets/MyTicketsPage/SingleTicket';
+import CreateTicketPage from 'views/Tickets/MyTicketsPage/CreateTicket';
+import DeleteTicket from 'views/Tickets/MyTicketsPage/DeleteTicket';
 
-import SingleProject from "views/Projects/SingleProject";
-import EditProject from "views/Projects/EditProject";
-import EditTicket from "views/Tickets/MyTicketsPage/EditTicketPage";
+import SingleProject from 'views/Projects/SingleProject';
+import EditProject from 'views/Projects/EditProject';
+import EditTicket from 'views/Tickets/MyTicketsPage/EditTicketPage';
+import EditProfile from 'views/Profile/ProfilePage/EditProfile';
 
 const MainView = () => {
 	const { component } = useSelector((state) => state.component);
 
 	return (
 		<>
-			{component === "home" ? (
+			{component === 'home' ? (
 				<Home />
-			) : component === "Users" ? (
+			) : component === 'Users' ? (
 				<Users />
-			) : component === "My Profile" ? (
+			) : component === 'My Profile' ? (
 				<ProfilePage />
-			) : component === "My Tickets" ? (
+			) : component === 'editProfile' ? (
+				<EditProfile />
+			) : component === 'My Tickets' ? (
 				<MyTicketsPage />
-			) : component === "Create Ticket" ? (
+			) : component === 'Create Ticket' ? (
 				<CreateTicketPage />
-			) : component === "createTicket" ? (
+			) : component === 'createTicket' ? (
 				<CreateTicketPage />
-			) : component === "singleTicket" ? (
+			) : component === 'singleTicket' ? (
 				<SingleTicket />
-			) : component === "deleteTicket" ? (
+			) : component === 'deleteTicket' ? (
 				<DeleteTicket />
-			) : component === "editTicket" ? (
+			) : component === 'editTicket' ? (
 				<EditTicket />
-			) : component === "My Projects" ? (
+			) : component === 'My Projects' ? (
 				<MyProjectsPage />
-			) : component === "project" ? (
+			) : component === 'project' ? (
 				<SingleProject />
-			) : component === "editProject" ? (
+			) : component === 'editProject' ? (
 				<EditProject />
-			) : component === "Create Project" ? (
+			) : component === 'Create Project' ? (
 				<CreateProjectPage />
-			) : component === "Signout" ? (
+			) : component === 'Signout' ? (
 				<SignOut />
-			) : component === "Activity Monitor" ? (
+			) : component === 'Activity Monitor' ? (
 				<ActivityMonitor />
 			) : null}
 		</>

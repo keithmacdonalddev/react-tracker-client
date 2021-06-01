@@ -1,4 +1,7 @@
 .card_container {
+	display: flex;
+	flex-direction: column;
+
 	width: 350px;
 	height: 130px;
 	background: #f2f2f5;
@@ -20,11 +23,12 @@
 	padding: 5px;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
-.card_content {
+
+.card_body {
 	display: flex;
 	justify-content: space-evenly;
-	max-height: 100%;
-	align-content: center;
+	align-items: center;
+	height: 100%;
 }
 
 .card_content_item {
@@ -34,6 +38,7 @@
 
 .card_sub_title {
 	font-weight: 400;
+	font-size: 18px;
 }
 
 .absent_subtitle {

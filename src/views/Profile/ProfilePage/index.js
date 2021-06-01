@@ -15,12 +15,15 @@ const ProfilePage = () => {
 			<div className={classname.profile_info_card}>
 				<ProfileInfo />
 			</div>
-			<div className={classname.profile_content}>
-				<ProfileNavbar />
-				<ProfileBody />
-			</div>
 		</div>
 	);
 };
 
 export default ProfilePage;
+
+{
+	/* <div className={classname.profile_content}>
+				<ProfileNavbar />
+				<ProfileBody />
+			</div> */
+}

@@ -14,28 +14,19 @@ const TicketsCard = () => {
 		dispatch(getTickets());
 	}, [dispatch]);
 
-	if (loading) {
-		return <h6>loading...</h6>;
-	}
-
-	if (error) {
-		return <h6>{error}</h6>;
-	}
-
-	if (tickets) {
-		return (
-			<Card
-				title={'Tickets'}
-				subTitle1={'Open'}
-				subQuantity1={tickets.length}
-				subTitle2={'Completed'}
-				subQuantity2={'0'}
-				loading={loading}
-				error={error}
-			/>
-		);
-	}
-	return <h6>Data not found</h6>;
+	return (
+		<Card title={'Tickets'} subTitle1={'Open'} subTitle2={'Completed'}>
+			{loading ? (
+				<div>loading...</div>
+			) : error ? (
+				<div>{error}</div>
+			) : tickets ? (
+				<div>{tickets.length}</div>
+			) : (
+				<div>No data found</div>
+			)}
+		</Card>
+	);
 };
 
 export default TicketsCard;

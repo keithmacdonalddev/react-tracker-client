@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Moment from 'react-moment';
-import { SET_EDITING_TRUE, SET_MODAL_STATUS } from 'store/types';
+
+import Avatar from 'components/Avatar';
+import { SET_EDITING_TRUE } from 'store/types';
+import { getUserDetails } from 'store/actions/userActions';
+import { showComponent } from 'store/actions/navigationActions';
 // import { PROFILE_NAV_KEY } from 'store/types';
 import classname from './profileInfo.module.css';
-import { getUserDetails } from 'store/actions/userActions';
-import Avatar from 'components/Avatar';
 
 const ProfileInfo = () => {
 	const dispatch = useDispatch();
@@ -20,15 +22,13 @@ const ProfileInfo = () => {
 			type: SET_EDITING_TRUE,
 			payload: { isEditing: true, id: userInfo._id },
 		});
-
-		dispatch({
-			type: SET_MODAL_STATUS,
-			payload: { open: true, component: 'editProfile' },
-		});
+		dispatch(showComponent('editProfile'));
 	};
+
 	useEffect(() => {
 		dispatch(getUserDetails(userInfo._id));
 	}, [dispatch, userInfo._id]);
+
 	return (
 		<div className={classname.profile_info_container}>
 			{!user ? (

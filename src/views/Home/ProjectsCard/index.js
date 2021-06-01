@@ -1,32 +1,38 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
+import React from 'react';
+import { useSelector } from 'react-redux';
 import Card from 'components/Card';
-
-import { getProjects } from 'store/actions/projectActions';
+import classname from './projectsCard.module.css';
 
 const ProjectsCard = () => {
-	const dispatch = useDispatch();
-
 	const { projects, loading, error } = useSelector((state) => state.projects);
+	const { userInfo } = useSelector((state) => state.userLogin);
 
-	useEffect(() => {
-		dispatch(getProjects());
-	}, [dispatch]);
-
-	if (loading) {
-		return <h6>loading...</h6>;
-	}
-
-	if (error) {
-		return <h6>{error}</h6>;
-	}
+	let myProjects = [];
 
 	if (projects) {
-		return <Card title={'Projects'} quantity={projects.length} />;
+		projects.map((project) => {
+			if (project.administrator === userInfo._id) {
+				myProjects.push(project);
+			}
+		});
 	}
 
-	return <h6>Data not found</h6>;
+	return (
+		<Card title={'Projects'}>
+			{loading ? (
+				<div className={classname.loading}>Searhing for projects...</div>
+			) : error ? (
+				<div>
+					Unable to find projects.
+					<div>{error}</div>
+				</div>
+			) : myProjects ? (
+				<div>{myProjects.length}</div>
+			) : (
+				<div>No data found</div>
+			)}
+		</Card>
+	);
 };
 
 export default ProjectsCard;

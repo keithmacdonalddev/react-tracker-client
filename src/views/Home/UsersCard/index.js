@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { getUsers } from 'store/actions/userActions';
 
@@ -8,13 +8,14 @@ import Card from 'components/Card';
 const UsersCard = () => {
 	const dispatch = useDispatch();
 
-	// const { users, loading, error } = useSelector((state) => state.users);
+	const { users, loading, error } = useSelector((state) => state.users);
+	console.log(users);
 
 	useEffect(() => {
 		dispatch(getUsers());
 	}, [dispatch]);
 
-	return <Card title={'Users'} subTitle1={'Friends'} subQuantity1={'0'} subTitle2={'Pending'} subQuantity2={'0'} />;
+	return <Card title={'Connections'} />;
 };
 
 export default UsersCard;

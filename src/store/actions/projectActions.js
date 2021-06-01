@@ -44,7 +44,8 @@ export const createProject = (title, description, status, id) => async (dispatch
 		console.log(
 			`Sending create project request to API TITE: ${title}, DESC: ${description}, ${status}, ${userInfo._id})}`,
 		);
-		const { data } = await axios.post(`${apiUrl}/projects`, { title, description, status, id }, config);
+		// const { data } = await axios.post(`${apiUrl}/projects`, { title, description, status, id }, config);
+		const { data } = await axios.post('projects', { title, description, status, id }, config);
 		console.log(`Create Project response from API ${data}`);
 		await dispatch({
 			type: CREATE_PROJECT_SUCCESS,

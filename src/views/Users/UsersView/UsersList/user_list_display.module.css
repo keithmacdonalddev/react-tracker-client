@@ -13,16 +13,19 @@
 }
 .usersBox {
 	display: flex;
+	position: relative;
 	align-items: center;
-	justify-content: space-between;
-	width: 80%;
-	margin-top: 10px;
+	width: clamp(250px, 100%, 400px);
+	margin-top: 15px;
 	height: 50px;
 	background: #f4f4f4;
 	border-radius: 10px;
-	padding: 15px;
+	box-shadow: 12px 12px 13px rgba(0, 0, 0, 0.2);
 	transition: all 400ms;
-	box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1);
+}
+
+.usersBox:hover {
+	cursor: pointer;
 }
 
 .getting_started_text {
@@ -103,21 +106,42 @@
 	box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 }
 
-.cancel_button {
-	/* padding: 3px 10px; */
+.cancel_button_active {
+	display: grid;
+	position: absolute;
+	right: 0;
+	top: 0;
+	justify-content: center;
+	align-items: center;
+	border: none;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	min-width: 35px;
+	min-height: 100%;
+	background: rgb(241, 90, 90);
+	color: white;
+	cursor: pointer;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+	transition: all 600ms ease-in-out;
+}
+
+.cancel_button_hidden {
+	position: absolute;
+	right: 0;
+	top: 0;
 	display: grid;
 	justify-content: center;
 	align-items: center;
-	border-radius: 50%;
 	border: none;
-	width: 30px;
-	height: 30px;
-	background: rgb(241, 90, 90);
-	color: white;
-	/* font-size: 12px;
-	font-weight: 400; */
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	min-width: 0px;
+	height: 100%;
+	background: transparent;
+	color: transparent;
 	cursor: pointer;
-	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+	transition: all 600ms ease-in-out;
 }
 
 .right_arrow_icon {

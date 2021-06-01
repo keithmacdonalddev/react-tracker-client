@@ -1,31 +1,13 @@
 import React from 'react';
+import CardData from './CardData';
 import classname from './card.module.css';
 
-const Card = ({ title = 'Loading...', quantity, subTitle1, subQuantity1, subTitle2, subQuantity2 }) => {
+const Card = ({ title, children }) => {
 	return (
 		<div className={classname.card_container}>
 			<div className={classname.card_title}>{title}</div>
-			<div className={classname.card_content}>
-				{subTitle1 && (
-					<div className={classname.card_content_item}>
-						<div className={classname.card_sub_title}>{subTitle1}</div>
-						<div className={classname.card_quantity}>{subQuantity1}</div>
-					</div>
-				)}
-
-				{subTitle2 && (
-					<div className={classname.card_content_item}>
-						<div className={classname.card_sub_title}>{subTitle2}</div>
-						<div className={classname.card_quantity}>{subQuantity2}</div>
-					</div>
-				)}
-
-				{quantity && (
-					<div className={classname.card_content_item}>
-						<div className={classname.absent_subtitle}>{''}</div>
-						<div className={classname.card_quantity}>{quantity}</div>
-					</div>
-				)}
+			<div className={classname.card_body}>
+				<div className={classname.card_quantity}>{children}</div>
 			</div>
 		</div>
 	);
