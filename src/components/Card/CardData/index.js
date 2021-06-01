@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getProjects } from 'store/actions/projectActions';
-import { getTickets } from 'store/actions/ticketActions';
+import React from 'react';
+import { useSelector } from 'react-redux';
+// import { getProjects } from 'store/actions/projectActions';
+// import { getTickets } from 'store/actions/ticketActions';
 
 const CardData = ({ dataType }) => {
-	const dispatch = useDispatch();
+	// const dispatch = useDispatch();
 
 	// const [localData, setLocalData] = useState([]);
 
@@ -12,10 +12,10 @@ const CardData = ({ dataType }) => {
 	// const users = useSelector((state) => state.projects);
 	// const { tickets } = useSelector((state) => state.projects);
 
-	let data;
-	if (dataType) {
-		data = dataType.toLowerCase();
-	}
+	// let data;
+	// if (dataType) {
+	// 	data = dataType.toLowerCase();
+	// }
 
 	// if (data === 'users') {
 	// 	setLocalData(users);

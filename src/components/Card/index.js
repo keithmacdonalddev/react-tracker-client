@@ -1,5 +1,4 @@
 import React from 'react';
-import CardData from './CardData';
 import classname from './card.module.css';
 
 const Card = ({ title, children }) => {

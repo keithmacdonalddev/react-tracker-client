@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Moment from 'react-moment';
 
 import Avatar from 'components/Avatar';
-import { SET_EDITING_TRUE } from 'store/types';
+// import { SET_EDITING_TRUE } from 'store/types';
 
 import classname from './edit_profile.module.css';
 import { updateUserProfile } from 'store/actions/userActions';
@@ -19,7 +19,7 @@ const EditProfile = () => {
 	const [role, setRole] = useState(user.role);
 	const [email, setEmail] = useState(user.email);
 	const [requestPending, setRequestPending] = useState(false);
-
+	console.log(requestPending);
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		const userData = { firstName, lastName, role, email };

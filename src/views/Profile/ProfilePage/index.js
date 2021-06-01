@@ -3,8 +3,8 @@ import React from 'react';
 
 // Components
 import ProfileInfo from './ProfileInfo';
-import ProfileNavbar from './ProfileNavbar';
-import ProfileBody from './ProfileBody';
+// import ProfileNavbar from './ProfileNavbar';
+// import ProfileBody from './ProfileBody';
 
 // classnames
 import classname from './profile_page.module.css';
@@ -21,9 +21,7 @@ const ProfilePage = () => {
 
 export default ProfilePage;
 
-{
-	/* <div className={classname.profile_content}>
+/* <div className={classname.profile_content}>
 				<ProfileNavbar />
 				<ProfileBody />
 			</div> */
-}

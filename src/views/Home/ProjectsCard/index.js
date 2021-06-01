@@ -14,6 +14,7 @@ const ProjectsCard = () => {
 			if (project.administrator === userInfo._id) {
 				myProjects.push(project);
 			}
+			return null;
 		});
 	}
 

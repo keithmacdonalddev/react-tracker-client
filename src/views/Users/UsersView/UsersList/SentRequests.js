@@ -1,13 +1,11 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-import { useDispatch, useSelector } from 'react-redux';
-
-import classname from './user_list_display.module.css';
 import Box from './Box';
 
-const SentRequests = () => {
-	const dispatch = useDispatch();
+import classname from './user_list_display.module.css';
 
+const SentRequests = () => {
 	const { users, loading, error } = useSelector((state) => state.users);
 	const { success } = useSelector((state) => state.cancelRequest);
 

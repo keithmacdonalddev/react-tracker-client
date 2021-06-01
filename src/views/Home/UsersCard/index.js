@@ -10,6 +10,8 @@ const UsersCard = () => {
 
 	const { users, loading, error } = useSelector((state) => state.users);
 	console.log(users);
+	console.log(loading);
+	console.log(error);
 
 	useEffect(() => {
 		dispatch(getUsers());
