@@ -11,6 +11,12 @@
 .welcomeNameContainer {
 	display: none;
 }
+
+.welcome_name {
+	color: white;
+	font-weight: 600;
+	padding: 0 10px;
+}
 .global_borders {
 	/* border: 1px dashed black !important; */
 	background: yellow;
@@ -20,6 +26,7 @@
 }
 .profileButton {
 	background: none;
+
 	background: #2e2e79;
 	border: none;
 }
@@ -32,6 +39,7 @@
 
 .profileIcon {
 	display: flex;
+	position: relative;
 	justify-content: center;
 	align-items: center;
 	color: rgba(255, 255, 255, 0.904);

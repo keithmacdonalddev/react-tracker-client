@@ -1,22 +1,25 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { showComponent } from 'store/actions/navigationActions';
 
 import { Icon, faUserCircle } from 'components/Icon';
 
-import style from './appBarTop.module.css';
+import classname from './appBarTop.module.css';
 
 const AppBarTop = () => {
 	const dispatch = useDispatch();
 
+	const { userInfo } = useSelector((state) => state.userLogin);
+
 	return (
-		<div className={style.appBarContainer}>
-			<div className={style.iconWrapper}>
-				<div className={style.profileIcon}>
+		<div className={classname.appBarContainer}>
+			<div className={classname.iconWrapper}>
+				<div className={classname.profileIcon}>
 					<Icon onClick={() => dispatch(showComponent('My Profile'))} type={faUserCircle} />
 				</div>
 			</div>
+			<div className={classname.welcome_name}>Welcome {userInfo.firstName}</div>
 		</div>
 	);
 };
@@ -31,17 +34,17 @@ export default AppBarTop;
 // 	.replace(/"/, '');
 
 // {
-// 	/* <div className={style.welcomeNameContainer}>
+// 	/* <div className={classname.welcomeNameContainer}>
 // 				Welcome
 // 				{userInfo.name ? (
-// 					<span className={style.welcomeName}>{userInfo.name}</span>
+// 					<span className={classname.welcomeName}>{userInfo.name}</span>
 // 				) : null}
 // 			</div> */
 // }
 // {
-// 	/* <div className={style.middleSection}>
-// 					<input className={style.input} type='text' />
-// 					<label className={style.label}>
+// 	/* <div className={classname.middleSection}>
+// 					<input className={classname.input} type='text' />
+// 					<label className={classname.label}>
 // 						<Icon type={faSearch} />
 // 					</label>
 // 				</div> */
