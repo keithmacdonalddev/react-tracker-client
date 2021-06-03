@@ -1,27 +1,130 @@
 .card_container {
 	display: flex;
 	flex-direction: column;
-
 	width: 350px;
 	height: 130px;
-	background: #f2f2f5;
+	background: #bbbbcb;
 	padding: 10px;
 	border-radius: 5px;
 	box-shadow: 0 1px 3px 1px rgb(0 0 0 / 30%);
+	transition: background 100ms linear;
 }
 
 .card_container:hover {
-	background: #9174d8;
+	/* background: #9174d8; */
+	background: #bbbbcb;
+	transition: background 300ms linear 1s;
 }
 
 .card_title {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
 	font-size: 20px;
-	background: white;
-	font-weight: 500;
-	text-align: center;
+	background: #f2f2f5;
+	font-weight: 600;
 	width: 100%;
-	padding: 5px;
-	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+	min-height: 38px;
+	box-shadow: inset 0 2px 15px rgba(0, 0, 0, 0.2);
+}
+
+.bar_one {
+	position: absolute;
+	background: rgba(0, 0, 0, 0.2);
+	top: 7px;
+	left: 5px;
+	height: 24px;
+	width: 4px;
+	transition: background 0ms ease;
+}
+.card_container:hover .bar_one {
+	background: rgba(0, 0, 255);
+	transition: background 0ms ease 200ms;
+}
+
+.bar_two {
+	position: absolute;
+	background: rgba(0, 0, 0, 0.2);
+	top: 3px;
+	left: 8px;
+	height: 18px;
+	width: 3px;
+	opacity: 1;
+	transition: background 0ms ease, left 300ms ease, opacity 300ms ease;
+}
+
+.card_container:hover .bar_two {
+	left: 0;
+	opacity: 0;
+	background: rgba(0, 255, 0);
+	transition: background 0ms ease 100ms, left 300ms ease 1.6s, opacity 300ms ease 1.6s;
+}
+
+.bar_three {
+	position: absolute;
+	background: rgba(0, 0, 0, 0.2);
+	top: 3px;
+	left: 8px;
+	height: 12px;
+	width: 2px;
+	opacity: 1;
+	transition: background, left 300ms ease 300ms, opacity 300ms ease 300ms;
+}
+
+.card_container:hover .bar_three {
+	left: 0;
+	opacity: 0;
+	background: rgba(255, 0, 0);
+	transition: background, left 300ms ease 1s, opacity 300ms ease 1s;
+}
+
+.bar_four {
+	position: absolute;
+	background: rgba(0, 0, 0, 0.2);
+	top: 7px;
+	right: 5px;
+	height: 24px;
+	width: 4px;
+	transition: background 0ms ease;
+}
+.card_container:hover .bar_four {
+	background: rgba(0, 0, 255);
+	transition: background 0ms ease 200ms;
+}
+
+.bar_five {
+	position: absolute;
+	background: rgba(0, 0, 0, 0.2);
+	top: 3px;
+	right: 8px;
+	height: 18px;
+	width: 3px;
+	opacity: 1;
+	transition: background 0ms ease, right 300ms ease, opacity 300ms ease;
+}
+.card_container:hover .bar_five {
+	right: 0;
+	opacity: 0;
+	background: rgba(0, 255, 0);
+	transition: background 0ms ease 100ms, right 300ms ease 1.6s, opacity 300ms ease 1.6s;
+}
+
+.bar_six {
+	position: absolute;
+	background: rgba(0, 0, 0, 0.2);
+	top: 3px;
+	right: 8px;
+	height: 12px;
+	width: 2px;
+	opacity: 1;
+	transition: background, right 300ms ease 300ms, opacity 300ms ease 300ms;
+}
+.card_container:hover .bar_six {
+	right: 0;
+	opacity: 0;
+	background: rgba(255, 0, 0);
+	transition: background, right 300ms ease 1s, opacity 300ms ease 1s;
 }
 
 .card_body {

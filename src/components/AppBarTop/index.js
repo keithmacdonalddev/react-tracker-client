@@ -16,7 +16,10 @@ const AppBarTop = () => {
 
 	return (
 		<div className={classname.appBarContainer}>
-			<div onMouseLeave={() => setDropdownStatus(false)} className={classname.container}>
+			<div
+				onMouseEnter={() => setDropdownStatus(true)}
+				onMouseLeave={() => setDropdownStatus(false)}
+				className={classname.container}>
 				<div onMouseEnter={() => setDropdownStatus(true)} className={classname.welcome_text_icon_wrapper}>
 					<span className={classname.welcome_name}> Welcome</span>
 					<span className={classname.first_name}>{userInfo.firstName}</span>

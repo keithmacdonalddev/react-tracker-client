@@ -7,13 +7,13 @@
 	height: 100%;
 	background: var(--blk);
 	transition: 500ms;
-	box-shadow: 1px 0 2px rgba(0, 0, 0, 0.1), 1px 0 3px rgba(0, 0, 0, 0.2);
+	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
 }
 
 .container {
 	display: grid;
 	align-items: center;
-	width: 250px;
+	width: 180px;
 	height: 100%;
 }
 .welcome_text_icon_wrapper {
