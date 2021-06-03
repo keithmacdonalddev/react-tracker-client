@@ -1,6 +1,7 @@
 .appBarContainer {
 	display: flex;
-	flex-direction: row-reverse;
+	position: relative;
+	justify-content: flex-end;
 	align-items: center;
 	padding: 0 20px;
 	height: 100%;
@@ -8,64 +9,100 @@
 	transition: 500ms;
 	box-shadow: 1px 0 2px rgba(0, 0, 0, 0.1), 1px 0 3px rgba(0, 0, 0, 0.2);
 }
-.welcomeNameContainer {
-	display: none;
+
+.container {
+	display: grid;
+	align-items: center;
+	width: 250px;
+	height: 100%;
+}
+.welcome_text_icon_wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	color: white;
+	padding-left: 17px;
+	transition: all 300ms;
+}
+
+.welcome_text_icon_wrapper:hover {
+	cursor: pointer;
 }
 
 .welcome_name {
 	color: white;
 	font-weight: 600;
-	padding: 0 10px;
+	font-size: 16px;
 }
-.global_borders {
-	/* border: 1px dashed black !important; */
-	background: yellow;
-}
-.iconWrapper {
-	display: flex;
-}
-.profileButton {
-	background: none;
 
-	background: #2e2e79;
-	border: none;
+.first_name {
+	margin-left: 0.5em;
 }
-.profileButton:hover {
-	background: #2e2e79;
+
+.icon_container {
+	display: grid;
+	padding-bottom: 10px;
+	font-size: 20px;
+	margin: 0 20px 0 10px;
 	color: white;
-	border-radius: 50%;
-	padding: 1px;
+	cursor: pointer;
 }
 
-.profileIcon {
-	display: flex;
+.dropdown_container {
+	display: none;
+	transition: all 600ms;
+}
+
+.dropdown_container_active {
+	position: absolute;
+	top: 70px;
+	right: 20px;
+	background: #4b494b;
+	min-width: 220px;
+	max-width: auto;
+	padding: 15px 20px;
+	color: #fffff0;
+	border-radius: 10px;
+	border: 2px solid rgba(255, 255, 255, 0.5);
+	z-index: 200;
+	transition: all 600ms;
+}
+
+.dropdown_ul {
 	position: relative;
+}
+
+.dropdown_li {
+	color: #fffff0;
+	font-weight: 500;
+	list-style-type: none;
+	cursor: pointer;
+	padding: 10px;
+	transition: all 300ms;
+}
+
+.dropdown_li:hover {
+	background: rgb(100, 98, 100);
+	filter: brightness(1.1);
+}
+
+/* .profile_icon {
+	display: grid;
 	justify-content: center;
-	align-items: center;
+	align-content: center;
 	color: rgba(255, 255, 255, 0.904);
-	font-size: 28px;
-	margin: 0 4px;
-	border: 1px solid white;
+	font-size: 30px;
+	border: 2px solid rgba(255, 255, 255, 0.8);
 	border-radius: 50%;
 	height: 38px;
 	width: 38px;
 	background: var(--gold-gradient);
-	box-shadow: inset -1px 1px 3px rgba(0, 0, 0, 0.3), inset 1px -1px 3px rgba(0, 0, 0, 0.3);
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3), inset 1px -1px 3px rgba(0, 0, 0, 0.3);
 	transition: all 400ms;
 	cursor: pointer;
-}
+} */
 
-.profileIcon:hover {
+/* .profile_icon:hover {
 	color: rgba(255, 255, 255, 0);
-}
-
-@media (min-width: 500px) {
-	/* .welcomeNameContainer {
-		display: flex;
-		margin-left: 1rem;
-	}
-	.welcomeName {
-		font-weight: 500;
-		margin-left: 0.5rem;
-	} */
-}
+} */

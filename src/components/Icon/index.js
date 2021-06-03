@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	faUserCircle,
+	faSortDown,
 	faSearch,
 	faTrash,
 	faRocket,
@@ -34,6 +35,7 @@ export const Icon = ({ type, style = {} }) => {
 
 export {
 	faUserCircle,
+	faSortDown,
 	faSearch,
 	faTrash,
 	faRocket,

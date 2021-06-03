@@ -33,7 +33,9 @@ const Dashboard = () => {
 		from: { x: -400, opacity: 0, delay: 5000 },
 		to: { x: 0, opacity: 1 },
 	});
+
 	const history = useHistory();
+
 	const [toggleSidebar, setToggleSidebar] = useState(false);
 
 	const { userInfo } = useSelector((state) => state.userLogin);
@@ -65,6 +67,7 @@ const Dashboard = () => {
 								</div>
 							</div>
 						</animated.div>
+
 						{/* -------------------- Sidebar -------------------- */}
 						<animated.div
 							onClick={() => closeSidebarOnAction()}
