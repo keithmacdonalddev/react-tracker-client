@@ -28,9 +28,7 @@ const ListItem = ({ icon, title, componentProp }) => {
 	const background = useMakeBackground(active, hover);
 
 	return (
-		<li
-			className={hover ? classes.hoverLi : classes.li}
-			onClick={() => handleClick(componentProp)}>
+		<li className={hover ? classes.hoverLi : classes.li} onClick={() => handleClick(componentProp)}>
 			<div className={classes.a}>
 				<span className={classes.icon}>
 					<div
@@ -41,8 +39,8 @@ const ListItem = ({ icon, title, componentProp }) => {
 						{icon ? (
 							<FontAwesomeIcon
 								style={{
-									color: 'white',
-									stroke: 'black',
+									color: '#f0f0f0',
+									stroke: '#fffff0',
 									strokeWidth: '30',
 									fontSize: '22px',
 								}}

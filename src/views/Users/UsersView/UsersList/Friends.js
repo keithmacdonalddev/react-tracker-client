@@ -77,7 +77,7 @@ const Friends = () => {
 					))
 				)
 			) : (
-				<h6>Data not found</h6>
+				<h6 className={classname.no_data}>Data not found.</h6>
 			)}
 		</div>
 	);

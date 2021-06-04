@@ -54,7 +54,7 @@ const ReceivedRequests = () => {
 					))
 				)
 			) : (
-				<div>No data found</div>
+				<h2 className={classname.no_data}>No data found.</h2>
 			)}
 		</div>
 	);

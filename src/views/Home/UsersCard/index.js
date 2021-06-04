@@ -9,15 +9,24 @@ const UsersCard = () => {
 	const dispatch = useDispatch();
 
 	const { users, loading, error } = useSelector((state) => state.users);
-	console.log(users);
-	console.log(loading);
-	console.log(error);
 
 	useEffect(() => {
 		dispatch(getUsers());
 	}, [dispatch]);
 
-	return <Card title={'Connections'} />;
+	return (
+		<Card title={'Connections'}>
+			{loading ? (
+				<div>loading...</div>
+			) : error ? (
+				<div>{error}</div>
+			) : users ? (
+				<div>{users.users2.usersListFriends.length}</div>
+			) : (
+				<div style={{ fontSize: 16 }}>disabled</div>
+			)}
+		</Card>
+	);
 };
 
 export default UsersCard;

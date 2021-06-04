@@ -1,20 +1,18 @@
 // Packages
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-
-// Components: None
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Icons
-import { Icon, faChevronRight } from "components/Icon";
+import { Icon, faChevronRight } from 'components/Icon';
 
 // Redux
-import { usersNavActiveAction } from "store/actions/navigationActions";
+import { usersNavActiveAction } from 'store/actions/navigationActions';
 
 // Helpers
-import { navItems, usersNavActiveStyle } from "./helpers";
+import { navItems, usersNavActiveStyle } from './helpers';
 
 // CSS
-import classname from "./usersNav.module.css";
+import classname from './usersNav.module.css';
 
 const UsersNav = () => {
 	const dispatch = useDispatch();
@@ -36,8 +34,7 @@ const UsersNav = () => {
 							 	handle style) 
 							*/
 							style={usersNavState === item ? usersNavActiveStyle : null}
-							className={classname.header}
-						>
+							className={classname.header}>
 							{/* Title of the current navItem iteration */}
 							<div className={classname.headerTitle}>{item}</div>
 

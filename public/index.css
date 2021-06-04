@@ -18,7 +18,14 @@
 	--clr-fun-fuscia: hsl(317, 100%, 54%);
 	--main-bg-one: #f0f2f5;
 	--main-color: #000;
-	--blk: #242221;
+	--blk: rgb(28, 28, 30);
+	--blk-75: rgb(44, 44, 46);
+	--blk-50: rgb(58, 58, 60);
+	--blk-25: rgb(72, 72, 74);
+	--blk-light: rgb(99, 99, 102);
+	--blk-light-75: rgb(142, 142, 147);
+	--blk-light-50: rgb(174, 174, 178);
+	--blk-light-25: rgb(199, 199, 204);
 	--secondary-color: #222;
 	--gold-gradient: linear-gradient(
 		to right,

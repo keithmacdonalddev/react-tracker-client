@@ -3,7 +3,7 @@
 	position: relative;
 	justify-content: flex-end;
 	align-items: center;
-	padding: 0 20px;
+	padding: 0 30px;
 	height: 100%;
 	background: var(--blk);
 	transition: 500ms;
@@ -61,7 +61,7 @@
 	background: #4b494b;
 	min-width: 220px;
 	max-width: auto;
-	padding: 15px 20px;
+	padding: 20px;
 	color: #fffff0;
 	border-radius: 10px;
 	border: 2px solid rgba(255, 255, 255, 0.5);

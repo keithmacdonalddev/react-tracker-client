@@ -22,7 +22,7 @@ const SentRequests = () => {
 					users.userListSentRequest.map((user) => <Box user={user} users={users} success={success} />)
 				)
 			) : (
-				<h6>Data not found</h6>
+				<h2 className={classname.no_data}>Data not found.</h2>
 			)}
 		</div>
 	);

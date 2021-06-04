@@ -3,7 +3,7 @@
 	flex-direction: column;
 	width: 350px;
 	height: 130px;
-	background: #bbbbcb;
+	background: var(--blk-light-50);
 	padding: 10px;
 	border-radius: 5px;
 	box-shadow: 0 1px 3px 1px rgb(0 0 0 / 30%);
@@ -150,11 +150,14 @@
 }
 
 .card_quantity {
-	font-size: 2em;
+	font-size: 2.5em;
 	color: blue;
 	font-weight: 600;
 	text-align: center;
 	padding: 10px;
+	background: white;
+	border-radius: 20%;
+	box-shadow: inset -13px -13px 13px (rgba(0, 0, 0, 0.7));
 }
 
 @media (min-width: 454px) {

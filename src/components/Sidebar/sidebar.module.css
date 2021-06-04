@@ -1,10 +1,9 @@
 .sidebar_wrapper_closed {
 	position: absolute;
-
 	width: 0px;
 	height: 100%;
 	overflow: hidden;
-	background: #c1c1c942;
+	background: var(--blk-75);
 	z-index: 99;
 	transition: all 500ms;
 }
@@ -31,7 +30,7 @@
 	width: 220px;
 	text-align: left;
 	padding-inline-start: 0;
-	background: #c1c1c9;
+	background: var(--blk-75);
 	height: 100%;
 	overflow: hidden;
 	cursor: pointer;
@@ -41,11 +40,10 @@
 @media (min-width: 500px) {
 	.sidebar_wrapper_closed {
 		position: relative;
-
 		width: 60px;
 		height: 100%;
 		overflow: hidden;
-		background: #c1c1c9;
+		background: var(--blk-75);
 		z-index: 99;
 		transition: all 500ms;
 	}
@@ -55,7 +53,7 @@
 		width: 220px;
 		height: 100%;
 		overflow: hidden;
-		background: #c1c1c9;
+		background: var(--blk-75);
 	}
 
 	.togglebutton_wrapper {

@@ -1,7 +1,24 @@
 import React from 'react';
 import classname from './card.module.css';
 
+const orange = 'rgb(175, 82, 222)';
+const green = 'rgb(52, 199, 89)';
+const blue = 'rgb(0, 122, 255)';
+
 const Card = ({ title, children }) => {
+	const color = (title) => {
+		console.log(children);
+		if (title === 'Tickets') {
+			return blue;
+		}
+		if (title === 'Projects') {
+			return green;
+		}
+		if (title === 'Connections') {
+			return orange;
+		}
+	};
+
 	return (
 		<div className={classname.card_container}>
 			<div className={classname.card_title}>
@@ -18,7 +35,9 @@ const Card = ({ title, children }) => {
 				</div>
 			</div>
 			<div className={classname.card_body}>
-				<div className={classname.card_quantity}>{children}</div>
+				<div style={{ color: color(title) }} className={classname.card_quantity}>
+					{children}
+				</div>
 			</div>
 		</div>
 	);

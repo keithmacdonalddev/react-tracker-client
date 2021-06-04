@@ -21,6 +21,7 @@ const MyTicketsPage = () => {
 	const dispatch = useDispatch();
 
 	const { tickets, loading, error } = useSelector((state) => state.tickets);
+	const { component } = useSelector((state) => state.component);
 
 	useEffect(() => {
 		dispatch(getTickets());
@@ -30,19 +31,41 @@ const MyTicketsPage = () => {
 
 	return (
 		<div className={classname.tickets_page_container}>
-			<div className={classname.header_container}>
-				<div className={classname.header_title}>My Tickets</div>
-				<CreateTicketButton />
-			</div>
-			{loading ? (
-				<div>loading...</div>
-			) : error ? (
-				<div>{error}</div>
-			) : tickets ? (
-				<TicketsMapping tickets={tickets} />
-			) : (
-				<div>No data found</div>
+			{component === 'My Tickets' && (
+				<div className={classname.tickets_facts_container}>
+					<div className={classname.tickets_facts_item}>
+						<div className={classname.facts_item_title}>Open Tickets</div>
+					</div>
+					<div className={classname.tickets_facts_item}>
+						<div className={classname.facts_item_title}>Open Tickets</div>
+					</div>{' '}
+					<div className={classname.tickets_facts_item}>
+						<div className={classname.facts_item_title}>Open Tickets</div>
+					</div>
+				</div>
 			)}
+
+			<div className={classname.ticketsContainer}>
+				<div className={classname.wrapper}>
+					<div className={classname.header_container}>
+						<div className={classname.header_title}>My Tickets</div>
+					</div>
+					<div className={classname.footer_container}>
+						<div className={classname.header_title}></div>
+						<CreateTicketButton />
+					</div>
+				</div>
+
+				{loading ? (
+					<div>loading...</div>
+				) : error ? (
+					<div>{error}</div>
+				) : tickets ? (
+					<TicketsMapping tickets={tickets} />
+				) : (
+					<div>No data found</div>
+				)}
+			</div>
 		</div>
 	);
 };
