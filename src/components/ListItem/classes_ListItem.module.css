@@ -2,7 +2,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	color: #f82d48;
+	/* color: #f82d48; */
 	background: var(--blk-75);
 	height: 60px;
 	min-width: 60px;
@@ -10,11 +10,11 @@
 	line-height: 60px;
 	transition: 399ms;
 }
-
+/* 
 .icon:focus-within {
 	color: #f82d48;
 	background: #f82d48;
-}
+} */
 
 .li {
 	position: relative;
@@ -31,12 +31,12 @@
 }
 
 .container::focus-within {
-	background: #f82d48;
+	/* background: #f82d48; */
 	color: white;
 }
 
 .container:hover {
-	background: #f82d48;
+	/* background: #f82d48; */
 	color: white;
 }
 .a {
@@ -58,11 +58,11 @@
 	line-height: 60px;
 	text-align: start;
 	white-space: nowrap;
-	border-radius: #f82d48;
+	/* border-radius: #f82d48; */
 }
 
 .title:hover {
-	background: #f82d48;
+	/* background: #f82d48; */
 	width: 100%;
 	height: 90%;
 }
