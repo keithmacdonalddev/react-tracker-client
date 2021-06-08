@@ -1,66 +1,25 @@
-* {
-	/* border: 1px dashed black !important; */
-}
-
 .singleTicketPageContainer {
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: 50px 98%;
+	grid-template-rows: auto auto 1fr;
 	width: 100%;
-	height: calc(100vh - 50px);
-	overflow: hidden;
+	height: 100%;
+	justify-items: center;
 }
 
 .buttonContainer {
-	grid-row: 1/2;
-	display: flex;
-	align-items: center;
-	margin: auto;
-}
-.ticketDataContainer {
-	grid-row: 2/3;
-	display: grid;
-	grid-template-columns: 1fr 1fr;
+	display: inline-flex;
+	justify-content: center;
+	margin: 20px 0 60px 0;
+	height: auto;
 	width: 100%;
-	max-height: calc(100% - 50px);
+	max-width: 90%;
 }
 
-.ticketColumn {
-	background: #242221;
-	width: 100%;
+.column {
+	width: 90%;
 	height: 100%;
 	overflow-y: auto;
-}
-
-.commentColumn {
-	background: blue;
-	width: 100%;
-	height: 100%;
-	overflow-y: auto;
-}
-
-.commentContainer {
-	margin: 10px;
-	border-radius: 10px;
-	padding-top: 10px;
-	height: 95%;
-	overflow-y: scroll;
-	box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1), -3px -3px 10px rgba(0, 0, 0, 0.1);
-}
-
-.commentContainer {
-	width: 100%;
-}
-
-.text {
-	font-size: 12px;
-	transform: scale(0.9);
-}
-
-.editIcon {
-	display: grid;
-	justify-self: center;
-	color: blue;
 }
 
 .stopIcon {
@@ -72,7 +31,4 @@
 
 .commentHeader {
 	text-align: center;
-}
-
-@media (min-width: 500px) {
 }

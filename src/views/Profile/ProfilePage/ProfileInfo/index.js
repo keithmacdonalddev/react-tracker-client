@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Moment from 'react-moment';
 
 import Avatar from 'components/Avatar';
-import { SET_EDITING_TRUE } from 'store/types';
+import { SET_EDITING_TRUE, USER_UPDATE_PROFILE_RESET } from 'store/types';
 import { getUserDetails } from 'store/actions/userActions';
 import { showComponent } from 'store/actions/navigationActions';
 // import { PROFILE_NAV_KEY } from 'store/types';
@@ -13,6 +13,7 @@ const ProfileInfo = () => {
 	const dispatch = useDispatch();
 	const { userInfo } = useSelector((state) => state.userLogin);
 	const { user } = useSelector((state) => state.userDetails);
+	const { success } = useSelector((state) => state.userUpdateProfile);
 
 	// const profileKey = useSelector((state) => state.profileKey);
 
@@ -29,6 +30,22 @@ const ProfileInfo = () => {
 		dispatch(getUserDetails(userInfo._id));
 	}, [dispatch, userInfo._id]);
 
+	useEffect(() => {
+		let timer1;
+
+		if (success) {
+			timer1 = setTimeout(() => {
+				dispatch({ type: USER_UPDATE_PROFILE_RESET });
+			}, 4000);
+		}
+
+		return () => clearTimeout(timer1);
+	}, [dispatch, success]);
+
+	const handleNotificationClick = () => {
+		dispatch({ type: USER_UPDATE_PROFILE_RESET });
+	};
+
 	return (
 		<div className={classname.profile_info_container}>
 			{!user ? (
@@ -39,7 +56,14 @@ const ProfileInfo = () => {
 						<Avatar />
 					</div>
 					<div className={classname.title}>{userInfo.firstName}'s Profile </div>
-
+					<div
+						style={!success ? { display: 'none' } : null}
+						onClick={() => handleNotificationClick()}
+						className={classname.full_screen}>
+						<div style={!success ? { opacity: 0, display: 'none' } : null} className={classname.edit_profile_success}>
+							Updated!
+						</div>
+					</div>
 					<div className={classname.user_info_section}>
 						<div className={classname.profile_input}>
 							{' '}

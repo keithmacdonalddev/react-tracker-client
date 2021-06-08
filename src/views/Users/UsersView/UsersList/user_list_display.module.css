@@ -6,10 +6,10 @@
 }
 
 .users_box_list_container {
-	width: 80%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+	display: grid;
+	width: 100%;
+	justify-content: center;
+	overflow-y: scroll;
 }
 
 .no_data {

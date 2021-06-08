@@ -7,23 +7,14 @@
  * This is the root Users component.  It has a layout container with a unique 
  	 navigation component (UsersNav) and a users view component (UsersView)
  	 displays the selection from the UsersNav.
- 
- * Users Tree:
- 	 							Users/index.js (** YOU ARE HERE **)
- 	 									> Users/UsersNav/index.js	
- 	 									> Users/UsersView/index.js
- 	 											> Users/UsersView/UsersList/Friends	
- 	 											> Users/UsersView/UsersList/SentRequests		
-  											> Users/UsersView/UsersList/GlobalUsersList		
- 	 											> Users/UsersView/UsersList/ReceivedRequests
--------------------------------------------------------------------------------- */
+*/
 
-import React from "react";
+import React from 'react';
 
-import UsersView from "./UsersView";
-import classname from "views/Users/users.module.css";
+import UsersNav from './UsersNav';
+import UsersView from './UsersView';
 
-import UsersNav from "./UsersNav";
+import classname from 'views/Users/users.module.css';
 
 const Users = () => {
 	return (

@@ -1,13 +1,13 @@
 /** ---------------------------------------------------------------------------
  * 	Dashboard 
-		- home for all logged in views
+	- home for all logged in views
 
-		* 	Components
-		Modal 		 - default location for closed modal
-		ToggleButton - ui and logic for handling sidebar views 
-		Sidebar 	 - ui and logic with routing for all dashboard views
-		AppBarTop 	 - convenience links for some features 
-		MainView  	 - main content displayed to the use based on user selection
+* Components
+	Modal 		 - default location for modal
+	ToggleButton - for handling sidebar 
+	Sidebar 	 - routing for all dashboard views
+	AppBarTop 	 - convenience links for some features 
+	MainView  	 - content shown based on user selection
 -------------------------------------------------------------------------------- */
 
 import React, { useEffect, useState } from 'react';
@@ -24,31 +24,29 @@ import MainView from './MainView';
 import classname from './dashboard.module.css';
 
 const Dashboard = () => {
+	const history = useHistory();
+
 	const styles = useSpring({
 		from: { y: -100, opacity: 0 },
 		to: { x: 0, y: 0, opacity: 1 },
 		config: config.slow,
 	});
+
 	const sideBarAnimation = useSpring({
 		from: { x: -400, opacity: 0, delay: 5000 },
 		to: { x: 0, opacity: 1 },
 	});
-
-	const history = useHistory();
 
 	const [toggleSidebar, setToggleSidebar] = useState(false);
 
 	const { userInfo } = useSelector((state) => state.userLogin);
 
 	const closeSidebarOnAction = () => {
-		if (toggleSidebar) {
-			setToggleSidebar(!toggleSidebar);
-		}
+		if (toggleSidebar) setToggleSidebar(!toggleSidebar);
 	};
+
 	useEffect(() => {
-		if (!userInfo) {
-			history.push('/login');
-		}
+		if (!userInfo) history.push('/login');
 	}, [userInfo, history]);
 
 	return (

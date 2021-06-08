@@ -1,14 +1,12 @@
 .profilePageContainer {
 	display: grid;
-	grid-template-columns: 1fr;
-	justify-items: center;
-	justify-self: center;
-	padding: 30px;
 	position: relative;
+	justify-items: center;
+	grid-template-columns: 1fr;
+	padding: 0 30px 30px 30px;
 	width: 100%;
 	max-width: 1200px;
 	height: auto;
-	min-height: calc(100vh + 120px);
 }
 
 .profile_info_card {
@@ -20,17 +18,16 @@
 .profile_content {
 	width: calc(100% - 20px);
 	margin-top: 30px;
-
 	padding: 10px;
 	border-radius: 10px;
-	background: #a2a29e;
+	background: var(--color-primary-800);
 	min-height: 300px;
 }
 
 @media (max-width: 900px) {
 	.profilePageContainer {
 		max-width: 100%;
-		min-height: calc(100vh + 120px);
+		height: auto;
 	}
 
 	.profile_info_card {
@@ -48,7 +45,7 @@
 	}
 
 	.profile_content_background {
-		background: #a2a29e;
+		background: var(--color-primary-800);
 		border-radius: 10px;
 	}
 }

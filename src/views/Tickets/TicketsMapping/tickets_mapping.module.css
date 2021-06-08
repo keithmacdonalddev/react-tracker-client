@@ -3,7 +3,6 @@
 	width: auto;
 	overflow-y: auto;
 	padding: 30px;
-	border: 2px solid rgba(0, 0, 0, 0.2);
 }
 
 .ticketsContainer::-webkit-scrollbar-track {
@@ -22,15 +21,14 @@
 	font-size: 12px;
 	height: 60px;
 	padding: 10px;
-	background: var(--blk-light);
+	background: linear-gradient(to bottom, var(--color-primary-800), var(--color-primary-700));
 	margin-bottom: 20px;
 	border-radius: 5px;
-	box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3), inset 3px 3px 3px rgba(255, 255, 255, 0.3);
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5), inset 3px 3px 3px rgba(255, 255, 255, 0.3);
 }
 
 .card:hover {
-	background: #9174d8;
-	color: white;
+	background: var(--color-primary-700);
 	cursor: pointer;
 	transform: scale(0.99);
 }
@@ -38,20 +36,21 @@
 .ticketTypeIconContainer {
 	display: grid;
 	justify-content: center;
-	width: 25px;
-	height: 25px;
-	background: #f92e49;
+	width: 35px;
+	height: 10px;
+	color: var(--color-primary-100);
+	background: var(--color-primary-600);
 	border-radius: 5px;
 	margin: 10px;
-	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4), inset 1px 1px 3px rgba(255, 255, 255, 0.4),
-		inset -1px -1px 3px rgba(0, 0, 0, 0.4);
+	/* box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4), inset 1px 1px 3px rgba(255, 255, 255, 0.4), */
+	/* inset -1px -1px 3px rgba(0, 0, 0, 0.4); */
 }
 .ticketTypeIcon {
 	display: grid;
 	justify-content: center;
 	align-items: center;
 	color: transparent;
-	stroke: white;
+	stroke: var(--color-primary-100);
 	stroke-width: 50;
 }
 
@@ -60,17 +59,12 @@
 	justify-content: center;
 	align-items: center;
 	font-weight: 500;
-	color: #f1f9f9;
+	color: var(--color-primary-100);
 	width: 30%;
 	height: 100%;
 	font-size: 14px;
-	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), inset 1px 1px 3px rgba(255, 255, 255, 0.4),
-		inset -1px -1px 3px rgba(0, 0, 0, 0.3);
-}
-
-.ticketProject:hover {
-	filter: brightness(0.2);
-	transform: scale(0.97);
+	/* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), inset 1px 1px 3px rgba(255, 255, 255, 0.4), */
+	/* inset -1px -1px 3px rgba(0, 0, 0, 0.3); */
 }
 
 .development {
@@ -107,17 +101,12 @@
 	justify-content: center;
 	align-items: center;
 	font-weight: 500;
-	color: #f1f9f9;
+	color: var(--color-primary-100);
 	width: 15%;
 	height: 100%;
 	font-size: 14px;
-	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), inset 1px 1px 3px rgba(255, 255, 255, 0.4),
-		inset -1px -1px 3px rgba(0, 0, 0, 0.3);
-}
-
-.ticketDate:hover {
-	filter: brightness(0.2);
-	transform: scale(0.97);
+	/* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), inset 1px 1px 3px rgba(255, 255, 255, 0.4), */
+	/* inset -1px -1px 3px rgba(0, 0, 0, 0.3); */
 }
 
 .ticketTitle {
@@ -126,36 +115,29 @@
 	justify-content: center;
 	align-items: center;
 	font-weight: 500;
-	color: #f1f9f9;
+	color: var(--color-primary-100);
 	width: 40%;
 	height: 100%;
 	overflow-x: auto;
 	font-size: 14px;
-	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), inset 1px 1px 3px rgba(255, 255, 255, 0.4),
-		inset -1px -1px 3px rgba(0, 0, 0, 0.3);
+	/* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), inset 1px 1px 3px rgba(255, 255, 255, 0.4), */
+	/* inset -1px -1px 3px rgba(0, 0, 0, 0.3); */
 }
-.ticketTitle:hover {
-	filter: brightness(0.1);
-	transform: scale(0.98);
-}
+
 .editIcon {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	font-weight: 500;
-	color: #f1f9f9;
+	color: var(--color-primary-100);
 	width: 8%;
 	height: 100%;
 	cursor: pointer;
 	font-size: 14px;
-	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), inset 1px 1px 3px rgba(255, 255, 255, 0.4),
-		inset -1px -1px 3px rgba(0, 0, 0, 0.3);
+	/* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), inset 1px 1px 3px rgba(255, 255, 255, 0.4), */
+	/* inset -1px -1px 3px rgba(0, 0, 0, 0.3); */
 }
 
-.editIcon:hover {
-	filter: brightness(0.9);
-	transform: scale(0.9);
-}
 .trashIcon {
 	color: red;
 	margin: 10px;

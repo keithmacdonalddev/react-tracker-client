@@ -4,6 +4,9 @@ import {
 	GET_TICKETS_FAIL,
 	GET_TICKETS_SUCCESS,
 	GET_TICKETS_REQUEST,
+	GET_TICKETS_BY_OWNER_ID_FAIL,
+	GET_TICKETS_BY_OWNER_ID_SUCCESS,
+	GET_TICKETS_BY_OWNER_ID_REQUEST,
 	CREATE_TICKET_REQUEST,
 	CREATE_TICKET_SUCCESS,
 	CREATE_TICKET_FAIL,
@@ -47,6 +50,19 @@ export const getTicketsReducer = (state = {}, action) => {
 		case GET_TICKETS_SUCCESS:
 			return { loading: false, tickets: action.payload };
 		case GET_TICKETS_FAIL:
+			return { loading: false, error: action.payload };
+		default:
+			return state;
+	}
+};
+
+export const getTicketsByOwnerIdReducer = (state = [], action) => {
+	switch (action.type) {
+		case GET_TICKETS_BY_OWNER_ID_REQUEST:
+			return { loading: true };
+		case GET_TICKETS_BY_OWNER_ID_SUCCESS:
+			return { loading: false, myTickets: action.payload };
+		case GET_TICKETS_BY_OWNER_ID_FAIL:
 			return { loading: false, error: action.payload };
 		default:
 			return state;

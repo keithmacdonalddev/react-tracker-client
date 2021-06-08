@@ -8,12 +8,9 @@ import ProjectsList from 'views/Projects/ProjectsList';
 // CSS ~ styles
 import classname from './projects_component.module.css';
 
-// Default export
 const MyProjectsPage = () => {
-	// initialize dispatch
 	const dispatch = useDispatch();
 
-	// event handlers
 	const clickHandler = () => {
 		dispatch(showComponent('Create Project'));
 	};

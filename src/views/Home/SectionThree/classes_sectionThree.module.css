@@ -19,5 +19,5 @@
 }
 
 .column {
-	width: clamp(400px, 60vw, 1200px);
+	width: clamp(400px, 80vw, 1200px);
 }

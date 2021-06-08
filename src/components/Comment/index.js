@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTicket, ticketComment } from 'store/actions/ticketActions';
 import Moment from 'react-moment';
 
-import style from './comment.module.css';
+import classname from './comment.module.css';
 import { TICKET_COMMENT_RESET } from 'store/types';
 
 const Comment = () => {
@@ -13,7 +13,6 @@ const Comment = () => {
 	const [comment, setComment] = useState('');
 
 	const { ticketId } = useSelector((state) => state.id);
-
 	const { singleTicket, loading, error } = useSelector((state) => state.singleTicket);
 
 	const { commentSuccess, commentError, commentLoading } = useSelector((state) => state.ticketCommentCreate);
@@ -32,21 +31,8 @@ const Comment = () => {
 	}, [commentSuccess, ticketId, dispatch]);
 
 	return (
-		<div className={style.commentSection}>
-			<div className={style.commentForm}>
-				<form className={style.commentForm} onSubmit={(event) => submitHandler(event)}>
-					<input
-						type='text'
-						value={comment}
-						placeholder='write a comment'
-						onChange={(e) => setComment(e.target.value)}
-					/>
-					<button className={style.formButton} type='submit'>
-						Submit
-					</button>
-				</form>
-			</div>
-			<div className={style.commentContainer}>
+		<div className={classname.commentSection}>
+			<div className={classname.commentContainer}>
 				{loading || commentLoading ? (
 					<h6>loading...</h6>
 				) : error || commentError ? (
@@ -55,11 +41,11 @@ const Comment = () => {
 					<>
 						{singleTicket.comments.map((item) => {
 							return (
-								<div key={item._id} className={style.commentBox}>
-									<p className={style.comment}>{item.comment}</p>
-									<div className={style.boxHeader}>
-										<h6 className={style.name}>{item.name}</h6>
-										<Moment className={style.date} format='MMM-DD hh:mm'>
+								<div key={item._id} className={classname.commentBox}>
+									<p className={classname.comment}>{item.comment}</p>
+									<div className={classname.boxHeader}>
+										<h6 className={classname.name}>{item.name}</h6>
+										<Moment className={classname.date} format='MMM-DD hh:mm'>
 											{item.createdAt}
 										</Moment>
 									</div>
@@ -69,6 +55,20 @@ const Comment = () => {
 					</>
 				)}
 			</div>
+			<form onSubmit={(event) => submitHandler(event)}>
+				<div className={classname.input_container}>
+					<input
+						className={classname.comment_input}
+						type='text'
+						value={comment}
+						placeholder='write a comment'
+						onChange={(e) => setComment(e.target.value)}
+					/>
+					<button className={classname.formButton} type='submit'>
+						Submit
+					</button>
+				</div>
+			</form>
 		</div>
 	);
 };

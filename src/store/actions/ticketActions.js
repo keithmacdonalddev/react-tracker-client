@@ -5,6 +5,9 @@ import {
 	GET_TICKETS_FAIL,
 	GET_TICKETS_SUCCESS,
 	GET_TICKETS_REQUEST,
+	GET_TICKETS_BY_OWNER_ID_FAIL,
+	GET_TICKETS_BY_OWNER_ID_SUCCESS,
+	GET_TICKETS_BY_OWNER_ID_REQUEST,
 	CREATE_TICKET_REQUEST,
 	CREATE_TICKET_SUCCESS,
 	CREATE_TICKET_FAIL,
@@ -44,6 +47,25 @@ export const getTickets = () => async (dispatch) => {
 	} catch (error) {
 		dispatch({
 			type: GET_TICKETS_FAIL,
+			payload: error.message && error.response.data.message ? error.response.data.message : error.message,
+		});
+	}
+};
+
+export const getTicketsByOwnerId = (id) => async (dispatch) => {
+	try {
+		dispatch({ type: GET_TICKETS_BY_OWNER_ID_REQUEST });
+
+		const { data } = await axios.get(`${apiUrl}/tickets/owner/${id}`);
+		// const { data } = await axios.get(`tickets/owner/${id}`);
+
+		dispatch({
+			type: GET_TICKETS_BY_OWNER_ID_SUCCESS,
+			payload: data,
+		});
+	} catch (error) {
+		dispatch({
+			type: GET_TICKETS_BY_OWNER_ID_FAIL,
 			payload: error.message && error.response.data.message ? error.response.data.message : error.message,
 		});
 	}
@@ -132,21 +154,16 @@ export const singleTicketId = (id) => async (dispatch) => {
 
 export const deleteTicket = (id) => async (dispatch, getState) => {
 	try {
-		dispatch({
-			type: DELETE_TICKET_REQUEST,
-		});
+		dispatch({ type: DELETE_TICKET_REQUEST });
 
 		const {
 			userLogin: { userInfo },
 		} = getState();
 
-		const config = {
-			headers: {
-				Authorization: `Bearer ${userInfo.token}`,
-			},
-		};
+		const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
 
 		const { data } = await axios.delete(`${apiUrl}/${id}`, config);
+
 		dispatch({
 			type: DELETE_TICKET_SUCCESS,
 			payload: data,
@@ -160,6 +177,7 @@ export const deleteTicket = (id) => async (dispatch, getState) => {
 };
 
 export const ticketComment = (comment, id) => async (dispatch, getState) => {
+	console.log(`comment: ${comment}, id: ${id}`);
 	try {
 		dispatch({ type: TICKET_COMMENT_REQUEST });
 
@@ -175,7 +193,7 @@ export const ticketComment = (comment, id) => async (dispatch, getState) => {
 		};
 
 		const newComment = { comment, userInfo };
-		const { data } = await axios.put(`${apiUrl}/${id}`, { newComment }, config);
+		const { data } = await axios.put(`${apiUrl}/comment/${id}`, { newComment }, config);
 
 		dispatch({ type: TICKET_COMMENT_SUCCESS, payload: data });
 	} catch (error) {

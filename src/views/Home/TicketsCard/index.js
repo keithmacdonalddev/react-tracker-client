@@ -3,16 +3,17 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Card from 'components/Card';
 
-import { getTickets } from 'store/actions/ticketActions';
+import { getTicketsByOwnerId } from 'store/actions/ticketActions';
 
 const TicketsCard = () => {
 	const dispatch = useDispatch();
 
-	const { tickets, loading, error } = useSelector((state) => state.tickets);
+	const { userInfo } = useSelector((state) => state.userLogin);
+	const { myTickets, loading, error } = useSelector((state) => state.myTickets);
 
 	useEffect(() => {
-		dispatch(getTickets());
-	}, [dispatch]);
+		dispatch(getTicketsByOwnerId(userInfo._id));
+	}, [dispatch, userInfo._id]);
 
 	return (
 		<Card title={'Tickets'} subTitle1={'Open'} subTitle2={'Completed'}>
@@ -20,8 +21,8 @@ const TicketsCard = () => {
 				<div>loading...</div>
 			) : error ? (
 				<div>{error}</div>
-			) : tickets ? (
-				<div>{tickets.length}</div>
+			) : myTickets ? (
+				<div>{myTickets.length}</div>
 			) : (
 				<div>No data found</div>
 			)}

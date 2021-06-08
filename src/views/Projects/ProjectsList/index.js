@@ -38,7 +38,7 @@ const ProjectsList = () => {
 			) : projects ? (
 				<div className={classname.projects_container}>
 					{projects.map((project, index) => {
-						return project.administrator === userInfo._id ? (
+						return project.owner === userInfo._id ? (
 							<div key={project._id} className={classname.card}>
 								<div className={classname.project_title}>{project.title}</div>
 

@@ -8,8 +8,8 @@ import classname from './user_list_display.module.css';
 
 const GlobalUsersList = () => {
 	const dispatch = useDispatch();
-	// const [loading, setLoading] = useState(false)
-	const { users, error } = useSelector((state) => state.users);
+
+	const { users2, error } = useSelector((state) => state.users);
 	const { loading, success } = useSelector((state) => state.friendRequest);
 
 	const addFriendClickHandler = (friendId) => {
@@ -22,6 +22,7 @@ const GlobalUsersList = () => {
 			dispatch({ type: SEND_FRIEND_REQUEST_RESET });
 		}
 	}, [success, dispatch]);
+
 	return (
 		<div className={classname.users_box_list_container}>
 			{' '}
@@ -29,8 +30,8 @@ const GlobalUsersList = () => {
 				<h6>loading...</h6>
 			) : error ? (
 				<h6>{error}</h6>
-			) : users ? (
-				users.userListNotFriends.map((user) => (
+			) : users2 ? (
+				users2.userListNotFriends.map((user) => (
 					<div key={user._id} className={classname.usersBox}>
 						{/* users avatar photo */}
 						<img src={user.avatar} className={classname.avatar} alt='' />

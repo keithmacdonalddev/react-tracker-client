@@ -7,7 +7,6 @@ const blue = 'rgb(0, 122, 255)';
 
 const Card = ({ title, children }) => {
 	const color = (title) => {
-		console.log(children);
 		if (title === 'Tickets') {
 			return blue;
 		}

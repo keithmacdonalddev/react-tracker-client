@@ -1,36 +1,35 @@
-/**
- * 	Show a list of my tickets and an option to create a ticket
- *
- */
+// Show a list of my tickets and an option to create a ticket
 
-// Packages
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+// Components
 import TicketsMapping from '../TicketsMapping';
-import CreateTicketButton from '../CreateTicketButton';
 
 // Redux
-import { getTickets } from 'store/actions/ticketActions';
+import { getTicketsByOwnerId } from 'store/actions/ticketActions';
 import { CREATE_TICKET_RESET, DELETE_TICKET_RESET } from 'store/types';
 
-// Styles ~ css
+// CSS
 import classname from './classes_myTicketsPage.module.css';
+import { showComponent } from 'store/actions/navigationActions';
 
 const MyTicketsPage = () => {
 	const dispatch = useDispatch();
 
-	const { tickets, loading, error } = useSelector((state) => state.tickets);
+	const { userInfo } = useSelector((state) => state.userLogin);
+	const { myTickets, loading, error } = useSelector((state) => state.myTickets);
 	const { component } = useSelector((state) => state.component);
 
 	useEffect(() => {
-		dispatch(getTickets());
+		dispatch(getTicketsByOwnerId(userInfo._id));
 		dispatch({ type: CREATE_TICKET_RESET });
 		dispatch({ type: DELETE_TICKET_RESET });
-	}, [dispatch]);
+	}, [dispatch, userInfo._id]);
 
 	return (
 		<div className={classname.tickets_page_container}>
+			{/* Display only when clicking tickets link from sidebar */}
 			{component === 'My Tickets' && (
 				<div className={classname.tickets_facts_container}>
 					<div className={classname.tickets_facts_item}>
@@ -44,7 +43,7 @@ const MyTicketsPage = () => {
 					</div>
 				</div>
 			)}
-
+			{/* Actual component */}
 			<div className={classname.ticketsContainer}>
 				<div className={classname.wrapper}>
 					<div className={classname.header_container}>
@@ -52,7 +51,9 @@ const MyTicketsPage = () => {
 					</div>
 					<div className={classname.footer_container}>
 						<div className={classname.header_title}></div>
-						<CreateTicketButton />
+						<div onClick={() => dispatch(showComponent('createTicket'))} className={classname.create_ticket_button}>
+							Create Ticket
+						</div>
 					</div>
 				</div>
 
@@ -60,8 +61,8 @@ const MyTicketsPage = () => {
 					<div>loading...</div>
 				) : error ? (
 					<div>{error}</div>
-				) : tickets ? (
-					<TicketsMapping tickets={tickets} />
+				) : myTickets ? (
+					<TicketsMapping myTickets={myTickets} />
 				) : (
 					<div>No data found</div>
 				)}

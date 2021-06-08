@@ -2,22 +2,15 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-// Icons
 import { Icon, faChevronRight } from 'components/Icon';
-
-// Redux
 import { usersNavActiveAction } from 'store/actions/navigationActions';
-
-// Helpers
 import { navItems, usersNavActiveStyle } from './helpers';
 
-// CSS
 import classname from './usersNav.module.css';
 
 const UsersNav = () => {
 	const dispatch = useDispatch();
 
-	// Global state: active users nav selection as set from the onClick below
 	const { usersNavState } = useSelector((state) => state.usersNavState);
 
 	return (

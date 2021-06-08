@@ -1,19 +1,21 @@
-import React from "react";
+import React from 'react';
 
-import NavBar from "./NavBar";
-import TicketData from "./TicketData";
-import Comment from "components/Comment";
+import NavBar from './NavBar';
+import TicketData from './TicketData';
+import Comment from 'components/Comment';
 
-import classes from "./classes_SingleTicket.module.css";
+import classname from './classes_SingleTicket.module.css';
 
 const SingleTicket = () => {
 	return (
-		<div className={classes.singleTicketPageContainer}>
-			<div className={classes.buttonContainer}>
+		<div className={classname.singleTicketPageContainer}>
+			<div className={classname.buttonContainer}>
 				<NavBar />
 			</div>
-			<div className={classes.ticketDataContainer}>
+			<div className={classname.column}>
 				<TicketData />
+			</div>
+			<div className={classname.column}>
 				<Comment />
 			</div>
 		</div>

@@ -4,6 +4,7 @@
 	align-content: flex-start;
 	width: auto;
 	height: 100%;
+	padding: 30px;
 	background: #c1c1c983;
 	box-shadow: 1px 3px 9px rgb(0 0 0 / 20%), 3px 1px 12px rgb(0 0 0 / 20%);
 }
@@ -11,8 +12,8 @@
 .projects_container {
 	height: 100%;
 	overflow-y: auto;
-	padding: 20px 0;
-	transition: 1.3s ease-in-out;
+	margin: 30px;
+	margin-top: 20px;
 	-webkit-overflow-scrolling: touch;
 }
 
@@ -40,13 +41,14 @@
 	justify-content: space-between;
 	align-items: center;
 	margin: auto;
-	width: 90%;
+	width: 100%;
 	font-size: 12px;
-	min-height: 50px;
-	background: #f8f8f8;
-	margin-bottom: 15px;
-	border-radius: 10px;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 1px 1px 3px rgba(0, 0, 0, 0.1);
+	height: 60px;
+	padding: 10px;
+	color: var(--color-primary-100);
+	background: var(--color-primary-800);
+	margin-bottom: 20px;
+	border-radius: 5px;
 }
 
 .icon_container {
@@ -56,29 +58,23 @@
 	align-items: center;
 	width: auto;
 	height: auto;
-	background: rgb(189, 165, 255);
 	border-radius: 5px;
 	margin: 7px;
 	padding: 5px 10px;
-
-	box-shadow: 1px 1px 3px rgb(106, 86, 158);
 }
 
 .icon_container:hover {
-	background: rgb(189, 165, 255);
-	box-shadow: inset 1px 1px 3px rgb(106, 86, 158);
 	cursor: pointer;
 }
 
 .new_ticket_text {
 	font-size: 12px;
 	scale: 0.8;
-	color: #242221;
+	color: var(--color-primary-100);
 }
 
 .card:hover {
-	background: rgb(144, 116, 216);
-	color: white;
+	background: var(--color-primary-700);
 	cursor: grab;
 }
 

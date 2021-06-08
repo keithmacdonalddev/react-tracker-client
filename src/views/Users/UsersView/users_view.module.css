@@ -2,29 +2,31 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	height: calc(100vh - 50px);
+	height: calc(100vh - 70px);
 }
 
 .header {
 	display: flex;
+	background: var(--color-primary-800);
+	color: var(--color-primary-100);
 	justify-content: space-between;
 	align-items: flex-end;
+	margin-top: 20px;
 	width: 90%;
 	height: 45px;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
 	border-bottom: 2px solid rgba(128, 128, 128, 0.527);
 }
 
 .list_container {
 	display: flex;
 	justify-content: center;
-	padding-top: 20px;
-	min-width: 90%;
-	height: 80%;
-	background: linear-gradient(360deg, #9f9f9f, #e4e4e4, #fff);
-	border-radius: 10px;
-	white-space: nowrap;
-	overflow-y: auto;
-	box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+	padding: 20px;
+	width: 90%;
+	max-height: 80vh;
+	background: linear-gradient(to bottom, var(--color-primary-800), var(--color-primary-600));
+	border-radius: 5px;
 }
 
 .addButton {

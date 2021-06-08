@@ -11,7 +11,7 @@ const ProjectsCard = () => {
 
 	if (projects) {
 		projects.map((project) => {
-			if (project.administrator === userInfo._id) {
+			if (project.owner === userInfo._id) {
 				myProjects.push(project);
 			}
 			return null;
