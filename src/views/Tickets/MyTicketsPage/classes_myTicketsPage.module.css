@@ -77,11 +77,13 @@
 	display: grid;
 	justify-content: center;
 	padding: 20px;
-	background: white;
+	background: linear-gradient(var(--color-primary-800), var(--color-primary-700));
 	border-radius: 10px;
-	height: 200px;
+	height: 150px;
+	color: var(--color-primary-100);
+	font-weight: 500;
 	width: 100%;
-	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 2px 5px rgb(0 0 0 / 50%), inset 3px 3px 3px rgb(255 255 255 / 30%);
 }
 
 .ticketsContainer {
