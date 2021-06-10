@@ -1,8 +1,9 @@
 .card_container {
 	display: flex;
 	flex-direction: column;
-	width: 90%;
-	min-width: 350px;
+	width: 25vw;
+	max-width: 350px;
+	min-width: 150px;
 	height: 130px;
 	background: var(--color-primary-800);
 	padding: 10px;
@@ -151,10 +152,12 @@
 	text-align: center;
 }
 
-@media (min-width: 554px) {
+@media (max-width: 750px) {
 	.card_container {
-		width: 25vw;
-		min-width: 200px;
+		width: 100%;
+		max-width: 600px;
+		min-width: 350px;
 		height: 152px;
+		margin: auto;
 	}
 }

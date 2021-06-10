@@ -1,20 +1,21 @@
 import React from 'react';
 import classname from './card.module.css';
 
-const orange = 'rgb(175, 82, 222)';
-const green = 'rgb(52, 199, 89)';
-const blue = 'rgb(0, 122, 255)';
+// const orange = 'rgb(175, 82, 222)';
+// const green = 'rgb(52, 199, 89)';
+// const blue = 'rgb(0, 122, 255)';
+const defaultColor = 'var(--color-primary-300)';
 
 const Card = ({ title, children }) => {
 	const color = (title) => {
 		if (title === 'Tickets') {
-			return blue;
+			return defaultColor;
 		}
 		if (title === 'Projects') {
-			return green;
+			return defaultColor;
 		}
 		if (title === 'Connections') {
-			return orange;
+			return defaultColor;
 		}
 	};
 

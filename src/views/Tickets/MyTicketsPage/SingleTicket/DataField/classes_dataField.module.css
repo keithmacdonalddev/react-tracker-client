@@ -1,7 +1,7 @@
 .dataFieldContainer {
 	display: flex;
-	gap: 20px;
-	padding: 5px 10px;
+	gap: 30px;
+	padding: 5px;
 	border-radius: 5px;
 	width: 100%;
 }
@@ -12,9 +12,10 @@
 
 .label {
 	color: var(--color-primary-300);
-	font-size: 16px;
+	font-size: 14px;
+	font-weight: 500;
 	max-width: 120px;
-	min-width: 120px;
+	min-width: 100px;
 	text-align: right;
 }
 
