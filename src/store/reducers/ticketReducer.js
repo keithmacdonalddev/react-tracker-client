@@ -23,6 +23,10 @@ import {
 	TICKET_COMMENT_SUCCESS,
 	TICKET_COMMENT_FAIL,
 	TICKET_COMMENT_RESET,
+	DELETE_COMMENT_REQUEST,
+	DELETE_COMMENT_SUCCESS,
+	DELETE_COMMENT_FAIL,
+	DELETE_COMMENT_RESET,
 	GET_TICKET_REQUEST,
 	GET_TICKET_SUCCESS,
 	GET_TICKET_FAIL,
@@ -129,6 +133,24 @@ export const ticketCommentReducer = (state = {}, action) => {
 		case TICKET_COMMENT_FAIL:
 			return { commentLoading: false, commentError: action.payload };
 		case TICKET_COMMENT_RESET:
+			return {};
+		default:
+			return state;
+	}
+};
+
+export const deleteCommentReducer = (state = {}, action) => {
+	switch (action.type) {
+		case DELETE_COMMENT_REQUEST:
+			return { deleteCommentLoading: true };
+		case DELETE_COMMENT_SUCCESS:
+			return {
+				deleteCommentLoading: false,
+				deleteCommentSuccess: true,
+			};
+		case DELETE_COMMENT_FAIL:
+			return { deleteCommentLoading: false, deleteCommentError: action.payload };
+		case DELETE_COMMENT_RESET:
 			return {};
 		default:
 			return state;

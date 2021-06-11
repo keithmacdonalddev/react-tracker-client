@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTicket, deleteComment } from 'store/actions/ticketActions';
 import Moment from 'react-moment';
-import { TICKET_COMMENT_RESET } from 'store/types';
+import { TICKET_COMMENT_RESET, DELETE_COMMENT_RESET } from 'store/types';
 import Input from './Input';
 
 import classname from './comment.module.css';
@@ -17,22 +17,33 @@ const Comment = () => {
 	const { singleTicket, loading, error } = useSelector((state) => state.singleTicket);
 
 	const { commentSuccess, commentError, commentLoading } = useSelector((state) => state.ticketCommentCreate);
+	const { deleteCommentSuccess, deleteCommentError, deleteCommentLoading } = useSelector(
+		(state) => state.deleteComment,
+	);
 
 	useEffect(() => {
 		if (commentSuccess) {
 			dispatch({ type: TICKET_COMMENT_RESET });
+
 			dispatch(getTicket(ticketId));
 		}
 	}, [commentSuccess, ticketId, dispatch]);
+
+	useEffect(() => {
+		if (deleteCommentSuccess) {
+			dispatch({ type: DELETE_COMMENT_RESET });
+			dispatch(getTicket(ticketId));
+		}
+	}, [deleteCommentSuccess, ticketId, dispatch]);
 
 	return (
 		<div className={classname.commentSection}>
 			<Input singleTicketId={ticketId} />
 
 			<div className={classname.commentContainer}>
-				{loading || commentLoading ? (
+				{loading || commentLoading || deleteCommentLoading ? (
 					<h6>loading...</h6>
-				) : error || commentError ? (
+				) : error || commentError || deleteCommentError ? (
 					<h6>{error}</h6>
 				) : (
 					<>

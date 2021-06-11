@@ -88,3 +88,10 @@
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
+
+.delete_comment {
+	cursor: pointer;
+}
+.delete_comment:hover {
+	transform: scale(1.2);
+}
