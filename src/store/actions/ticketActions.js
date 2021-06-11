@@ -221,7 +221,7 @@ export const deleteComment = (ticketId, commentId) => async (dispatch, getState)
 
 		const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
 
-		const { data } = await axios.delete(`${apiUrl}/comment/delete`, { ticketId, commentId }, config);
+		const { data } = await axios.put(`${apiUrl}/comment/delete`, { ticketId, commentId }, config);
 		// const { data } = await axios.put('/comment/delete', { ticketId, commentId }, config);
 
 		dispatch({
