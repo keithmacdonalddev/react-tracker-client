@@ -23,55 +23,6 @@
 }
 
 /* Global variables are defined in the :root element. */
-:root {
-	--bg-color: #fff;
-	--color-primary-100: #dee3ea;
-	--color-primary-200: #b2bdcd;
-	--color-primary-300: #5d7290;
-	--color-primary-600: #323d4d;
-	--color-primary-700: #242c37;
-	--color-primary-800: #151a21;
-	--color-primary-900: #0b0e11;
-	--color-secondary-washed-out: #879eed;
-	--color-secondary: #5575e7;
-	--color-accent-glow: rgba(253, 77, 77, 0.3);
-	--color-accent: #fd4d4d;
-	--color-accent-hover: #fd6868;
-	--color-accent-disabled: #f5bfbf;
-	--color-green: #4bff97;
-	--clr-blue-two: #32b5ff;
-	--clr-darkblue: #3e44af;
-	--clr-grey-blue: #607d8b;
-	--clr-fun-grn: #42b72a;
-	--clr-fun-fuscia: hsl(317, 100%, 54%);
-	--main-bg-one: #f0f2f5;
-	--main-color: #000;
-	--blk: #0b0e11;
-	--blk-75: #151a21;
-	--blk-50: rgb(58, 58, 60);
-	--blk-25: rgb(72, 72, 74);
-	--blk-light: rgb(99, 99, 102);
-	--blk-light-75: rgb(142, 142, 147);
-	--blk-light-50: rgb(174, 174, 178);
-	--blk-light-25: rgb(199, 199, 204);
-	--brn-100: rgba(84, 71, 56, 1);
-	--brn-75: #564946;
-	--brn-50: rgba(146, 95, 65, 0.8);
-	--brn-light-100: rgba(229, 227, 215, 1);
-	--secondary-color: #222;
-	--gold-gradient: linear-gradient(
-		to right,
-		#462523 0,
-		#cb9b51 22%,
-		#f6e27a 45%,
-		#f3ed99 50%,
-		#f6e27a 55%,
-		#cb9b51 78%,
-		#462523 100%
-	);
-	--primaryButton-background: linear-gradient(rgba(137, 137, 255, 0.838), rgb(51, 51, 255));
-	--secondaryButton-background: #f8d7da linear-gradient(180deg, #f9dde0, #f8d7da) repeat-x;
-}
 
 html * {
 	-webkit-font-smoothing: antialiased;
@@ -81,6 +32,7 @@ html * {
 body {
 	height: 100vh;
 	width: 100vw;
+	position: relative;
 	margin: 0;
 	padding: 0;
 	font-family: Roboto, Helvetica, Arial, sans-serif;

@@ -39,8 +39,8 @@ const ListItem = ({ icon, title, componentProp }) => {
 						{icon ? (
 							<FontAwesomeIcon
 								style={{
-									color: '#f0f0f0',
-									stroke: '#fffff0',
+									color: 'var(--color-primary-100)',
+									stroke: 'var(--color-primary-100)',
 									strokeWidth: '30',
 									fontSize: '22px',
 								}}

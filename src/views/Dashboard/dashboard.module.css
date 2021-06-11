@@ -1,6 +1,7 @@
 /*  ----- MOBILE ----- */
 body {
 	background: var(--color-primary-900);
+	color: var(--color-primary-100);
 }
 
 .app_container {
@@ -11,6 +12,7 @@ body {
 	width: 100vw;
 	min-height: 100vh;
 	transition: all 500ms;
+	color: var(--color-primary-100);
 	background: var(--color-primary-900);
 }
 
@@ -20,6 +22,7 @@ body {
 	grid-row: 1/2;
 	width: 100%;
 	position: relative;
+	color: var(--color-primary-100);
 }
 
 .togglebutton_wrapper {
@@ -50,6 +53,7 @@ body {
 .main_wrapper {
 	grid-column: 2/3;
 	background: var(--color-primary-900);
+	color: var(--color-primary-100);
 	display: grid;
 	width: 100%;
 	height: calc(100vh - 70px);

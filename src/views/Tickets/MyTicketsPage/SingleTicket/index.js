@@ -12,11 +12,13 @@ const SingleTicket = () => {
 			<div className={classname.buttonContainer}>
 				<NavBar />
 			</div>
-			<div className={classname.column}>
-				<TicketData />
-			</div>
-			<div className={classname.column}>
-				<Comment />
+			<div className={classname.ticket_content_comments_container}>
+				<div className={classname.column}>
+					<TicketData />
+				</div>
+				<div className={classname.column}>
+					<Comment />
+				</div>
 			</div>
 		</div>
 	);

@@ -3,10 +3,10 @@
 	position: relative;
 	justify-content: flex-end;
 	align-items: center;
-	padding: 0 30px;
+	padding: 0 50px;
 	height: 100%;
-	background: var(--blk);
 	transition: 500ms;
+	color: var(--color-primary-100);
 	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -15,13 +15,14 @@
 	align-items: center;
 	width: 180px;
 	height: 100%;
+	color: var(--color-primary-100);
 }
 .welcome_text_icon_wrapper {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	position: relative;
-	color: white;
+	color: var(--color-primary-100);
 	padding-left: 17px;
 	transition: all 300ms;
 }
@@ -31,7 +32,7 @@
 }
 
 .welcome_name {
-	color: white;
+	color: var(--color-primary-100);
 	font-weight: 600;
 	font-size: 16px;
 }
@@ -45,7 +46,7 @@
 	padding-bottom: 10px;
 	font-size: 20px;
 	margin: 0 20px 0 10px;
-	color: white;
+	color: var(--color-primary-100);
 	cursor: pointer;
 }
 
@@ -62,7 +63,7 @@
 	min-width: 220px;
 	max-width: auto;
 	padding: 20px;
-	color: #fffff0;
+	color: var(--color-primary-100);
 	border-radius: 10px;
 	border: 2px solid rgba(255, 255, 255, 0.5);
 	z-index: 200;
@@ -74,7 +75,7 @@
 }
 
 .dropdown_li {
-	color: #fffff0;
+	color: var(--color-primary-100);
 	font-weight: 500;
 	list-style-type: none;
 	cursor: pointer;

@@ -1,27 +1,22 @@
 /** @format */
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTicket, ticketComment } from 'store/actions/ticketActions';
+import { getTicket, deleteComment } from 'store/actions/ticketActions';
 import Moment from 'react-moment';
+import { TICKET_COMMENT_RESET } from 'store/types';
+import Input from './Input';
 
 import classname from './comment.module.css';
-import { TICKET_COMMENT_RESET } from 'store/types';
+import { faTrash, Icon } from 'components/Icon';
 
 const Comment = () => {
 	const dispatch = useDispatch();
-	const [comment, setComment] = useState('');
 
 	const { ticketId } = useSelector((state) => state.id);
 	const { singleTicket, loading, error } = useSelector((state) => state.singleTicket);
 
 	const { commentSuccess, commentError, commentLoading } = useSelector((state) => state.ticketCommentCreate);
-
-	const submitHandler = (event) => {
-		event.preventDefault();
-		dispatch(ticketComment(comment, singleTicket._id));
-		setComment('');
-	};
 
 	useEffect(() => {
 		if (commentSuccess) {
@@ -32,6 +27,8 @@ const Comment = () => {
 
 	return (
 		<div className={classname.commentSection}>
+			<Input singleTicketId={ticketId} />
+
 			<div className={classname.commentContainer}>
 				{loading || commentLoading ? (
 					<h6>loading...</h6>
@@ -39,15 +36,26 @@ const Comment = () => {
 					<h6>{error}</h6>
 				) : (
 					<>
-						{singleTicket.comments.map((item) => {
+						{singleTicket.comments.reverse().map((comment, idx) => {
 							return (
-								<div key={item._id} className={classname.commentBox}>
-									<p className={classname.comment}>{item.comment}</p>
+								<div key={comment._id} className={classname.commentBox}>
+									<p>
+										{idx + 1} of {singleTicket.comments.length}
+									</p>
+									<p className={classname.comment}>{comment.comment}</p>
 									<div className={classname.boxHeader}>
-										<h6 className={classname.name}>{item.name}</h6>
+										<h6 className={classname.name}>{comment.name}</h6>
 										<Moment className={classname.date} format='MMM-DD hh:mm'>
-											{item.createdAt}
+											{comment.createdAt}
 										</Moment>
+										<div
+											onClick={() => dispatch(deleteComment(ticketId, comment._id))}
+											className={classname.delete_comment}>
+											<Icon
+												type={faTrash}
+												style={{ fontSize: '12px', marginTop: '5px', color: 'var(--color-primary-200)' }}
+											/>
+										</div>
 									</div>
 								</div>
 							);
@@ -55,20 +63,6 @@ const Comment = () => {
 					</>
 				)}
 			</div>
-			<form onSubmit={(event) => submitHandler(event)}>
-				<div className={classname.input_container}>
-					<input
-						className={classname.comment_input}
-						type='text'
-						value={comment}
-						placeholder='write a comment'
-						onChange={(e) => setComment(e.target.value)}
-					/>
-					<button className={classname.formButton} type='submit'>
-						Submit
-					</button>
-				</div>
-			</form>
 		</div>
 	);
 };

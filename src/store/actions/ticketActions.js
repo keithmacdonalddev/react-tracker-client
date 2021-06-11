@@ -23,6 +23,9 @@ import {
 	TICKET_COMMENT_REQUEST,
 	TICKET_COMMENT_SUCCESS,
 	TICKET_COMMENT_FAIL,
+	DELETE_COMMENT_REQUEST,
+	DELETE_COMMENT_SUCCESS,
+	DELETE_COMMENT_FAIL,
 	GET_TICKET_REQUEST,
 	GET_TICKET_SUCCESS,
 	GET_TICKET_FAIL,
@@ -193,7 +196,7 @@ export const ticketComment = (comment, id) => async (dispatch, getState) => {
 		};
 
 		const newComment = { comment, userInfo };
-		const { data } = await axios.put(`${apiUrl}/comment/${id}`, { newComment }, config);
+		const { data } = await axios.put(`${apiUrl}/comment/create/${id}`, { newComment }, config);
 
 		dispatch({ type: TICKET_COMMENT_SUCCESS, payload: data });
 	} catch (error) {
@@ -204,6 +207,32 @@ export const ticketComment = (comment, id) => async (dispatch, getState) => {
 				payload: error.message && error.response.data.message ? error.response.data.message : error.message,
 			});
 		}
+	}
+};
+
+export const deleteComment = (ticketId, commentId) => async (dispatch, getState) => {
+	console.log(`from delete comment: ticketId: ${ticketId} commentId: ${commentId}`);
+	try {
+		dispatch({ type: DELETE_COMMENT_REQUEST });
+
+		const {
+			userLogin: { userInfo },
+		} = getState();
+
+		const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
+
+		const { data } = await axios.delete(`${apiUrl}/comment/delete`, { ticketId, commentId }, config);
+		// const { data } = await axios.put('/comment/delete', { ticketId, commentId }, config);
+
+		dispatch({
+			type: DELETE_COMMENT_SUCCESS,
+			payload: data,
+		});
+	} catch (error) {
+		dispatch({
+			type: DELETE_COMMENT_FAIL,
+			payload: error.message && error.response.data.message ? error.response.data.message : error.message,
+		});
 	}
 };
 

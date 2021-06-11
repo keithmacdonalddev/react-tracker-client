@@ -1,6 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+	faMoon,
+	faSun,
 	faUserCircle,
 	faSortDown,
 	faSearch,
@@ -34,6 +36,8 @@ export const Icon = ({ type, style = {} }) => {
 };
 
 export {
+	faMoon,
+	faSun,
 	faUserCircle,
 	faSortDown,
 	faSearch,
