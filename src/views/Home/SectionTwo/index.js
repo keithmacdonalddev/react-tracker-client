@@ -5,9 +5,9 @@ import classname from './classes_sectionTwo.module.css';
 
 const SectionTwo = () => {
 	return (
-		<div className={classname.column}>
+		<>
 			<MyTicketsPage />
-		</div>
+		</>
 	);
 };
 

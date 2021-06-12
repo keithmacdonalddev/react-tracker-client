@@ -8,7 +8,7 @@ import Card from 'components/Card';
 const UsersCard = () => {
 	const dispatch = useDispatch();
 
-	const { users, loading, error } = useSelector((state) => state.users);
+	const { users2, loading, error } = useSelector((state) => state.users);
 
 	useEffect(() => {
 		dispatch(getUsers());
@@ -20,8 +20,8 @@ const UsersCard = () => {
 				<div>loading...</div>
 			) : error ? (
 				<div>{error}</div>
-			) : users ? (
-				<div>{users.users2.usersListFriends.length}</div>
+			) : users2 ? (
+				<div>{users2.userListFriends.length}</div>
 			) : (
 				<div style={{ fontSize: 16 }}>disabled</div>
 			)}

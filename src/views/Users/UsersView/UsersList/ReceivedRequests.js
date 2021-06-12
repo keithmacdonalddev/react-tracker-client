@@ -8,11 +8,11 @@ import classname from './user_list_display.module.css';
 
 const ReceivedRequests = () => {
 	const dispatch = useDispatch();
-	const { users, loading, error } = useSelector((state) => state.users);
+	const { users2, loading, error } = useSelector((state) => state.users);
 	const { success } = useSelector((state) => state.cancelRequest);
 
 	const cancelRequestClickHandler = (friendId) => {
-		const loggedInUser = users.loggedInUser;
+		const loggedInUser = users2.loggedInUser;
 		dispatch(cancelFriendRequest(friendId, loggedInUser._id));
 	};
 
@@ -29,18 +29,19 @@ const ReceivedRequests = () => {
 				<h6>loading...</h6>
 			) : error ? (
 				<h6>{error}</h6>
-			) : users ? (
-				users.userListReceivedRequest.length === 0 ? (
+			) : users2 ? (
+				users2.userListReceivedRequest.length === 0 ? (
 					<div className={classname.getting_started_text}>Sent Requests All Clear!</div>
 				) : (
-					users.userListReceivedRequest.map((user) => (
+					users2.userListReceivedRequest.map((user) => (
 						<div key={user._id} className={classname.usersBox}>
 							{/* users avatar photo */}
 							<img src={user.avatar} className={classname.avatar} alt='' />
 
 							{/* users name */}
 							<div className={classname.nameContainer}>
-								<h5>{user.name}</h5>
+								<h5 style={{ marginRight: '0.5em' }}>{user.firstName}</h5>
+								<h5>{user.lastName}</h5>
 							</div>
 
 							<button onClick={() => dispatch(approveFriendRequest(user._id))} className={classname.accept_button}>

@@ -5,13 +5,9 @@ import classname from './classes_sectionThree.module.css';
 
 const SectionThree = () => {
 	return (
-		<div className={classname.section_three_container}>
-			<div className={classname.section_three_content}>
-				<div className={classname.column}>
-					<ProjectsComponent />
-				</div>
-			</div>
-		</div>
+		<>
+			<ProjectsComponent />
+		</>
 	);
 };
 

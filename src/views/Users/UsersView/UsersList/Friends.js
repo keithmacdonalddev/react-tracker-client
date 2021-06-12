@@ -1,6 +1,5 @@
 // Packages
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 // Icons
@@ -13,6 +12,7 @@ import { CANCEL_FRIEND_REQUEST_RESET } from 'store/types';
 // CSS
 import classname from './user_list_display.module.css';
 import { usersNavActiveAction } from 'store/actions/navigationActions';
+import ProfileInfo from 'views/Profile/ProfilePage/ProfileInfo';
 
 // ********* Default exported component ***********
 const Friends = () => {
@@ -21,7 +21,9 @@ const Friends = () => {
 	const { users2, loading, error } = useSelector((state) => state.users);
 
 	// Local state
+	const [friendProfile, setFriendProfile] = useState(null);
 	// const [pendingRequestsList, setPendingRequestsList] = useState(success);
+	console.log(`friendProfile: ${friendProfile}`);
 
 	// Initialize dispatch
 	const dispatch = useDispatch();
@@ -45,6 +47,10 @@ const Friends = () => {
 		dispatch(getUsers());
 	}, [dispatch]);
 
+	const showFriendsProfileOnClick = (user) => {
+		setFriendProfile(user);
+	};
+
 	return (
 		<div className={classname.users_box_list_container}>
 			{loading ? (
@@ -60,21 +66,32 @@ const Friends = () => {
 						</div>
 					</div>
 				) : (
-					users2.userListFriends.map((user) => (
-						<div key={user._id} className={classname.usersBox}>
-							{/* users avatar photo */}
-							<img src={user.avatar} className={classname.avatar} alt='' />
+					<div className={classname.users_friends_container}>
+						<div className={friendProfile ? classname.minimize_list_container : classname.list_container}>
+							{users2.userListFriends.map((user) => (
+								<div key={user._id} onClick={() => showFriendsProfileOnClick(user)} className={classname.usersBox}>
+									{/* users avatar photo */}
+									<img src={user.avatar} className={classname.avatar} alt='' />
 
-							{/* users name */}
-							<div className={classname.nameContainer}>
-								<h5>{user.name}</h5>
-							</div>
+									{/* users name */}
+									<div className={classname.nameContainer}>
+										<h5 style={{ marginRight: '0.5em' }}>{user.firstName}</h5>
+										<h5>{user.lastName}</h5>
+									</div>
 
-							<button className={classname.right_arrow_icon}>
-								<Icon type={faChevronRight} />
-							</button>
+									<button className={classname.right_arrow_icon}>
+										<Icon type={faChevronRight} />
+									</button>
+								</div>
+							))}
 						</div>
-					))
+						<div className={friendProfile ? classname.friend_profile : classname.minimize_friend_profile}>
+							<div onClick={() => setFriendProfile(!friendProfile)} className={classname.toggle_friend_profile}>
+								<Icon type={faChevronRight} />
+							</div>
+							<ProfileInfo friendProfile={friendProfile} />
+						</div>
+					</div>
 				)
 			) : (
 				<h6 className={classname.no_data}>Data not found.</h6>

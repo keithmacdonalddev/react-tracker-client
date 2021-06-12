@@ -40,7 +40,8 @@ const GlobalUsersList = () => {
 
 							{/* users name */}
 							<div className={classname.nameContainer}>
-								<h5>{user.name}</h5>
+								<h5 style={{ marginRight: '0.5em' }}>{user.firstName}</h5>
+								<h5>{user.lastName}</h5>
 							</div>
 
 							<button onClick={() => addFriendClickHandler(user._id)} className={classname.add_button}>

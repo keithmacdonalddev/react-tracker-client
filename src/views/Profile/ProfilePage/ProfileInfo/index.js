@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Moment from 'react-moment';
 
@@ -8,13 +8,15 @@ import { getUserDetails } from 'store/actions/userActions';
 import { showComponent } from 'store/actions/navigationActions';
 // import { PROFILE_NAV_KEY } from 'store/types';
 import classname from './profileInfo.module.css';
+import './profileInfo.module.css';
 
-const ProfileInfo = () => {
+const ProfileInfo = ({ friendProfile }) => {
 	const dispatch = useDispatch();
 	const { userInfo } = useSelector((state) => state.userLogin);
 	const { user } = useSelector((state) => state.userDetails);
 	const { success } = useSelector((state) => state.userUpdateProfile);
 
+	const [userData, setUserData] = useState({ loading: 'loading...' });
 	// const profileKey = useSelector((state) => state.profileKey);
 
 	const editClickHandler = () => {
@@ -42,20 +44,30 @@ const ProfileInfo = () => {
 		return () => clearTimeout(timer1);
 	}, [dispatch, success]);
 
+	useEffect(() => {
+		if (friendProfile) {
+			setUserData(friendProfile);
+		} else if (user) {
+			setUserData(user);
+		} else {
+			setUserData({ loading: 'loading' });
+		}
+	}, [friendProfile, user]);
+
 	const handleNotificationClick = () => {
 		dispatch({ type: USER_UPDATE_PROFILE_RESET });
 	};
 
 	return (
 		<div className={classname.profile_info_container}>
-			{!user ? (
+			{userData.loading ? (
 				<h6>loading...</h6>
 			) : (
 				<>
 					<div className={classname.avatar}>
-						<Avatar />
+						<Avatar friendProfile={friendProfile} />
 					</div>
-					<div className={classname.title}>{userInfo.firstName}'s Profile </div>
+					<div className={classname.title}>{userData.firstName}'s Profile </div>
 					<div
 						style={!success ? { display: 'none' } : null}
 						onClick={() => handleNotificationClick()}
@@ -68,34 +80,41 @@ const ProfileInfo = () => {
 						<div className={classname.profile_input}>
 							{' '}
 							<label className={classname.label}>Name:</label>
-							<span className={classname.span}>{`${user.firstName} ${user.lastName}`}</span>
+							<span className={classname.span}>{`${userData.firstName} ${userData.lastName}`}</span>
 						</div>
 
 						<div className={classname.profile_input}>
 							<label className={classname.label}>Username:</label>
-							<span className={classname.span}>{user.username}</span>
+							<span className={classname.span}>{userData.username}</span>
 						</div>
 
 						<div className={classname.profile_input}>
-							<label className={classname.label}>Role:</label> <span className={classname.span}>{user.role}</span>
+							<label className={classname.label}>Role:</label> <span className={classname.span}>{userData.role}</span>
 						</div>
 
 						<div className={classname.profile_input}>
-							<label className={classname.label}>Email:</label> <span className={classname.span}>{user.email}</span>
+							<label className={classname.label}>Email:</label> <span className={classname.span}>{userData.email}</span>
 						</div>
 
 						<div className={classname.profile_input}>
 							<label className={classname.label}>Joined:</label>
 							<span className={classname.span}>
-								<Moment format='MMMM YYYY'>{user.joined}</Moment>
+								<Moment format='MMMM YYYY'>{userData.joined}</Moment>
 							</span>
 						</div>
 					</div>
 				</>
 			)}
-			<div onClick={() => editClickHandler()} className={classname.editButtonContainer}>
-				Edit Profile
-			</div>
+			{!friendProfile ? (
+				<div onClick={() => editClickHandler()} className={classname.editButtonContainer}>
+					Edit Profile
+				</div>
+			) : (
+				<div className={classname.friend_options_container}>
+					<div className={classname.friend_options_button}>MESSAGE</div>
+					<div className={classname.friend_options_button}>UNFRIEND</div>
+				</div>
+			)}
 		</div>
 	);
 };
