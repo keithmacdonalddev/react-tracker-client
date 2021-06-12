@@ -1,10 +1,8 @@
 export const navItems = ['Friends', 'Find Users', 'Received Requests', 'Sent Requests'];
 
 export const usersNavActiveStyle = {
-	borderBottom: '3px solid blue',
-	color: '#fffff0',
+	background: 'var(--color-primary-600)',
+	outline: 'var(--color-primary-100)',
+	border: '1px solid var(--color-primary-100)',
 	fontWeight: '600',
-	fontSize: 20,
-	paddingBottom: 5,
-	marginTop: 10,
 };

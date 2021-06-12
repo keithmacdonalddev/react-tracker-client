@@ -2,7 +2,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Icon, faChevronRight } from 'components/Icon';
 import { usersNavActiveAction } from 'store/actions/navigationActions';
 import { navItems, usersNavActiveStyle } from './helpers';
 
@@ -17,26 +16,19 @@ const UsersNav = () => {
 		<div className={classname.users_list}>
 			{navItems.map((item) => {
 				return (
-					<>
-						<div
-							/** Set active nav in global state */
-							onClick={() => dispatch(usersNavActiveAction(item))}
-							/** 
+					<div
+						/** Set active nav in global state */
+						onClick={() => dispatch(usersNavActiveAction(item))}
+						/** 
 							 	if current navItem iteration is selected, style accordingly
 							  else null (null will ensure default className below will 
 							 	handle style) 
 							*/
-							style={usersNavState === item ? usersNavActiveStyle : null}
-							className={classname.header}>
-							{/* Title of the current navItem iteration */}
-							<div className={classname.headerTitle}>{item}</div>
-
-							<span>
-								{/* Icon component */}
-								<Icon type={faChevronRight} />
-							</span>
-						</div>
-					</>
+						style={usersNavState === item ? usersNavActiveStyle : null}
+						className={classname.header}>
+						{/* Title of the current navItem iteration */}
+						<div className={classname.headerTitle}>{item}</div>
+					</div>
 				);
 			})}
 		</div>

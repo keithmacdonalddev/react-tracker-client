@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import Moment from 'react-moment';
 
 import Avatar from 'components/Avatar';
-// import { SET_EDITING_TRUE } from 'store/types';
 
 import { updateUserProfile } from 'store/actions/userActions';
 import { showComponent } from 'store/actions/navigationActions';
@@ -110,12 +109,12 @@ const EditProfile = () => {
 							<button type='submit' onClick={() => handleSubmitClick()} className={classname.submit_button}>
 								SUBMIT
 							</button>
+							<div onClick={() => dispatch(showComponent('My Profile'))} className={classname.cancel_edit_button}>
+								CANCEL
+							</div>
 						</form>
 					</>
 				)}
-				<div onClick={() => dispatch(showComponent('My Profile'))} className={classname.cancel_edit_button}>
-					CANCEL
-				</div>
 			</div>
 		</div>
 	);

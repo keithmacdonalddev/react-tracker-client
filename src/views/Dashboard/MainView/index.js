@@ -7,7 +7,7 @@ import Home from 'views/Home/';
 import SignOut from 'views/Authentication/SignOut';
 import ProfilePage from 'views/Profile/ProfilePage';
 import ActivityMonitor from 'views/ActivityMonitor';
-import MyTicketsPage from 'views/Tickets/MyTicketsPage';
+import Tickets from 'views/Tickets';
 import CreateProjectPage from 'views/Projects/CreateProjectPage';
 import SingleTicket from 'views/Tickets/MyTicketsPage/SingleTicket';
 import CreateTicketPage from 'views/Tickets/MyTicketsPage/CreateTicket';
@@ -32,7 +32,7 @@ const MainView = () => {
 			) : component === 'editProfile' ? (
 				<EditProfile />
 			) : component === 'My Tickets' ? (
-				<MyTicketsPage />
+				<Tickets />
 			) : component === 'Create Ticket' ? (
 				<CreateTicketPage />
 			) : component === 'createTicket' ? (

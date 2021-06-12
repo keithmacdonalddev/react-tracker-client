@@ -9,6 +9,9 @@ const Input = ({ singleTicketId }) => {
 
 	const submitHandler = (event) => {
 		event.preventDefault();
+		if (comment.length < 1) {
+			return;
+		}
 		dispatch(ticketComment(comment, singleTicketId));
 		setComment('');
 	};

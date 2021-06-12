@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { editTicket, getTicket, singleTicketId } from 'store/actions/ticketActions';
-import { showWidgetItem, showComponent } from 'store/actions/navigationActions';
+import { showComponent } from 'store/actions/navigationActions';
 
 import style from './EditTicketPage.module.css';
 import { EDIT_TICKET_RESET, SET_EDITING_FALSE } from 'store/types';
@@ -17,11 +17,9 @@ const EditTicket = () => {
 	const [priority, setPriority] = useState('');
 	const [project, setProject] = useState('');
 
-	const { users } = useSelector((state) => state.users);
+	const { users2 } = useSelector((state) => state.users);
 
-	// const { userListFriends } = users;
-	console.log(`users${users}`);
-
+	const { userInfo } = useSelector((state) => state.userLogin);
 	const { projects } = useSelector((state) => state.projects);
 	const { success } = useSelector((state) => state.editedTicket);
 	const { ticket } = useSelector((state) => state.id);
@@ -58,7 +56,7 @@ const EditTicket = () => {
 				setMessage(null);
 				dispatch({ type: SET_EDITING_FALSE });
 				dispatch({ type: EDIT_TICKET_RESET });
-				dispatch(showWidgetItem('ticket'));
+				dispatch(showComponent('My Tickets'));
 
 				// store a reference of the id of the clicked ticket in global state
 				dispatch(singleTicketId(singleTicket._id));
@@ -86,16 +84,70 @@ const EditTicket = () => {
 							<h6>{message}</h6>
 						) : (
 							<>
-								<div className={style.dataFieldContainer}>
-									<label className={style.label}>Title:</label>
-									<input
-										required
-										className={style.inputField}
-										type='text'
-										value={!title ? singleTicket.title : title}
-										placeholder={singleTicket.title}
-										onChange={(event) => setTitle(event.target.value)}
-									/>
+								<div className={style.two_column_container}>
+									<div className={style.dataFieldContainer}>
+										<label className={style.label}>Title:</label>
+										<input
+											required
+											className={style.inputField}
+											type='text'
+											value={!title ? singleTicket.title : title}
+											placeholder={singleTicket.title}
+											onChange={(event) => setTitle(event.target.value)}
+										/>
+									</div>
+									<div className={style.dataFieldContainer}>
+										<label className={style.label}>Project:</label>
+										{projects ? (
+											<select
+												required
+												value={!project ? singleTicket.project : project}
+												className={style.inputField}
+												onChange={(event) => setProject(event.target.value)}>
+												<option></option>
+												{projects.map((project) =>
+													project.owner === userInfo._id ? <option key={project._id}>{project.title}</option> : null,
+												)}
+											</select>
+										) : (
+											'loading...'
+										)}
+									</div>
+								</div>
+								<div className={style.two_column_container}>
+									<div className={style.dataFieldContainer}>
+										<label className={style.label}>Assigned To:</label>
+										{users2 ? (
+											<select
+												required
+												value={!developer ? singleTicket.assignedTo : developer}
+												className={style.inputField}
+												onChange={(event) => setDeveloper(event.target.value)}>
+												<option>{(userInfo.firstName, userInfo.lastName)}</option>
+												{users2.userListFriends.map((developer) => (
+													<option key={developer._id}>{developer.name}</option>
+												))}
+											</select>
+										) : (
+											'loading...'
+										)}
+									</div>
+
+									<div className={style.dataFieldContainer}>
+										<label className={style.label}>Priority:</label>
+										<select
+											required
+											className={style.inputField}
+											type='text'
+											value={!priority ? singleTicket.priority : priority}
+											onChange={(event) => setPriority(event.target.value)}>
+											<option value={singleTicket.priority}>{singleTicket.priority}</option>
+											<option></option>
+											<option value='normal'>Normal</option>
+											<option value='urgent'>Urgent</option>
+											<option value='test'>Test</option>
+										</select>
+									</div>
 								</div>
 								{/* ---------------  Ticket Descrition --------------- */}
 								<div className={style.dataFieldContainer}>
@@ -111,57 +163,6 @@ const EditTicket = () => {
 									/>
 								</div>
 
-								<div className={style.dataFieldContainer}>
-									<label className={style.label}>Assigned To:</label>
-									{users ? (
-										<select
-											required
-											value={!developer ? singleTicket.assignedTo : developer}
-											className={style.inputField}
-											onChange={(event) => setDeveloper(event.target.value)}>
-											<option></option>
-											{/* {users.map((developer) => (
-												<option key={developer._id}>{developer.name}</option>
-											))} */}
-										</select>
-									) : (
-										'loading...'
-									)}
-								</div>
-
-								<div className={style.dataFieldContainer}>
-									<label className={style.label}>Project:</label>
-									{projects ? (
-										<select
-											required
-											value={!project ? singleTicket.project : project}
-											className={style.inputField}
-											onChange={(event) => setProject(event.target.value)}>
-											<option></option>
-											{projects.map((project) => (
-												<option key={project._id}>{project.title}</option>
-											))}
-										</select>
-									) : (
-										'loading...'
-									)}
-								</div>
-
-								<div className={style.dataFieldContainer}>
-									<label className={style.label}>Priority:</label>
-									<select
-										required
-										className={style.inputField}
-										type='text'
-										value={!priority ? singleTicket.priority : priority}
-										onChange={(event) => setPriority(event.target.value)}>
-										<option value={singleTicket.priority}>{singleTicket.priority}</option>
-										<option></option>
-										<option value='normal'>Normal</option>
-										<option value='urgent'>Urgent</option>
-										<option value='test'>Test</option>
-									</select>
-								</div>
 								<div className={style.dataFieldContainer}>
 									<label className={style.label}>Status:</label>
 

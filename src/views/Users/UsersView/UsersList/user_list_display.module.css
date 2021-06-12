@@ -6,9 +6,9 @@
 }
 
 .users_box_list_container {
-	display: grid;
+	display: flex;
+	flex-direction: column;
 	width: 100%;
-	justify-content: center;
 	overflow-y: scroll;
 }
 
@@ -17,15 +17,22 @@
 	margin-top: 200px;
 }
 
+.total {
+	text-align: center;
+}
 .usersBox {
 	display: flex;
 	position: relative;
 	align-items: center;
 	padding: 0 15px;
-	width: clamp(250px, 100%, 400px);
-	margin-top: 15px;
+	margin: 10px;
 	height: 50px;
-	background: #f4f4f4;
+	min-height: 50px;
+	min-width: 200px;
+	width: 300px;
+	max-width: 400px;
+	background: var(--color-primary-900);
+	color: var(--color-primary-100);
 	border-radius: 10px;
 	box-shadow: 12px 12px 13px rgba(0, 0, 0, 0.2);
 	transition: all 400ms;
@@ -61,8 +68,7 @@
 	filter: brightness(0.9);
 }
 .usersBox:hover {
-	background: #9174d8;
-	box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.3);
+	background: var(--color-primary-700);
 	transition: all 400ms;
 }
 

@@ -31,21 +31,24 @@ const GlobalUsersList = () => {
 			) : error ? (
 				<h6>{error}</h6>
 			) : users2 ? (
-				users2.userListNotFriends.map((user) => (
-					<div key={user._id} className={classname.usersBox}>
-						{/* users avatar photo */}
-						<img src={user.avatar} className={classname.avatar} alt='' />
+				<>
+					<div className={classname.total}>Users found: {users2.userListNotFriends.length}</div>
+					{users2.userListNotFriends.map((user) => (
+						<div key={user._id} className={classname.usersBox}>
+							{/* users avatar photo */}
+							<img src={user.avatar} className={classname.avatar} alt='' />
 
-						{/* users name */}
-						<div className={classname.nameContainer}>
-							<h5>{user.name}</h5>
+							{/* users name */}
+							<div className={classname.nameContainer}>
+								<h5>{user.name}</h5>
+							</div>
+
+							<button onClick={() => addFriendClickHandler(user._id)} className={classname.add_button}>
+								Add
+							</button>
 						</div>
-
-						<button onClick={() => addFriendClickHandler(user._id)} className={classname.add_button}>
-							Add
-						</button>
-					</div>
-				))
+					))}
+				</>
 			) : (
 				<h2 className={classname.no_data}>Data not found.</h2>
 			)}

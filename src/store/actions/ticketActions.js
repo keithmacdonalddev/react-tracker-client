@@ -96,13 +96,7 @@ export const createTicket = (newTicket) => async (dispatch, getState) => {
 			},
 		};
 
-		const response = await axios.post(
-			`${apiUrl}/tickets`,
-			{
-				newTicket,
-			},
-			config,
-		);
+		const response = await axios.post(`${apiUrl}/tickets`, { newTicket }, config);
 
 		const createTicketResponse = {
 			data: response.data,
@@ -165,7 +159,7 @@ export const deleteTicket = (id) => async (dispatch, getState) => {
 
 		const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
 
-		const { data } = await axios.delete(`${apiUrl}/${id}`, config);
+		const { data } = await axios.delete(`${apiUrl}/tickets/${id}`, config);
 
 		dispatch({
 			type: DELETE_TICKET_SUCCESS,
@@ -282,7 +276,7 @@ export const editTicket = (title, description, developer, project, priority, sta
 		};
 
 		const { data } = await axios.put(
-			`${apiUrl}/${id}`,
+			`${apiUrl}/tickets/${id}`,
 			{
 				title,
 				description,

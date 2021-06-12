@@ -1,25 +1,29 @@
 .users_list {
 	display: flex;
-	flex-direction: column;
-	overflow: auto;
+	justify-content: center;
 	width: 100%;
-	align-items: center;
+	margin-top: 10px;
 	transition: 300ms ease-in-out;
 	-webkit-overflow-scrolling: touch;
 }
 
 .header {
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-end;
-	width: 90%;
-	height: 45px;
-	border-bottom: 2px solid rgba(128, 128, 128, 0.527);
+	display: grid;
+	justify-content: center;
+	align-items: center;
+	margin: 5px;
+	padding: 5px 10px;
+	border-radius: 10px;
+	width: auto;
+	min-height: 45px;
+	font-size: 16px;
+	color: var(--color-primary-100);
+	background: var(--color-primary-700);
+	cursor: pointer;
 }
 
 .header:hover {
-	color: blue;
-	border-bottom: 3px solid blue;
+	filter: brightness(1.4);
 }
 
 .headerTitle {
@@ -35,7 +39,6 @@
 	height: 90%;
 	background: linear-gradient(360deg, #9c9a9a, transparent);
 	border: 3px solid white;
-
 	border-radius: 10px;
 	white-space: nowrap;
 	overflow-y: auto;

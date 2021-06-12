@@ -47,9 +47,11 @@ const ProjectsList = () => {
 								<Moment className={classname.date} format='MMM-DD'>
 									{project.date}
 								</Moment>
+
 								<div onClick={() => newTicketClickHandler(project.title)} className={classname.icon_container}>
 									<span className={classname.new_ticket_text}> New Ticket</span>
 								</div>
+
 								<div onClick={() => singleProjectClickHandler(project._id)} className={classname.go_icon}>
 									<Icon type={faChevronRight} />
 								</div>

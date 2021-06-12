@@ -15,21 +15,15 @@ import Message from '../../../components/Message';
 import classname from './create_project.module.css';
 
 const CreateProjectPage = () => {
-	// Package methods
 	const dispatch = useDispatch();
 
-	// Local State
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
 	const [status, setStatus] = useState('Active');
-
-	// Global state
 	const { userInfo } = useSelector((state) => state.userLogin);
 
-	// submit form for create a project
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		console.log(`from projects handle submit: ${(title, description, status, userInfo._id)}`);
 		dispatch(createProject(title, description, status, userInfo._id));
 	};
 
@@ -39,7 +33,6 @@ const CreateProjectPage = () => {
 	useEffect(() => {
 		if (successCreate) {
 			dispatch({ type: CREATE_PROJECT_RESET });
-			console.log(`successCreate`);
 			dispatch(getProjects());
 			dispatch(showComponent('My Projects'));
 		}

@@ -18,7 +18,7 @@ import { usersNavActiveAction } from 'store/actions/navigationActions';
 const Friends = () => {
 	// Global state
 	const { success } = useSelector((state) => state.cancelRequest);
-	const { users, loading, error } = useSelector((state) => state.users);
+	const { users2, loading, error } = useSelector((state) => state.users);
 
 	// Local state
 	// const [pendingRequestsList, setPendingRequestsList] = useState(success);
@@ -51,8 +51,8 @@ const Friends = () => {
 				<h6>loading...</h6>
 			) : error ? (
 				<h6>{error}</h6>
-			) : users ? (
-				users.userListFriends.length === 0 ? (
+			) : users2 ? (
+				users2.userListFriends.length === 0 ? (
 					<div className={classname.getting_started_text}>
 						Get started by sending friend requests!
 						<div onClick={() => dispatch(usersNavActiveAction('Find Users'))} className={classname.find_users_button}>
@@ -60,7 +60,7 @@ const Friends = () => {
 						</div>
 					</div>
 				) : (
-					users.userListFriends.map((user) => (
+					users2.userListFriends.map((user) => (
 						<div key={user._id} className={classname.usersBox}>
 							{/* users avatar photo */}
 							<img src={user.avatar} className={classname.avatar} alt='' />

@@ -1,9 +1,11 @@
 .deleteTicketWrapper {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
+	margin: auto;
+	margin-top: 0;
 	width: 100%;
+	max-width: 400px;
 	height: auto;
 	font-size: 16px;
 	padding: 20px;
@@ -22,6 +24,9 @@
 	outline: none;
 }
 
+.are_you_sure {
+	text-align: center;
+}
 .singleButton:hover {
 	filter: brightness(0.9);
 }
