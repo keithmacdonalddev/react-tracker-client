@@ -68,6 +68,7 @@
 	justify-content: center;
 	width: 90%;
 	gap: 40px;
+	display: none;
 }
 
 .tickets_facts_item {

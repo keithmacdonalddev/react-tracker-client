@@ -1,7 +1,7 @@
 import React from 'react';
 import ProjectsComponent from 'views/Projects/ProjectsComponent';
 
-import classname from './classes_sectionThree.module.css';
+// import classname from './classes_sectionThree.module.css';
 
 const SectionThree = () => {
 	return (

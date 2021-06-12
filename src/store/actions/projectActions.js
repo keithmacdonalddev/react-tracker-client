@@ -42,10 +42,10 @@ export const createProject = (title, description, status, id) => async (dispatch
 			},
 		};
 		console.log(
-			`Sending create project request to API TITE: ${title}, DESC: ${description}, ${status}, ${userInfo._id})}`,
+			`Sending create project request to API TITLE: ${title}, DESC: ${description}, ${status}, ${userInfo._id})}`,
 		);
 		// const { data } = await axios.post(`${apiUrl}/projects`, { title, description, status, id }, config);
-		const { data } = await axios.post('projects', { title, description, status, id }, config);
+		const { data } = await axios.post(`${apiUrl}/projects`, { title, description, status, id }, config);
 		console.log(`Create Project response from API ${data}`);
 		await dispatch({
 			type: CREATE_PROJECT_SUCCESS,
@@ -154,6 +154,32 @@ export const editProject = (title, description, status, id) => async (dispatch, 
 
 		await axios.put(`${apiUrl}/${id}`, { title, description, status, id }, config);
 
+		dispatch({ type: EDIT_PROJECT_SUCCESS });
+	} catch (error) {
+		dispatch({
+			type: EDIT_PROJECT_FAIL,
+			payload: error.message && error.response.data.message ? error.response.data.message : error.message,
+		});
+	}
+};
+
+export const addAssignee = (assigneeId, projectId) => async (dispatch, getState) => {
+	try {
+		dispatch({ type: EDIT_PROJECT_REQUEST });
+
+		const {
+			userLogin: { userInfo },
+		} = getState();
+
+		const config = {
+			headers: {
+				Authorization: `Bearer ${userInfo.token}`,
+			},
+		};
+
+		// const { data } = await axios.put(`${apiUrl}/project/${projectId}`, { assigneeId }, config);
+		const { data } = await axios.put(`project/${projectId}`, { assigneeId }, config);
+		console.log(`data: ${data}`);
 		dispatch({ type: EDIT_PROJECT_SUCCESS });
 	} catch (error) {
 		dispatch({

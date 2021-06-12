@@ -64,6 +64,19 @@
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
+.friends_list {
+	display: flex;
+	align-items: center;
+	width: auto;
+	margin: 5px;
+	height: 30px;
+	padding: 6px;
+	font-size: 12px;
+	border-radius: 5px;
+	color: var(--color-primary-200);
+	background: var(--color-primary-700);
+}
+
 .header {
 	color: #df3c51;
 	text-align: center;
@@ -95,8 +108,7 @@
 	padding: 6px;
 	font-size: 12px;
 	border-radius: 5px;
-	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.2),
-		inset -1px -1px 1px rgba(0, 0, 0, 0.1);
+	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.2), inset -1px -1px 1px rgba(0, 0, 0, 0.1);
 }
 .textarea {
 	border: none;
@@ -107,6 +119,5 @@
 	padding: 6px;
 	font-size: 12px;
 	border-radius: 5px;
-	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.2),
-		inset -1px -1px 1px rgba(0, 0, 0, 0.1);
+	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.2), inset -1px -1px 1px rgba(0, 0, 0, 0.1);
 }
