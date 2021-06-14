@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import Moment from 'react-moment';
@@ -12,8 +12,8 @@ import classname from './tickets_mapping.module.css';
 const TicketsMapping = ({ myTickets }) => {
 	const dispatch = useDispatch();
 
-	const [fancy, setFancy] = useState(false);
-
+	// const [fancy, setFancy] = useState(false);
+	let fancy;
 	const gotoTicketClickHandler = (id) => {
 		// store a reference of the id of the clicked ticket in global state
 		dispatch(singleTicketId(id));

@@ -7,7 +7,7 @@ import Paragraph from './Paragraph';
 import StartButton from './StartButton';
 
 // Images
-import network from 'img/network.png';
+// import network from 'img/network.png';
 
 // CSS
 import classname from './Welcome.module.css';

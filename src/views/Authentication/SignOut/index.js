@@ -17,7 +17,7 @@ const SignOut = () => {
 	useEffect(() => {
 		dispatch(logout());
 		history.push('login');
-	}, []);
+	}, [dispatch, history]);
 
 	return (
 		<div>
