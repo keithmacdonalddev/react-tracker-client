@@ -22,7 +22,14 @@ const SingleProjectJSX = ({ project }) => {
 					<label className={style.label}>Project Id</label>
 					<div className={style.dataField}>{project._id}</div>
 				</div>
+				<div className={style.input_container}>
+					<label className={style.label}>Assigned Personnel</label>
+					{project.assignee.map((person) => (
+						<div className={style.dataField}>{person}</div>
+					))}
+				</div>
 			</div>
+
 			<div className={style.input_container}>
 				<label className={style.label}>Description</label>
 				<div className={style.dataField}>{project.description}</div>

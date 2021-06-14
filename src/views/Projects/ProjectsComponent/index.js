@@ -1,11 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-// Components
 import { showComponent } from 'store/actions/navigationActions';
+
 import ProjectsList from 'views/Projects/ProjectsList';
 
-// CSS ~ styles
 import classname from './projects_component.module.css';
 
 const MyProjectsPage = () => {
@@ -17,9 +16,11 @@ const MyProjectsPage = () => {
 
 	return (
 		<div className={classname.projects_page_container}>
-			{/* *************** HEADER *************** */}
+			{/*  HEADER  */}
 			<div className={classname.header_container}>
 				<div className={classname.header_title}>My Projects</div>
+
+				{/* Create New Project */}
 				<div className={classname.button_background}>
 					<div className={classname.create_project_button} onClick={() => clickHandler()}>
 						+
@@ -27,7 +28,7 @@ const MyProjectsPage = () => {
 				</div>
 			</div>
 
-			{/* *************** LIST OF USERS PROJECTS *************** */}
+			{/*  LIST OF USERS PROJECTS  */}
 			<ProjectsList />
 		</div>
 	);

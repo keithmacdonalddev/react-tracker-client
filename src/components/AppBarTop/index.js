@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { showComponent } from 'store/actions/navigationActions';
 
@@ -20,7 +21,7 @@ const AppBarTop = () => {
 					<span className={classname.welcome_name}> Welcome</span>
 					<span className={classname.first_name}>{userInfo.firstName}</span>
 					<div style={dropdownStatus ? { transform: 'rotate(180deg)' } : null} className={classname.icon_container}>
-						<Icon type={faSortDown} onClick={() => dispatch(showComponent('My Profile'))} />
+						<Icon type={faSortDown} />
 					</div>
 				</div>
 			</div>
@@ -28,8 +29,12 @@ const AppBarTop = () => {
 				onClick={() => setDropdownStatus(!dropdownStatus)}
 				className={dropdownStatus ? classname.dropdown_container_active : classname.dropdown_container}>
 				<ul className={classname.dropdown_ul}>
-					<li className={classname.dropdown_li}>Profile</li>
-					<li className={classname.dropdown_li}>Logout</li>
+					<Link to={'/profile'}>
+						<li className={classname.dropdown_li}>Profile</li>
+					</Link>
+					<li onClick={() => dispatch(showComponent('Signout'))} className={classname.dropdown_li}>
+						Logout
+					</li>
 				</ul>
 			</div>
 		</div>

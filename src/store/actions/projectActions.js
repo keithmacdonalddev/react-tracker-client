@@ -35,6 +35,16 @@ export const createProject = (title, description, status, id) => async (dispatch
 			userLogin: { userInfo },
 		} = getState();
 
+		let owner = {};
+
+		if (id === userInfo._id) {
+			owner = {
+				firstName: userInfo.firstName,
+				lastName: userInfo.lastName,
+				id: userInfo._id,
+			};
+		}
+
 		const config = {
 			headers: {
 				'Content-Type': 'application/json',
@@ -45,7 +55,7 @@ export const createProject = (title, description, status, id) => async (dispatch
 			`Sending create project request to API TITLE: ${title}, DESC: ${description}, ${status}, ${userInfo._id})}`,
 		);
 		// const { data } = await axios.post(`${apiUrl}/projects`, { title, description, status, id }, config);
-		const { data } = await axios.post(`${apiUrl}/projects`, { title, description, status, id }, config);
+		const { data } = await axios.post(`${apiUrl}/projects`, { title, description, status, owner }, config);
 		console.log(`Create Project response from API ${data}`);
 		await dispatch({
 			type: CREATE_PROJECT_SUCCESS,

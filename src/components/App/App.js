@@ -6,10 +6,13 @@ import LoginPage from 'views/Authentication/LoginPage';
 import RegisterPage from 'views/Authentication/RegisterPage';
 import Dashboard from 'views/Dashboard';
 import ProfilePage from 'views/Profile/ProfilePage';
+import Tickets from 'views/Tickets';
 import CreateTicketPage from 'views/Tickets/MyTicketsPage/CreateTicket';
 import SingleTicketPage from 'views/Tickets/MyTicketsPage/SingleTicket';
-import classname from './app.module.css';
 import { Icon, faSun, faMoon } from 'components/Icon';
+
+import classname from './app.module.css';
+
 const App = () => {
 	const [lightMode, setLightMode] = useState(false);
 	return (
@@ -27,8 +30,9 @@ const App = () => {
 
 				<Switch>
 					<Route path='/dashboard' component={Dashboard} />
-					<Route path='/create-ticket' component={CreateTicketPage} />
-					<Route path='/single-ticket' component={SingleTicketPage} />
+					<Route path='/dashboard/tickets' component={Tickets} />
+					<Route path='/dashboard/tickets/create-ticket' component={CreateTicketPage} />
+					<Route path='/dashboard/tickets/single-ticket' component={SingleTicketPage} />
 					<Route path='/profile' component={ProfilePage} />
 					<Route path='/register' component={RegisterPage} />
 					<Route path='/login' component={LoginPage} />

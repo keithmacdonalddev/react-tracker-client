@@ -52,21 +52,33 @@ const SingleProject = () => {
 						All Projects
 					</div>
 				</div>
+
 				{/* show a component depending on the current value of the "view" local state */}
 				<div className={classname.project_container}>
 					{view === 'current' && <SingleProjectJSX project={project} />}
 					{view === 'edit' && <EditProject project={project} />}
 					{view === 'delete' && <DeleteProject project={project} />}
+
+					{/* Manage project personnel */}
 					<div className={classname.assignee_container}>
-						<div className={classname.assignee_container_title}>Assigneed Personnel</div>
+						<div className={classname.assignee_container_title}>Unassigned Personnel</div>
 						{userListFriends
 							? userListFriends.map((friend) => (
-									<div
-										onClick={() => dispatch(addAssignee(friend._id, project._id))}
-										className={classname.friends_list}>
-										<Icon style={{ marginRight: '10px' }} type={faPlus} />
-										{friend.firstName + ' ' + friend.lastName}
-									</div>
+									<>
+										{!project.assignee.includes(friend._id) ? (
+											<div
+												onClick={() => dispatch(addAssignee(friend._id, project._id))}
+												className={classname.friends_list}>
+												<div className={classname.first_last_name_container}>
+													{friend.firstName + ' ' + friend.lastName}
+												</div>
+
+												<div className={classname.email_container}>{friend.email}</div>
+												<div className={classname.role_container}>{friend.role}</div>
+												<Icon style={{ marginRight: '10px' }} type={faPlus} />
+											</div>
+										) : null}
+									</>
 							  ))
 							: null}
 					</div>

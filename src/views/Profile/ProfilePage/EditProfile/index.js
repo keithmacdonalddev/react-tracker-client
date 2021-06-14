@@ -20,24 +20,27 @@ const EditProfile = () => {
 	const [lastName, setLastName] = useState(user.lastName);
 	const [role, setRole] = useState(user.role);
 	const [email, setEmail] = useState(user.email);
-	const [requestPending, setRequestPending] = useState(false);
-	console.log(requestPending);
+	// const [requestPending, setRequestPending] = useState(false);
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		const userData = { firstName, lastName, role, email };
+		if (firstName === user.firstName && lastName === user.lastName && role === user.role && email === user.email) {
+			console.log('No changes made');
+			return;
+		}
 		dispatch(updateUserProfile(userData));
 	};
 
-	const handleSubmitClick = () => {
-		setRequestPending(true);
-	};
+	// const handleSubmitClick = () => {
+	// 	setRequestPending(true);
+	// };
 
 	useEffect(() => {
 		if (success) {
 			dispatch(showComponent('My Profile'));
 		}
-	});
+	}, [dispatch, success]);
 
 	return (
 		<div className={classname.profilePageContainer}>
@@ -106,7 +109,7 @@ const EditProfile = () => {
 									</span>
 								</div>
 							</div>
-							<button type='submit' onClick={() => handleSubmitClick()} className={classname.submit_button}>
+							<button type='submit' className={classname.submit_button}>
 								SUBMIT
 							</button>
 							<div onClick={() => dispatch(showComponent('My Profile'))} className={classname.cancel_edit_button}>

@@ -8,6 +8,7 @@ const Title = () => {
 		from: { opacity: 0, y: 10 },
 		to: { opacity: 1, y: 0 },
 	});
+
 	return (
 		<animated.div style={styles}>
 			<h1 className={classname.title}>React Tracker</h1>

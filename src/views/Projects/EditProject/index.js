@@ -1,35 +1,30 @@
-// Packages
-import { faPlus, Icon } from 'components/Icon';
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { showComponent } from 'store/actions/navigationActions';
 
-import { editProject } from 'store/actions/projectActions';
 import { EDIT_PROJECT_RESET } from 'store/types';
+import { editProject } from 'store/actions/projectActions';
+import { showComponent } from 'store/actions/navigationActions';
 
 import classname from './edit_project.module.css';
 
 const EditProject = ({ project }) => {
 	const dispatch = useDispatch();
-	const [title, setTitle] = useState(project.title);
-	const [description, setDescription] = useState(project.description);
-	const [status, setStatus] = useState(project.status);
 
-	// const [assignees, setAssignees] = useState(project.assignees);
+	const [title, setTitle] = useState(project.title);
+	const [status, setStatus] = useState(project.status);
+	const [description, setDescription] = useState(project.description);
 
 	const { success } = useSelector((state) => state.projectEdit);
-	const { userListFriends } = useSelector((state) => state.users.users2);
-	// const { userInfo } = useSelector((state) => state.userLogin);
-	console.log(`userListFriends: ${userListFriends}`);
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		dispatch(editProject(title, description, status, project._id));
+		dispatch(editProject(title, description, status, project._id)); // API CALL
 	};
 
 	useEffect(() => {
 		if (success) {
-			dispatch({ type: EDIT_PROJECT_RESET });
-			dispatch(showComponent('My Projects'));
+			dispatch({ type: EDIT_PROJECT_RESET }); // Client state
+			dispatch(showComponent('My Projects')); // Client state
 		}
 	}, [success, dispatch]);
 
@@ -64,16 +59,6 @@ const EditProject = ({ project }) => {
 					</div>{' '}
 					<div className={classname.input_container}>
 						<label className={classname.label}>Assignees</label>
-						{userListFriends
-							? userListFriends.map((friend) => (
-									<>
-										<div className={classname.friends_list}>
-											<Icon style={{ marginRight: '10px' }} type={faPlus} />
-											{friend.firstName + ' ' + friend.lastName}
-										</div>
-									</>
-							  ))
-							: null}
 					</div>
 					<div className={classname.input_container}>
 						<label className={classname.label}>Administrator</label>

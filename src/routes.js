@@ -1,12 +1,8 @@
-/** @format */
-
-// Icons
 import { faBug } from '@fortawesome/free-solid-svg-icons';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { faUsers } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faFileMedical } from '@fortawesome/free-solid-svg-icons';
-
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { faProjectDiagram } from '@fortawesome/free-solid-svg-icons';
@@ -40,6 +36,7 @@ const routes = [
 		icon: faBug,
 		component: 'My Tickets',
 	},
+
 	{
 		path: '/my-projects',
 		exact: false,

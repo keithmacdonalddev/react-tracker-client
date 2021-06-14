@@ -73,7 +73,7 @@ const LoginForm = () => {
 			<form className={classname.formContainer} onSubmit={handleSubmit}>
 				<div className={classname.inputBox}>
 					<span className={classname.inputSpan}>
-						<label>Email</label>
+						<label className={classname.input_label}>Email</label>
 					</span>
 
 					<input
@@ -86,7 +86,7 @@ const LoginForm = () => {
 				</div>
 				<div className={classname.inputBox}>
 					<span className={classname.inputSpan}>
-						<label>Password</label>
+						<label className={classname.input_label}>Password</label>
 					</span>
 					<input
 						type='password'
