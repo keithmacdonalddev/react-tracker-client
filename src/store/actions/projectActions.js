@@ -25,38 +25,23 @@ import {
 
 import { apiUrl } from './userActions';
 
-export const createProject = (title, description, status, id) => async (dispatch, getState) => {
+export const createProject = (title, description, status, owner) => async (dispatch, getState) => {
 	try {
-		dispatch({
-			type: CREATE_PROJECT_REQUEST,
-		});
-
-		const {
-			userLogin: { userInfo },
-		} = getState();
-
-		let owner = {};
-
-		if (id === userInfo._id) {
-			owner = {
-				firstName: userInfo.firstName,
-				lastName: userInfo.lastName,
-				id: userInfo._id,
-			};
-		}
+		dispatch({ type: CREATE_PROJECT_REQUEST });
 
 		const config = {
 			headers: {
 				'Content-Type': 'application/json',
-				Authorization: `Bearer ${userInfo.token}`,
+				Authorization: `Bearer ${owner.token}`,
 			},
 		};
-		console.log(
-			`Sending create project request to API TITLE: ${title}, DESC: ${description}, ${status}, ${userInfo._id})}`,
-		);
-		// const { data } = await axios.post(`${apiUrl}/projects`, { title, description, status, id }, config);
-		const { data } = await axios.post(`${apiUrl}/projects`, { title, description, status, owner }, config);
-		console.log(`Create Project response from API ${data}`);
+
+		// Local development server. Use port 5000
+		const { data } = await axios.post('projects', { title, description, status, owner }, config);
+
+		// Production server.  Hosted at Heroku
+		// const { data } = await axios.post(`${apiUrl}/projects`, { title, description, status, owner }, config);
+
 		await dispatch({
 			type: CREATE_PROJECT_SUCCESS,
 			payload: data,
@@ -109,7 +94,11 @@ export const getProjects = () => async (dispatch, getState) => {
 			},
 		};
 
-		const { data } = await axios.get(`${apiUrl}/projects`, config);
+		// Local development server. Use port 5000
+		const { data } = await axios.get(`projects/${userInfo._id}`, config);
+
+		// Production server.  Hosted at Heroku
+		// const { data } = await axios.get(`${apiUrl}/projects`, config);
 
 		dispatch({
 			type: GET_PROJECTS_SUCCESS,

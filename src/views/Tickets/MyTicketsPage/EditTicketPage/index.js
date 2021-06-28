@@ -40,12 +40,7 @@ const EditTicket = () => {
 	const cancelHandler = () => {
 		dispatch({ type: SET_EDITING_FALSE });
 		dispatch({ type: EDIT_TICKET_RESET });
-		// dispatch(showWidgetItem("ticket"));
-		// store a reference of the id of the clicked ticket in global state
 		dispatch(singleTicketId(singleTicket._id));
-		// get ticket data
-		// dispatch(getTicket(singleTicket._id));
-		// // display single ticket UI
 		dispatch(showComponent('singleTicket'));
 	};
 
@@ -57,7 +52,6 @@ const EditTicket = () => {
 				dispatch({ type: SET_EDITING_FALSE });
 				dispatch({ type: EDIT_TICKET_RESET });
 				dispatch(showComponent('My Tickets'));
-
 				// store a reference of the id of the clicked ticket in global state
 				dispatch(singleTicketId(singleTicket._id));
 				// get ticket data
@@ -105,9 +99,9 @@ const EditTicket = () => {
 												className={style.inputField}
 												onChange={(event) => setProject(event.target.value)}>
 												<option></option>
-												{projects.map((project) =>
-													project.owner === userInfo._id ? <option key={project._id}>{project.title}</option> : null,
-												)}
+												{projects.map((project) => (
+													<option key={project._id}>{project.title}</option>
+												))}
 											</select>
 										) : (
 											'loading...'
@@ -179,19 +173,11 @@ const EditTicket = () => {
 									</select>
 								</div>
 								<div className={style.buttonContainer}>
-									<button
-										type='submit'
-										style={{ background: '#66ba93' }}
-										className={style.submitButton}
-										onClick={(e) => submitHandler(e)}>
+									<button type='submit' className={style.submitButton} onClick={(e) => submitHandler(e)}>
 										Submit
 									</button>
 								</div>
-								<button
-									type='button'
-									style={{ background: '#ba6966' }}
-									className={style.cancelButton}
-									onClick={(e) => cancelHandler(e)}>
+								<button type='button' className={style.cancelButton} onClick={(e) => cancelHandler(e)}>
 									Cancel
 								</button>
 							</>

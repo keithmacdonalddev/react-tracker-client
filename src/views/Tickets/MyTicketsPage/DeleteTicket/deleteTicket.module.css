@@ -26,7 +26,9 @@
 
 .are_you_sure {
 	text-align: center;
+	font-weight: 500;
 }
+
 .singleButton:hover {
 	filter: brightness(0.9);
 }

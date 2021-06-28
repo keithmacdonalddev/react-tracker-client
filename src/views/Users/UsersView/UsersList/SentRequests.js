@@ -19,7 +19,7 @@ const SentRequests = () => {
 				users2.userListSentRequest.length === 0 ? (
 					<div className={classname.getting_started_text}>Sent Requests All Clear!</div>
 				) : (
-					users2.userListSentRequest.map((user) => <Box user={user} users={users2} success={success} />)
+					users2.userListSentRequest.map((user) => <Box key={user._id} user={user} users={users2} success={success} />)
 				)
 			) : (
 				<h2 className={classname.no_data}>Data not found.</h2>

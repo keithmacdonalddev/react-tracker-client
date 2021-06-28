@@ -1,0 +1,35 @@
+.section_three_container {
+	display: grid;
+	position: relative;
+	grid-template-columns: 1fr;
+	justify-items: center;
+	height: auto;
+	width: 100%;
+	gap: 10px;
+}
+
+.activity_monitor {
+	width: calc(100% - 20px);
+	height: 100%;
+	max-height: 500px;
+	background: var(--color-main-200);
+	border-radius: 10px;
+	padding: 10px;
+}
+
+.ticket_list_container {
+	background: var(--color-main-200);
+	border-radius: 10px;
+	height: auto;
+	width: calc(100% - 10px);
+	padding: 20px 40px 20% 40px;
+	max-height: 500px;
+	max-height: -webkit-fill-available;
+}
+
+@media (max-width: 888px) {
+	.section_three_container {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+}

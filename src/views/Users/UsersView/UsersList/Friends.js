@@ -1,41 +1,23 @@
 // Packages
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 // Icons
 import { Icon, faChevronRight } from 'components/Icon';
-
 // Redux
 import { getUsers } from 'store/actions/userActions';
 import { CANCEL_FRIEND_REQUEST_RESET } from 'store/types';
-
 // CSS
 import classname from './user_list_display.module.css';
 import { usersNavActiveAction } from 'store/actions/navigationActions';
 import ProfileInfo from 'views/Profile/ProfilePage/ProfileInfo';
 
-// ********* Default exported component ***********
 const Friends = () => {
-	// Global state
+	const dispatch = useDispatch();
+	// State
+	const [friendProfile, setFriendProfile] = useState(null);
 	const { success } = useSelector((state) => state.cancelRequest);
 	const { users2, loading, error } = useSelector((state) => state.users);
 
-	// Local state
-	const [friendProfile, setFriendProfile] = useState(null);
-	// const [pendingRequestsList, setPendingRequestsList] = useState(success);
-	console.log(`friendProfile: ${friendProfile}`);
-
-	// Initialize dispatch
-	const dispatch = useDispatch();
-
-	/**
-	 	* Everytime the component mounts/renders and when success changes, check 
-	 	 	if success is true. If true, dispatch the getUsers function. 
-		* The getUsers function will update the global state with the most up to 
-			date list of users. 
-		* CANCEL_FRIEND_REQUEST_RESET will reset the cancelRequest objects 
-			global properties (loading, success, error) to false.
-	 */
 	useEffect(() => {
 		if (success) {
 			dispatch(getUsers());
@@ -61,22 +43,25 @@ const Friends = () => {
 				users2.userListFriends.length === 0 ? (
 					<div className={classname.getting_started_text}>
 						Get started by sending friend requests!
-						<div onClick={() => dispatch(usersNavActiveAction('Find Users'))} className={classname.find_users_button}>
+						<div className={classname.find_users_button} onClick={() => dispatch(usersNavActiveAction('Find Users'))}>
 							Find Users
 						</div>
 					</div>
 				) : (
 					<div className={classname.users_friends_container}>
 						<div className={friendProfile ? classname.minimize_list_container : classname.list_container}>
-							{users2.userListFriends.map((user) => (
-								<div key={user._id} onClick={() => showFriendsProfileOnClick(user)} className={classname.usersBox}>
+							{users2.userListFriends.map((usersFriend) => (
+								<div
+									key={usersFriend._id}
+									className={classname.usersBox}
+									onClick={() => showFriendsProfileOnClick(usersFriend)}>
 									{/* users avatar photo */}
-									<img src={user.avatar} className={classname.avatar} alt='' />
+									<img src={usersFriend.avatar} className={classname.avatar} alt='' />
 
 									{/* users name */}
 									<div className={classname.nameContainer}>
-										<h5 style={{ marginRight: '0.5em' }}>{user.firstName}</h5>
-										<h5>{user.lastName}</h5>
+										<h5 style={{ marginRight: '0.5em' }}>{usersFriend.firstName}</h5>
+										<h5>{usersFriend.lastName}</h5>
 									</div>
 
 									<button className={classname.right_arrow_icon}>

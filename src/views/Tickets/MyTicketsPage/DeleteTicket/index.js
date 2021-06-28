@@ -72,13 +72,16 @@ const DeleteTicket = () => {
 					<p className={classname.are_you_sure}>Are you sure you want to delete ticket: {ticketId} ?</p>
 					<p className={classname.are_you_sure}>(this cannot be undone)</p>
 					<button
+						style={{ marginTop: 30 }}
+						onClick={() => deleteButtonClickHandler()}
+						className={classname.deleteButton}>
+						Yes, Delete Ticket
+					</button>
+					<button
 						onClick={() => cancelButtonClickHandler()}
 						className={classname.singleButton}
 						style={{ background: '#66ba93', color: 'white' }}>
 						No, don't delete
-					</button>
-					<button onClick={() => deleteButtonClickHandler()} className={classname.deleteButton}>
-						Yes, Delete Ticket
 					</button>
 				</>
 			)}

@@ -3,18 +3,13 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 // Actions
-import {
-	PAGE_ONE,
-	DELETE_FORM_DATA,
-	SELECTED_PROJECT_RESET,
-	TICKET_TYPE_RESET,
-} from 'store/types';
+import { PAGE_ONE, DELETE_FORM_DATA, SELECTED_PROJECT_RESET, TICKET_TYPE_RESET } from 'store/types';
 import { modalStatusAction } from 'store/actions/navigationActions';
 
 // Modal views
 import DeleteTicket from 'views/Tickets/MyTicketsPage/DeleteTicket';
 import CreateTicketPage from 'views/Tickets/MyTicketsPage/CreateTicket';
-import CreateProjectPage from 'views/Projects/CreateProjectPage';
+import CreateProjectPage from 'views/Projects/ProjectsComponent/CreateProjectPage';
 import EditAvatar from 'components/EditAvatar';
 
 // CSS
@@ -26,9 +21,7 @@ const Modal = () => {
 	const dispatch = useDispatch();
 
 	// Global state
-	const { isModalOpen, showThisComponentInModal } = useSelector(
-		(state) => state.modalStatus,
-	);
+	const { isModalOpen, showThisComponentInModal } = useSelector((state) => state.modalStatus);
 
 	// Local state
 	// const [localIsModalOpen, setLocalIsModalOpen] = useState(isModalOpen);
@@ -58,9 +51,7 @@ const Modal = () => {
 	return (
 		<div className={isModalOpen ? style.modalContainer : style.none}>
 			<div className={style.modalContentContainer}>
-				<div
-					onClick={() => closeModalClickHandler()}
-					className={style.closeButtonContainer}>
+				<div onClick={() => closeModalClickHandler()} className={style.closeButtonContainer}>
 					<div className={style.closeButton}>X</div>
 				</div>
 

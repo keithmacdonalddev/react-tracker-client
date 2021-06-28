@@ -1,11 +1,7 @@
 import React from 'react';
-
 import ProjectsComponent from './ProjectsComponent';
+import classname from './projects.module.css';
 
-// CSS ~ styles
-import classname from './MyProjectsPage.module.css';
-
-// Default export
 const MyProjectsPage = () => {
 	return (
 		<div className={classname.projects_main_layout}>

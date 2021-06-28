@@ -17,7 +17,7 @@ const UsersNav = () => {
 			{navItems.map((item) => {
 				return (
 					<div
-						/** Set active nav in global state */
+						key={item}
 						onClick={() => dispatch(usersNavActiveAction(item))}
 						/** 
 							 	if current navItem iteration is selected, style accordingly

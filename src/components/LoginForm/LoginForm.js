@@ -9,6 +9,7 @@ import { showComponent } from 'store/actions/navigationActions';
 
 // CSS
 import classname from './loginform.module.css';
+import { newActivity } from 'store/actions/activityActions';
 
 const LoginForm = () => {
 	const dispatch = useDispatch();
@@ -40,6 +41,7 @@ const LoginForm = () => {
 
 	useEffect(() => {
 		if (userInfo) {
+			dispatch(newActivity({ event: 'Login Request', details: 'Login successful' }));
 			dispatch(getUserDetails(userInfo._id));
 			dispatch(showComponent('home'));
 			history.push('/dashboard');

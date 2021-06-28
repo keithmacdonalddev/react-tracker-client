@@ -5,7 +5,7 @@ import { getUsers } from 'store/actions/userActions';
 
 import Card from 'components/Card';
 
-const UsersCard = () => {
+const UsersCard = ({ title, data }) => {
 	const dispatch = useDispatch();
 
 	const { users2, loading, error } = useSelector((state) => state.users);
@@ -15,13 +15,13 @@ const UsersCard = () => {
 	}, [dispatch]);
 
 	return (
-		<Card title={'Connections'}>
+		<Card title={title ? title : 'Connections'}>
 			{loading ? (
 				<div>loading...</div>
 			) : error ? (
 				<div>{error}</div>
 			) : users2 ? (
-				<div>{users2.userListFriends.length}</div>
+				<div>{data ? data.length : users2.userListFriends.length}</div>
 			) : (
 				<div style={{ fontSize: 16 }}>disabled</div>
 			)}

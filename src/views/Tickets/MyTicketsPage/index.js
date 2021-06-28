@@ -47,9 +47,9 @@ const MyTicketsPage = () => {
 			<div className={classname.ticketsContainer}>
 				<div className={classname.wrapper}>
 					<div className={classname.header_container}>
-						<div className={classname.header_title}>My Tickets</div>
+						<div className={classname.tickets_header_left}>My Tickets</div>
 					</div>
-					<div className={classname.footer_container}>
+					<div className={classname.tickets_header_right}>
 						<div className={classname.header_title}></div>
 						<div onClick={() => dispatch(showComponent('createTicket'))} className={classname.create_ticket_button}>
 							Create Ticket

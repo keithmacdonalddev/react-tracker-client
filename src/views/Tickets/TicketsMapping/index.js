@@ -36,8 +36,8 @@ const TicketsMapping = ({ myTickets }) => {
 				</div>
 			</div>
 			{myTickets.reverse().map((ticket, idx) => (
-				<div className={classname.ticket_data_map}>
-					<div key={ticket._id} className={fancy ? classname.card_fancy : classname.card_simple}>
+				<div key={ticket._id} className={classname.ticket_data_map}>
+					<div className={fancy ? classname.card_fancy : classname.card_simple}>
 						<div className={classname.ticket_idx}> {idx + 1}</div>
 						<div className={classname.ticketProject}>{ticket.project}</div>
 						<div className={classname.ticketTitle}>{ticket.title}</div>

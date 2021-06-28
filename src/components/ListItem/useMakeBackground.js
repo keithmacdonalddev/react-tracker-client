@@ -6,7 +6,7 @@ const useMakeBackground = (value, bool) => {
 	if (bool) {
 		return '#9174d8';
 	} else if (value === component) {
-		return 'var(--color-primary-700)';
+		return 'var(--color-primary-300)';
 	} else {
 		return null;
 	}

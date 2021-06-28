@@ -12,7 +12,7 @@ import { showComponent } from '../../store/actions/navigationActions';
 
 import useMakeBackground from './useMakeBackground';
 
-import classes from './classes_ListItem.module.css';
+import classname from './ListItem.module.css';
 
 const ListItem = ({ icon, title, componentProp }) => {
 	const dispatch = useDispatch();
@@ -28,14 +28,14 @@ const ListItem = ({ icon, title, componentProp }) => {
 	const background = useMakeBackground(active, hover);
 
 	return (
-		<li className={hover ? classes.hoverLi : classes.li} onClick={() => handleClick(componentProp)}>
-			<div className={classes.a}>
-				<span className={classes.icon}>
-					<div
-						onMouseEnter={() => setHover(true)}
-						onMouseLeave={() => setHover(false)}
-						style={{ background: background }}
-						className={classes.container}>
+		<li
+			onMouseEnter={() => setHover(true)}
+			onMouseLeave={() => setHover(false)}
+			className={hover ? classname.hoverLi : classname.li}
+			onClick={() => handleClick(componentProp)}>
+			<div className={classname.a}>
+				<span className={classname.icon}>
+					<div style={{ background: background }} className={classname.container}>
 						{icon ? (
 							<FontAwesomeIcon
 								style={{
@@ -44,7 +44,7 @@ const ListItem = ({ icon, title, componentProp }) => {
 									strokeWidth: '30',
 									fontSize: '22px',
 								}}
-								className={classes.fa}
+								className={classname.fa}
 								icon={icon}
 							/>
 						) : (
@@ -52,7 +52,7 @@ const ListItem = ({ icon, title, componentProp }) => {
 						)}
 					</div>
 				</span>
-				<span className={classes.title}>{title}</span>
+				<span className={classname.title}>{title}</span>
 			</div>
 		</li>
 	);

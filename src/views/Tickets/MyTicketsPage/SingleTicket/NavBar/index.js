@@ -10,15 +10,21 @@ const NavBar = () => {
 
 	return (
 		<>
-			<div className={style.button} onClick={() => dispatch(showComponent('My Tickets'))}>
-				Back to All Tickets
+			<div onClick={() => dispatch(showComponent('editTicket'))} className={style.button}>
+				Ticket
 			</div>
 			<div onClick={() => dispatch(showComponent('editTicket'))} className={style.button}>
-				Edit Ticket
+				Comments
+			</div>
+			<div onClick={() => dispatch(showComponent('editTicket'))} className={style.button}>
+				Edit
 			</div>
 
 			<div onClick={() => dispatch(showComponent('deleteTicket'))} className={style.button}>
 				Delete
+			</div>
+			<div className={style.button} onClick={() => dispatch(showComponent('My Tickets'))}>
+				Back to All
 			</div>
 		</>
 	);

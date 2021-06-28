@@ -1,12 +1,12 @@
 import React from 'react';
-import MyTicketsPage from 'views/Tickets/MyTicketsPage';
+import ProjectsComponent from 'views/Projects/ProjectsComponent';
 
 // import classname from './classes_sectionTwo.module.css';
 
 const SectionTwo = () => {
 	return (
 		<>
-			<MyTicketsPage />
+			<ProjectsComponent />
 		</>
 	);
 };

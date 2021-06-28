@@ -3,6 +3,7 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { getAllActivityReducer, newActivityReducer } from './reducers/activityReducers';
 import {
 	sendFriendRequestReducer,
 	cancelFriendRequestReducer,
@@ -33,8 +34,7 @@ import {
 	profileNavKeyReducer,
 	usersNavActiveReducer,
 } from './reducers/navigationReducers';
-import { sendLogReducer, getLogsReducer } from './reducers/logReducers';
-import { deBuggerReducer } from './reducers/debugReducers';
+
 import {
 	fetchSingleProjectReducer,
 	createProjectReducer,
@@ -54,9 +54,9 @@ import {
 import { getPresignedURLReducer, sendImageToS3Reducer } from './reducers/uploadReducers';
 
 const reducer = combineReducers({
-	logs: getLogsReducer,
+	allActivity: getAllActivityReducer,
+	newActivity: newActivityReducer,
 	modalStatus: modalStatusReducer,
-	logFeed: sendLogReducer,
 	projectEdit: editProjectReducer,
 	projectDelete: deleteProjectReducer,
 	project: createProjectReducer,
@@ -91,7 +91,6 @@ const reducer = combineReducers({
 	loggedIn: userIsLoggedInReducer,
 	uploadURL: getPresignedURLReducer,
 	sendImageToS3: sendImageToS3Reducer,
-	debugging: deBuggerReducer,
 	friendRequest: sendFriendRequestReducer,
 	cancelRequest: cancelFriendRequestReducer,
 	pendingRequest: pendingFriendRequestReducer,

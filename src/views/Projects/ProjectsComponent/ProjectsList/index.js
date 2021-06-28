@@ -12,7 +12,6 @@ import { SELECTED_PROJECT } from 'store/types';
 
 const ProjectsList = () => {
 	const dispatch = useDispatch();
-	const { userInfo } = useSelector((state) => state.userLogin);
 	const { projects, loading, error } = useSelector((state) => state.projects);
 
 	useEffect(() => {
@@ -30,15 +29,15 @@ const ProjectsList = () => {
 	};
 
 	return (
-		<>
+		<div className={classname.projects_container}>
 			{loading ? (
 				<div>loading...</div>
 			) : error ? (
 				<div>{error}</div>
 			) : projects ? (
-				<div className={classname.projects_container}>
+				<>
 					{projects.map((project, index) => {
-						return project.owner === userInfo._id ? (
+						return (
 							<div key={project._id} className={classname.card}>
 								<div className={classname.project_title}>{project.title}</div>
 
@@ -56,11 +55,13 @@ const ProjectsList = () => {
 									<Icon type={faChevronRight} />
 								</div>
 							</div>
-						) : null;
-					})}
-				</div>
-			) : null}
-		</>
+						);
+					})}{' '}
+				</>
+			) : (
+				<h6>Loading...</h6>
+			)}
+		</div>
 	);
 };
 

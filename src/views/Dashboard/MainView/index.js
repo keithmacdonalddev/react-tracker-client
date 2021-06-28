@@ -8,13 +8,13 @@ import SignOut from 'views/Authentication/SignOut';
 import ProfilePage from 'views/Profile/ProfilePage';
 import ActivityMonitor from 'views/ActivityMonitor';
 import Tickets from 'views/Tickets';
-import CreateProjectPage from 'views/Projects/CreateProjectPage';
+import CreateProjectPage from 'views/Projects/ProjectsComponent/CreateProjectPage';
 import SingleTicket from 'views/Tickets/MyTicketsPage/SingleTicket';
 import CreateTicketPage from 'views/Tickets/MyTicketsPage/CreateTicket';
 import DeleteTicket from 'views/Tickets/MyTicketsPage/DeleteTicket';
 
-import SingleProject from 'views/Projects/SingleProject';
-import EditProject from 'views/Projects/EditProject';
+import SingleProject from 'views/Projects/ProjectsComponent/SingleProject';
+import EditProject from 'views/Projects/ProjectsComponent/EditProject';
 import EditTicket from 'views/Tickets/MyTicketsPage/EditTicketPage';
 import EditProfile from 'views/Profile/ProfilePage/EditProfile';
 

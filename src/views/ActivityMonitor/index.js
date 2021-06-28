@@ -1,24 +1,39 @@
-/**
- *  Retrieves logs from global state and displays them on page
- */
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllActivity } from 'store/actions/activityActions';
 
-import style from './ActivityMonitor.module.css';
+import classname from './ActivityMonitor.module.css';
 
 const ActivityMonitor = () => {
-	const { logs } = useSelector((state) => state.logFeed);
-
+	const dispatch = useDispatch();
+	const { newActivitySuccess } = useSelector((state) => state.newActivity);
+	const { activity } = useSelector((state) => state.allActivity);
+	useEffect(() => {
+		if (newActivitySuccess) {
+			dispatch(getAllActivity());
+		}
+	}, [newActivitySuccess, dispatch]);
 	return (
-		<div className={style.wrapper}>
-			<div className={style.activityFeedBox}>
-				{logs.map((log) => (
-					<div className={style.singleLog} key={log.id}>
-						<div className={style.timeStamp}>{log.timeStamp}</div>
-						<div className={style.timeStamp}>{log.id}</div>
-						<div className={style.message}>{log.message}</div>
-					</div>
-				))}
+		<div className={classname.activity_monitor_container}>
+			<div className={classname.activityFeedBox}>
+				{activity ? (
+					<>
+						{activity.reverse().map((activityItem, idx) => (
+							<div className={classname.singleLog} key={activityItem._id}>
+								<div className={classname.timeStamp}>{activity.length - idx}</div>
+								<div className={classname.timeStamp}>{activityItem.createdAt}</div>
+								<div style={{ color: 'rgba(255,255,100,1)', fontWeight: 500 }} className={classname.timeStamp}>
+									<span style={{ paddingRight: '10px', color: 'white' }}>Event:</span> {activityItem.event}
+								</div>
+								<div style={{ color: 'rgba(50, 255, 50, 1)', fontWeight: 500 }} className={classname.message}>
+									<span style={{ color: 'white' }}>Details:</span> {activityItem.details}
+								</div>
+							</div>
+						))}{' '}
+					</>
+				) : (
+					<div>loading...</div>
+				)}
 			</div>
 		</div>
 	);

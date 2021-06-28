@@ -20,7 +20,8 @@
 	--clr-fun-grn: #42b72a;
 	--clr-fun-fuscia: hsl(317, 100%, 54%);
 	--main-bg-one: #f0f2f5;
-	--main-color: #000;
+	--color-main-100: #000;
+	--color-main-200: #191c24;
 	--blk: #0b0e11;
 	--blk-75: #151a21;
 	--blk-50: rgb(58, 58, 60);
@@ -71,7 +72,8 @@
 	--clr-fun-grn: #42b72a;
 	--clr-fun-fuscia: hsl(317, 100%, 54%);
 	--main-bg-one: #f0f2f5;
-	--main-color: #000;
+	--color-main-100: #fff;
+	--color-main-200: #191c24;
 	--blk: #0b0e11;
 	--blk-75: #151a21;
 	--blk-50: rgb(58, 58, 60);

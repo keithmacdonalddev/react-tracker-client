@@ -13,7 +13,7 @@ import classname from './sidebar.module.css';
 
 const Sidebar = ({ toggleSidebar }) => {
 	return (
-		<div className={getSidebarClassname(toggleSidebar)}>
+		<div className={toggleSidebar ? classname.sidebar_wrapper_open : classname.sidebar_wrapper_closed}>
 			<ul className={classname.ul}>
 				{routes.map((route) => (
 					<ListItem
@@ -30,11 +30,3 @@ const Sidebar = ({ toggleSidebar }) => {
 };
 
 export default Sidebar;
-
-function getSidebarClassname(state) {
-	if (state) {
-		return classname.sidebar_wrapper_open;
-	} else {
-		return classname.sidebar_wrapper_closed;
-	}
-}

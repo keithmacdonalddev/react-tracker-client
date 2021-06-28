@@ -3,11 +3,11 @@ import { useDispatch } from 'react-redux';
 
 import { showComponent } from 'store/actions/navigationActions';
 
-import ProjectsList from 'views/Projects/ProjectsList';
+import ProjectsList from 'views/Projects/ProjectsComponent/ProjectsList';
 
 import classname from './projects_component.module.css';
 
-const MyProjectsPage = () => {
+const ProjectsComponent = () => {
 	const dispatch = useDispatch();
 
 	const clickHandler = () => {
@@ -16,22 +16,17 @@ const MyProjectsPage = () => {
 
 	return (
 		<div className={classname.projects_page_container}>
-			{/*  HEADER  */}
 			<div className={classname.header_container}>
 				<div className={classname.header_title}>My Projects</div>
-
-				{/* Create New Project */}
-				<div className={classname.button_background}>
+				<div className={classname.create_project_button_container}>
 					<div className={classname.create_project_button} onClick={() => clickHandler()}>
 						+
 					</div>
 				</div>
 			</div>
-
-			{/*  LIST OF USERS PROJECTS  */}
 			<ProjectsList />
 		</div>
 	);
 };
 
-export default MyProjectsPage;
+export default ProjectsComponent;

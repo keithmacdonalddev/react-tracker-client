@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 // Actions
 import { showComponent } from 'store/actions/navigationActions';
-import { createProject, getProjects } from '../../../store/actions/projectActions';
-import { CREATE_PROJECT_RESET } from '../../../store/types';
+import { createProject, getProjects } from '../../../../store/actions/projectActions';
+import { CREATE_PROJECT_RESET } from '../../../../store/types';
 
 // Components
-import Loader from '../../../components/Loader';
-import Message from '../../../components/Message';
+import Loader from '../../../../components/Loader';
+import Message from '../../../../components/Message';
 
 // Css
 import classname from './create_project.module.css';
@@ -20,11 +20,12 @@ const CreateProjectPage = () => {
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
 	const [status, setStatus] = useState('Active');
+
 	const { userInfo } = useSelector((state) => state.userLogin);
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		dispatch(createProject(title, description, status, userInfo._id));
+		dispatch(createProject(title, description, status, userInfo));
 	};
 
 	const project = useSelector((state) => state.project);
