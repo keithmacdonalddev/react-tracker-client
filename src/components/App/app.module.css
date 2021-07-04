@@ -8,7 +8,7 @@
 	--color-primary-800: #151a21;
 	--color-primary-900: #0b0e11;
 	--color-secondary-washed-out: #879eed;
-	--color-secondary: #5575e7;
+	--color-secondary: #2d3f81;
 	--color-accent-glow: rgba(253, 77, 77, 0.3);
 	--color-accent: #fd4d4d;
 	--color-accent-hover: #fd6868;
@@ -52,15 +52,15 @@
 
 .body_light {
 	--bg-color: #fff;
-	--color-primary-900: #dee3ea;
+	--color-primary-900: #f0f0f0;
 	--color-primary-800: #b2bdcd;
 	--color-primary-700: #5d7290;
 	--color-primary-600: #323d4d;
 	--color-primary-300: #242c37;
 	--color-primary-200: #151a21;
 	--color-primary-100: #0b0e11;
-	--color-secondary-washed-out: #879eed;
-	--color-secondary: #5575e7;
+	--color-secondary-washed-out: #6678b5;
+	--color-secondary: #2e438f;
 	--color-accent-glow: rgba(253, 77, 77, 0.3);
 	--color-accent: #fd4d4d;
 	--color-accent-hover: #fd6868;

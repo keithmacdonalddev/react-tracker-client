@@ -20,7 +20,7 @@ const ProjectsComponent = () => {
 				<div className={classname.header_title}>My Projects</div>
 				<div className={classname.create_project_button_container}>
 					<div className={classname.create_project_button} onClick={() => clickHandler()}>
-						+
+						Create Project
 					</div>
 				</div>
 			</div>

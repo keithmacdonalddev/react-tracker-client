@@ -1,5 +1,6 @@
 .tickets_view_container {
 	margin: auto;
 	margin-top: 0;
-	width: 90%;
+	padding: 40px;
+	width: 100%;
 }

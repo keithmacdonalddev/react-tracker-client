@@ -1,8 +1,6 @@
 .welcome_container {
-	display: grid;
+	display: flex;
 	position: relative;
-	justify-items: center;
-	align-content: center;
 	width: 100vw;
 	height: 100vh;
 	background: var(--color-primary-900);
@@ -12,41 +10,65 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	text-align: center;
-	width: 100%;
+	justify-content: center;
+	width: 100vw;
 	height: 100%;
-	margin-bottom: 5vh;
 }
 
 .title {
-	font-size: 48px;
-	margin-bottom: calc(6vh + 15px);
-	color: var(--color-secondary);
-}
-
-.subtitleContainer {
-	font-size: 24px;
-	position: relative;
-	margin-bottom: 6vh;
+	font-size: clamp(44px, 8vw, 84px);
+	letter-spacing: 8px;
+	width: 100%;
 	color: var(--color-secondary-washed-out);
-	z-index: 100;
-	/* transform: perspective(15px) translateZ(5px); */
+	text-shadow: 3px 3px 1px var(--color-secondary), 0 0 10px rgba(255, 255, 255, 0.3),
+		1px 1px 3px var(--color-accent-hover);
 }
 
+.subtitle_container {
+	display: grid;
+	justify-content: center;
+	position: relative;
+	text-align: center;
+	align-content: center;
+	grid-template-columns: 1fr 1px 1fr 1px 1fr;
+	gap: 1.5vw;
+	width: auto;
+	max-width: 1000px;
+	font-size: clamp(16px, 3vw, 46px);
+	margin: 10vh;
+	color: var(--color-secondary-washed-out);
+}
+.feature_column {
+	padding: 10px;
+}
+
+.subtitle {
+	display: flex;
+	height: 60px;
+	flex-direction: column;
+	letter-spacing: 5px;
+}
+
+.spacer {
+	display: flex;
+	margin-top: 5px;
+	text-align: center;
+	align-self: flex-start;
+	height: 65%;
+}
 .text {
-	font-size: 1.1rem;
-	line-height: 1.1rem;
-	margin-bottom: 12vh;
+	font-size: clamp(14px, 2vw, 16px);
+	line-height: 2.4rem;
 	color: var(--color-primary-200);
 	font-weight: 500;
-	max-width: 400px;
+	max-width: 800px;
 }
 
 .heroButton {
 	color: white;
 	border-radius: 10px;
-	padding: 12px;
-	width: 150px;
+	padding: 16px;
+	width: 400px;
 	font-size: 18px;
 	font-weight: 600;
 	cursor: pointer;

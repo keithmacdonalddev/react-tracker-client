@@ -31,7 +31,7 @@ const App = () => {
 				<Switch>
 					<Route path='/dashboard' component={Dashboard} />
 					<Route path='/dashboard/tickets' component={Tickets} />
-					<Route path='/dashboard/tickets/create-ticket' component={CreateTicketPage} />
+					<Route path='/create-ticket' component={CreateTicketPage} />
 					<Route path='/dashboard/tickets/single-ticket' component={SingleTicketPage} />
 					<Route path='/profile' component={ProfilePage} />
 					<Route path='/register' component={RegisterPage} />

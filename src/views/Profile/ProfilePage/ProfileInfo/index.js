@@ -6,7 +6,7 @@ import Avatar from 'components/Avatar';
 import { SET_EDITING_TRUE, USER_UPDATE_PROFILE_RESET } from 'store/types';
 import { getUserDetails } from 'store/actions/userActions';
 import { showComponent } from 'store/actions/navigationActions';
-// import { PROFILE_NAV_KEY } from 'store/types';
+
 import classname from './profileInfo.module.css';
 import './profileInfo.module.css';
 

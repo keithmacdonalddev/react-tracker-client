@@ -4,36 +4,30 @@
 	width: 100%;
 	height: auto;
 	margin: auto;
+	padding: 20px 40px 20% 40px;
 }
 
 .header_container {
 	display: flex;
 	position: relative;
-	align-items: flex-end;
-	justify-content: space-between;
-	color: white;
 	width: 100%;
 	height: 45px;
-	padding: 10px;
+	padding: 10px 20px;
 }
 
 .header_title {
-	font-size: 16px;
+	width: 50%;
+	font-size: 20px;
 	font-weight: 600;
 }
 
 .create_project_button_container {
-	position: absolute;
-	right: calc(50% - 37px);
-	top: -13px;
-	background: var(--blk);
-	border: 2px solid white;
-	border-radius: 50%;
-	width: 75px;
-	height: 75px;
-	box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.6);
+	display: grid;
+	width: 50%;
 	transition: all 500ms;
 	cursor: pointer;
+	padding: 0 10px;
+	justify-content: flex-end;
 }
 
 .button_background:hover {
@@ -42,26 +36,22 @@
 }
 .create_project_button {
 	display: grid;
-	position: absolute;
 	justify-content: center;
-	right: calc(50% - 25px);
-	align-items: center;
-	top: 10px;
-	padding-bottom: 5px;
-	background: white;
-	border: 1px solid rgb(255, 255, 255);
-	color: #beae5e;
-	font-size: 2em;
-	font-weight: 700;
-	border-radius: 50%;
-	width: 51px;
-	height: 51px;
-	transition: all 500ms;
-	box-shadow: inset 0 0 6px 3px rgba(0, 0, 0, 0.2), 0 0 5px 2px rgba(255, 255, 255, 0.6);
+	background: var(--color-primary-300);
+	height: 100%;
+	width: 150px;
+	font-weight: 600;
+	padding: 8px 15px;
+	border-radius: 10px;
+	box-shadow: inset 0 2px 3px 1px rgba(255, 255, 255, 0.5), inset 0 3px 1px 2px rgba(0, 0, 0, 0.6),
+		inset 2px 0 3px 1px rgba(255, 255, 255, 0.5), inset 3px 0 1px 1px rgba(0, 0, 0, 0.6),
+		inset -2px 0 3px 1px rgba(255, 255, 255, 0.5), inset 0 -3px 1px 1px rgba(0, 0, 0, 0.6),
+		inset 0 -2px 3px 1px rgba(255, 255, 255, 0.5), inset -3px 0 1px 1px rgba(0, 0, 0, 0.6);
 }
 
 .create_project_button:hover {
 	filter: brightness(0.8);
+	background: var(--color-accent-hover);
 	border: 1px solid white;
 	transform: scale(0.99);
 }

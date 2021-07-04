@@ -1,8 +1,6 @@
-import React from 'react';
-
-import ActivityMonitor from 'views/ActivityMonitor';
-import MyTicketsPage from 'views/Tickets/MyTicketsPage';
-import classname from './classes_sectionThree.module.css';
+import React from 'react'; // node module
+import MyTicketsPage from 'views/Tickets/MyTicketsPage'; // list of user tickets + create ticket option
+import classname from './classes_sectionThree.module.css'; // css
 
 const SectionThree = () => {
 	return (

@@ -3,15 +3,12 @@ import React from 'react';
 // Components
 import Title from './Title';
 import SubTitle from './SubTitle';
-import Paragraph from './Paragraph';
 import StartButton from './StartButton';
 
 // Images
 // import network from 'img/network.png';
 
-// CSS
-import classname from './Welcome.module.css';
-// import { Icon, faShoePrints } from 'components/Icon';
+import classname from './Welcome.module.css'; // CSS
 
 const HomePage = () => {
 	return (
@@ -19,7 +16,6 @@ const HomePage = () => {
 			<div className={classname.content_container}>
 				<Title />
 				<SubTitle />
-				<Paragraph />
 				<StartButton />
 			</div>
 		</div>
@@ -27,16 +23,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-// <div className={classname.shoe_prints_icon}>
-// 		<Icon type={faShoePrints} />
-// 	</div>{' '}
-// 	<div className={classname.shoe_prints_icon1}>
-// 		<Icon type={faShoePrints} />
-// 	</div>{' '}
-// 	<div className={classname.shoe_prints_icon2}>
-// 		<Icon type={faShoePrints} />
-// 	</div>{' '}
-// 	<div className={classname.shoe_prints_icon3}>
-// 		<Icon type={faShoePrints} />
-// 	</div>

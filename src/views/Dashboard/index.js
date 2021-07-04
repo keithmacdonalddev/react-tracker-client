@@ -12,7 +12,7 @@ import MainView from './MainView';
 // CSS
 import classname from './dashboard.module.css';
 
-const Dashboard = () => {
+const Dashboard = ({ children }) => {
 	const history = useHistory();
 
 	const styles = useSpring({
@@ -46,7 +46,7 @@ const Dashboard = () => {
 	useEffect(() => {
 		id.current = window.setInterval(() => {
 			setPreloadTimer((preloadTimer) => preloadTimer - 1);
-		}, 1000);
+		}, 100);
 	}, []);
 
 	useEffect(() => {
@@ -89,9 +89,7 @@ const Dashboard = () => {
 							</animated.div>
 
 							{/* -------------------- MAIN CONTENT AREA -------------------- */}
-							<div className={classname.main_wrapper}>
-								<MainView />
-							</div>
+							<div className={classname.main_wrapper}>{children ? children : <MainView />}</div>
 						</div>
 					) : (
 						<div className={classname.not_logged_in_container}>You must be logged in to view this page</div>

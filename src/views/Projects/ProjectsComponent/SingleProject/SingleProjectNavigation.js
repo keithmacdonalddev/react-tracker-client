@@ -8,7 +8,7 @@ const SingleProjectNavigation = () => {
 	const dispatch = useDispatch();
 
 	const [view, setView] = useState('current');
-
+	console.log('view: ', view);
 	return (
 		<div className={classname.button_container}>
 			<div onClick={() => setView('current')} className={classname.button}>

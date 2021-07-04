@@ -6,6 +6,7 @@
  */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { showComponent } from '../../store/actions/navigationActions';
@@ -33,7 +34,7 @@ const ListItem = ({ icon, title, componentProp }) => {
 			onMouseLeave={() => setHover(false)}
 			className={hover ? classname.hoverLi : classname.li}
 			onClick={() => handleClick(componentProp)}>
-			<div className={classname.a}>
+			<Link to='/dashboard' className={classname.a}>
 				<span className={classname.icon}>
 					<div style={{ background: background }} className={classname.container}>
 						{icon ? (
@@ -53,7 +54,7 @@ const ListItem = ({ icon, title, componentProp }) => {
 					</div>
 				</span>
 				<span className={classname.title}>{title}</span>
-			</div>
+			</Link>
 		</li>
 	);
 };

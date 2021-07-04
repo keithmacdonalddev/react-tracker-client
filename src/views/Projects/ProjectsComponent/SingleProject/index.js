@@ -1,24 +1,22 @@
 // Packages
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 // Project Views
 import SingleProjectJSX from './SingleProjectJSX';
-import EditProject from '../EditProject';
-import DeleteProject from '../DeleteProject';
+// import EditProject from '../EditProject';
+// import DeleteProject from '../DeleteProject';
 import SingleProjectNavigation from './SingleProjectNavigation';
 
 // Actions
-import { showComponent } from 'store/actions/navigationActions';
-import { addAssignee } from 'store/actions/projectActions';
+// import { showComponent } from 'store/actions/navigationActions';
+// import { addAssignee } from 'store/actions/projectActions';
 
 // CSS
 import classname from './SingleProject.module.css';
 import SingleProjectAssignees from './SingleProjectAssignees';
 
 const SingleProject = () => {
-	const dispatch = useDispatch();
-
 	const { project, loading } = useSelector((state) => state.singleProject);
 
 	if (loading) {
