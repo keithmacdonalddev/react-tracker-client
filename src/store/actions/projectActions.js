@@ -37,10 +37,10 @@ export const createProject = (title, description, status, owner) => async (dispa
 		};
 
 		// Local development server. Use port 5000
-		const { data } = await axios.post('projects', { title, description, status, owner }, config);
+		// const { data } = await axios.post('projects', { title, description, status, owner }, config);
 
 		// Production server.  Hosted at Heroku
-		// const { data } = await axios.post(`${apiUrl}/projects`, { title, description, status, owner }, config);
+		const { data } = await axios.post(`${apiUrl}/projects`, { title, description, status, owner }, config);
 
 		await dispatch({
 			type: CREATE_PROJECT_SUCCESS,
@@ -95,10 +95,10 @@ export const getProjects = () => async (dispatch, getState) => {
 		};
 
 		// Local development server. Use port 5000
-		const { data } = await axios.get(`projects/${userInfo._id}`, config);
+		// const { data } = await axios.get(`projects/${userInfo._id}`, config);
 
 		// Production server.  Hosted at Heroku
-		// const { data } = await axios.get(`${apiUrl}/projects`, config);
+		const { data } = await axios.get(`${apiUrl}/projects/${userInfo._id}`, config);
 
 		dispatch({
 			type: GET_PROJECTS_SUCCESS,
@@ -176,8 +176,8 @@ export const addAssignee = (assigneeId, projectId) => async (dispatch, getState)
 			},
 		};
 
-		// const { data } = await axios.put(`${apiUrl}/project/${projectId}`, { assigneeId }, config);
-		const { data } = await axios.put(`project/${projectId}`, { assigneeId }, config);
+		const { data } = await axios.put(`${apiUrl}/project/${projectId}`, { assigneeId }, config);
+		// const { data } = await axios.put(`project/${projectId}`, { assigneeId }, config);
 		console.log(`data: ${data}`);
 		dispatch({ type: EDIT_PROJECT_SUCCESS });
 	} catch (error) {
