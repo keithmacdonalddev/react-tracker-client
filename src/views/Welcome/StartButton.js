@@ -13,7 +13,7 @@ const StartButton = () => {
 	return (
 		<animated.div style={styles}>
 			<Link to={'/login'}>
-				<button className={classname.heroButton}>Start for Free</button>
+				<button className={classname.hero_button}>Start for Free</button>
 			</Link>
 		</animated.div>
 	);

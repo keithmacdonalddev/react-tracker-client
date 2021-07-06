@@ -8,21 +8,33 @@
 	border: 1px solid var(--color-primary-600);
 	padding: 20px;
 	border-radius: 10px;
-	/* box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5), inset -3px -3px 10px rgba(255, 255, 255, 0.3); */
 }
 
 .loginHeaderContainer {
 	margin-top: 10px;
 }
 
-.welcome_back_username_span {
-	color: blue;
-	font-style: italic;
-	font-weight: 500;
+.loginTitle {
+	display: grid;
+	color: var(--color-primary-100);
+	width: fit-content;
+	letter-spacing: 2px;
+	padding-bottom: 3px;
+	margin-block-end: auto;
+	border-bottom: 5px solid var(--color-accent);
 }
 
-.not_correct_user_question {
+.error_text {
+	display: flex;
+	margin: auto;
+	position: relative;
+	background: #ff9595d2;
+	width: auto;
+	padding: 5px;
 	margin-top: 20px;
+	font-size: 12px;
+	margin-bottom: -60px;
+	border-radius: 10px;
 }
 
 .logout_button {
@@ -40,15 +52,6 @@
 	justify-content: center;
 	align-items: center;
 	margin-top: 60px;
-}
-
-.loginTitle {
-	display: grid;
-	letter-spacing: 2px;
-	margin-block-end: auto;
-	padding-bottom: 3px;
-	border-bottom: 5px solid var(--color-accent);
-	width: fit-content;
 }
 
 .inputBox {
@@ -113,6 +116,8 @@
 	flex-direction: column;
 	align-items: center;
 	margin-top: 15px;
+	font-size: 12px;
+	color: var(--color-primary-100);
 }
 .registerButton {
 	border: 2px solid var(--color-accent-hover);

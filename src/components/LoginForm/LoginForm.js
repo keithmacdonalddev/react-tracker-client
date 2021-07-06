@@ -1,47 +1,31 @@
-// Packages
+// node modules
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { getUserDetails, login } from '../../store/actions/userActions';
-
 // Redux Store
 import { showComponent } from 'store/actions/navigationActions';
-
 // CSS
 import classname from './loginform.module.css';
-import { newActivity } from 'store/actions/activityActions';
 
 const LoginForm = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 
-	// local state
-	// Controlling user inputs via local state variables
+	// Controlled inputs
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
 	// global state
 	const { userInfo, loading, error } = useSelector((state) => state.userLogin);
-	// const loggedIn = useSelector((state) => state.loggedIn);
 
-	//
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		dispatch(login(email, password));
 	};
 
-	// const handleReLogin = (event) => {
-	// 	event.preventDefault();
-	// 	dispatch(login(userInfo.email, password));
-	// };
-
-	// const handleLogout = () => {
-	// 	dispatch(logout());
-	// };
-
 	useEffect(() => {
 		if (userInfo) {
-			dispatch(newActivity({ event: 'Login Request', details: 'Login successful' }));
 			dispatch(getUserDetails(userInfo._id));
 			dispatch(showComponent('home'));
 			history.push('/dashboard');
@@ -54,19 +38,7 @@ const LoginForm = () => {
 				<h1 className={classname.loginTitle}>Sign In</h1>
 			</div>
 			{error && (
-				<div
-					style={{
-						display: 'flex',
-						margin: 'auto',
-						position: 'relative',
-						background: '#ff9595d2',
-						width: 'auto',
-						padding: '5px',
-						marginTop: '20px',
-						fontSize: '12px',
-						marginBottom: '-60px',
-						borderRadius: '10px',
-					}}>
+				<div className={classname.error_text}>
 					<h6>{error}</h6>
 				</div>
 			)}
@@ -77,7 +49,6 @@ const LoginForm = () => {
 					<span className={classname.inputSpan}>
 						<label className={classname.input_label}>Email</label>
 					</span>
-
 					<input
 						type='email'
 						value={email}
