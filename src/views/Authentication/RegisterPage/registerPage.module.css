@@ -1,17 +1,23 @@
-/** @format */
-
-@media (max-width: 414px) {
-	.registerContainer {
+@media (max-width: 499px) {
+	.register_page_container {
+		display: grid;
 		height: 100vh;
 		justify-content: center;
+		align-items: center;
+		background: var(--color-primary-900);
 	}
 }
 
-@media (min-width: 415px) and (max-width: 2000px) {
-	.registerContainer {
+@media (min-width: 500px) and (max-width: 2000px) {
+	.register_page_container {
+		display: grid;
 		width: 100vw;
 		justify-content: center;
+		align-content: center;
 		height: 100vh;
+		border: 1px solid var(--color-primary-700);
+		background: var(--color-primary-900);
+		overflow-y: scroll;
 	}
 
 	.formHeader {
@@ -36,9 +42,14 @@
 	display: grid;
 	justify-content: center;
 	align-items: center;
-	height: 100%;
-	width: 100vw;
+	height: auto;
+	min-height: 400px;
+	max-height: 800px;
+	width: 500px;
+	padding: 30px;
+	border-radius: 10px;
 	overflow: hidden;
+	background-color: var(--color-primary-800);
 }
 
 .icon {

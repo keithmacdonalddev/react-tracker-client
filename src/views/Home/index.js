@@ -1,6 +1,6 @@
 import React from 'react';
 import SectionOne from './SectionOne';
-import SectionTwo from './SectionTwo';
+import ProjectsComponent from 'views/Projects/ProjectsComponent';
 import SectionThree from './SectionThree';
 import classname from './classes_dashboard_home.module.css';
 
@@ -11,7 +11,7 @@ const DashBoardHome = () => {
 				<SectionOne />
 			</div>
 			<div className={classname.section_two}>
-				<SectionTwo />
+				<ProjectsComponent />
 			</div>
 			<div className={classname.section_three}>
 				<SectionThree />

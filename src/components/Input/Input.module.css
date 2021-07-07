@@ -1,0 +1,37 @@
+.input_box {
+	display: flex;
+	flex-direction: column;
+	margin: 10px;
+}
+
+.input_span {
+	font-size: 16px;
+	margin-bottom: 5px;
+	display: inline-block;
+	text-align: left;
+	font-size: 16px;
+	color: var(--color-primary-200);
+	font-weight: 300;
+	letter-spacing: 1px;
+}
+.input_label {
+	font-size: 16px;
+	font-weight: 500;
+	color: var(--color-primary-200);
+}
+.input {
+	width: 330px;
+	padding: 10px 20px;
+	outline: none;
+	font-weight: 500;
+	border: 1px solid var(--clr-grey-blue);
+	font-size: 18px;
+	letter-spacing: 1.2px;
+	color: var(--color-primary-200);
+	border-radius: 10px;
+	background: var(--color-primary-600);
+}
+
+.input:focus {
+	outline: var(--clr-darkblue);
+}

@@ -16,9 +16,7 @@ import SingleProjectNavigation from './SingleProjectNavigation';
 import classname from './SingleProject.module.css';
 import SingleProjectAssignees from './SingleProjectAssignees';
 
-const SingleProject = () => {
-	const { project, loading } = useSelector((state) => state.singleProject);
-
+const SingleProject = ({ project, loading }) => {
 	if (loading) {
 		return <h6>Loading...</h6>;
 	}

@@ -1,13 +1,7 @@
 import React from 'react';
-
-// Components
-import SiteName from './SiteName';
-import SubTitle2 from './SubTitle2';
-import StartButton from './StartButton';
-
-// Images
-// import network from 'img/network.png';
-
+import SiteName from './SiteName'; // local component
+import SubTitle2 from './SubTitle2'; // local component
+import StartButton from './StartButton'; // local component
 import classname from './Welcome.module.css'; // CSS
 
 const HomePage = () => {

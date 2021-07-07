@@ -7,6 +7,7 @@ import { getUserDetails, login } from '../../store/actions/userActions';
 import { showComponent } from 'store/actions/navigationActions';
 // CSS
 import classname from './loginform.module.css';
+import Input from 'components/Input';
 
 const LoginForm = () => {
 	const dispatch = useDispatch();
@@ -45,31 +46,26 @@ const LoginForm = () => {
 			{loading && <h6>loading...</h6>}
 
 			<form className={classname.formContainer} onSubmit={handleSubmit}>
-				<div className={classname.inputBox}>
-					<span className={classname.inputSpan}>
-						<label className={classname.input_label}>Email</label>
-					</span>
-					<input
-						type='email'
-						value={email}
-						className={classname.input}
-						placeholder='Enter Email'
-						onChange={(e) => setEmail(e.target.value)}
-					/>
-				</div>
-				<div className={classname.inputBox}>
-					<span className={classname.inputSpan}>
-						<label className={classname.input_label}>Password</label>
-					</span>
-					<input
-						type='password'
-						value={password}
-						className={classname.input}
-						placeholder='Enter Password'
-						onChange={(e) => setPassword(e.target.value)}
-					/>
-				</div>
-
+				<Input
+					withLabel={true}
+					label='Email'
+					type='email'
+					value={email}
+					className={classname.input}
+					placeholder='Enter Email'
+					onChangeFunction={setEmail}
+					required={true}
+				/>
+				<Input
+					withLabel={true}
+					label='Password'
+					type='password'
+					value={password}
+					className={classname.input}
+					placeholder='Enter Password'
+					onChangeFunction={setPassword}
+					required={true}
+				/>
 				<button className={classname.inputSubmit} type='submit'>
 					Sign In
 				</button>

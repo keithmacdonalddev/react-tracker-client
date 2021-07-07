@@ -11,7 +11,9 @@ const SiteName = () => {
 
 	return (
 		<animated.div style={styles}>
-			<h1 className={classname.site_name}>React Tracker</h1>
+			<div data-testid='logo-text' className={classname.site_name}>
+				React Tracker
+			</div>
 		</animated.div>
 	);
 };

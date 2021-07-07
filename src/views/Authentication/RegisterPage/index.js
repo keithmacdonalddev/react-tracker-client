@@ -1,19 +1,19 @@
-/** @format */
-
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
-import Message from '../../../components/Message';
+
 import Loader from 'components/Loader';
+import Message from '../../../components/Message';
 import { register } from 'store/actions/userActions';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
 
 import style from './registerPage.module.css';
+import Input from 'components/Input';
 
 const RegisterPage = () => {
-	const [firstsName, setFirstName] = useState('');
+	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
 	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
@@ -24,9 +24,7 @@ const RegisterPage = () => {
 	const history = useHistory();
 	const dispatch = useDispatch();
 
-	const userRegister = useSelector((state) => {
-		return state.userRegister;
-	});
+	const userRegister = useSelector((state) => state.userRegister);
 	const { loading, error, userInfo } = userRegister;
 
 	useEffect(() => {
@@ -40,12 +38,12 @@ const RegisterPage = () => {
 		if (password !== confirmPassword) {
 			setMessage('Passwords do not match');
 		} else {
-			dispatch(register(firstsName, lastName, username, email, password));
+			dispatch(register(firstName, lastName, username, email, password));
 		}
 	};
 
 	return (
-		<div className={style.registerContainer}>
+		<div className={style.register_page_container}>
 			<Link to='/'>
 				<FontAwesomeIcon icon={faChevronCircleLeft} className={style.icon} />
 			</Link>
@@ -61,71 +59,61 @@ const RegisterPage = () => {
 					</div>
 
 					<div className={style.inputGroup}>
-						<div className={style.inputBox}>
-							<label>First Name</label>
-							<input
-								type='text'
-								value={firstsName}
-								className={style.input}
-								placeholder='Enter First Name'
-								onChange={(e) => setFirstName(e.target.value)}
-							/>
-						</div>
+						<Input
+							withLabel={true}
+							label='First Name'
+							type='text'
+							value={firstName}
+							placeholder='Enter First Name'
+							onChangeFunction={setFirstName}
+							required={true}
+						/>
 
-						<div className={style.inputBox}>
-							<label>Last Name</label>
-							<input
-								type='text'
-								value={lastName}
-								className={style.input}
-								placeholder='Enter Last Name'
-								onChange={(e) => setLastName(e.target.value)}
-							/>
-						</div>
-
-						<div className={style.inputBox}>
-							<label>Username</label>
-							<input
-								type='text'
-								value={username}
-								className={style.input}
-								placeholder='Enter username'
-								onChange={(e) => setUsername(e.target.value)}
-							/>
-						</div>
-
-						<div className={style.inputBox}>
-							<label>Email</label>
-							<input
-								type='email'
-								value={email}
-								className={style.input}
-								placeholder='Enter Email'
-								onChange={(e) => setEmail(e.target.value)}
-							/>
-						</div>
-
-						<div className={style.inputBox}>
-							<label>Password</label>
-							<input
-								type='password'
-								value={password}
-								className={style.input}
-								placeholder='Enter Password'
-								onChange={(e) => setPassword(e.target.value)}
-							/>
-						</div>
-
-						<div className={style.inputBox}>
-							<label>Confirm Password</label>
-							<input
-								type='password'
-								value={confirmPassword}
-								className={style.input}
-								placeholder='Confirm Password'
-								onChange={(e) => setConfirmPassword(e.target.value)}
-							/>
-						</div>
+						<Input
+							withLabel={true}
+							label='Last Name'
+							type='text'
+							value={lastName}
+							placeholder='Enter last name'
+							onChangeFunction={setLastName}
+							required={true}
+						/>
+						<Input
+							withLabel={true}
+							label='Username'
+							type='text'
+							value={username}
+							placeholder='Choose a username'
+							onChangeFunction={setUsername}
+							required={true}
+						/>
+						<Input
+							withLabel={true}
+							label='Email'
+							type='email'
+							value={email}
+							placeholder='Enter email'
+							onChangeFunction={setEmail}
+							required={true}
+						/>
+						<Input
+							withLabel={true}
+							label='Password'
+							type='password'
+							value={password}
+							placeholder='Enter Password'
+							onChangeFunction={setPassword}
+							required={true}
+						/>
+						<Input
+							withLabel={true}
+							label='Confirm Password'
+							type='password'
+							value={confirmPassword}
+							placeholder='Confirm Password'
+							onChangeFunction={setConfirmPassword}
+							required={true}
+						/>
 					</div>
 
 					<div className={style.formFooter}>

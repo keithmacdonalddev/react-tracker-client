@@ -7,6 +7,8 @@
 		"@fortawesome/fontawesome-svg-core": "^1.2.34",
 		"@fortawesome/free-solid-svg-icons": "^5.15.2",
 		"@fortawesome/react-fontawesome": "^0.1.14",
+		"@testing-library/jest-dom": "^5.14.1",
+		"@testing-library/user-event": "^13.1.9",
 		"animate.css": "^4.1.1",
 		"aws-amplify": "^3.3.27",
 		"aws-amplify-react": "^4.2.31",
