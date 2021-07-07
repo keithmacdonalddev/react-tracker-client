@@ -5,7 +5,7 @@ import { Icon, faChevronRight } from 'components/Icon';
 
 // Redux store ~ actions
 import { showComponent } from 'store/actions/navigationActions';
-import { fetchSingleProject, getProjects } from 'store/actions/projectActions';
+import { getProjects } from 'store/actions/projectActions';
 
 import classname from './projects_list.module.css';
 import { SELECTED_PROJECT } from 'store/types';
@@ -22,6 +22,7 @@ const ProjectsList = () => {
 
 	const [mainView, setMainView] = useState('all-projects');
 	const [viewSingleProject, setViewSingleProject] = useState({ active: false, project: null });
+
 	const { projects, loading, error } = useSelector((state) => state.projects);
 
 	useEffect(() => {
