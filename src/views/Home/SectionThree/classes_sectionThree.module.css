@@ -18,7 +18,7 @@
 }
 
 .ticket_list_container {
-	background: var(--color-main-200);
+	background: var(--color-primary-800);
 	border-radius: 10px;
 	height: auto;
 	width: calc(100% - 10px);

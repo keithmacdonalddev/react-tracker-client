@@ -19,7 +19,7 @@ const Sidebar = ({ toggleSidebar }) => {
 					<ListItem
 						key={route.title}
 						icon={route.icon}
-						link={route.path}
+						path={route.path}
 						title={route.title}
 						componentProp={route.component}
 					/>

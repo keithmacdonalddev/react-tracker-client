@@ -10,18 +10,19 @@
 */
 
 import React from 'react';
-
 import UsersNav from './UsersNav';
 import UsersView from './UsersView';
-
+import Dashboard from 'views/Dashboard';
 import classname from 'views/Users/users.module.css';
 
 const Users = () => {
 	return (
-		<div className={classname.users_layout_container}>
-			<UsersNav />
-			<UsersView />
-		</div>
+		<Dashboard>
+			<div className={classname.users_layout_container}>
+				<UsersNav />
+				<UsersView />
+			</div>
+		</Dashboard>
 	);
 };
 

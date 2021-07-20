@@ -7,14 +7,18 @@ import RegisterPage from 'views/Authentication/RegisterPage';
 import Dashboard from 'views/Dashboard';
 import ProfilePage from 'views/Profile/ProfilePage';
 import Tickets from 'views/Tickets';
+import Projects from 'views/Projects';
 import CreateTicketPage from 'views/Tickets/MyTicketsPage/CreateTicket';
 import SingleTicketPage from 'views/Tickets/MyTicketsPage/SingleTicket';
+import Users from 'views/Users';
 import { Icon, faSun, faMoon } from 'components/Icon';
 
 import classname from './app.module.css';
+import CreateProjectPage from 'views/Projects/ProjectsComponent/CreateProjectPage';
+import SignOut from 'views/Authentication/SignOut';
 
 const App = () => {
-	const [lightMode, setLightMode] = useState(false);
+	const [lightMode, setLightMode] = useState(true);
 	return (
 		<Router>
 			<div className={lightMode ? classname.body_light : classname.body_dark}>
@@ -30,12 +34,16 @@ const App = () => {
 
 				<Switch>
 					<Route path='/dashboard' component={Dashboard} />
-					<Route path='/dashboard/tickets' component={Tickets} />
+					<Route path='/tickets' component={Tickets} />
+					<Route path='/projects' component={Projects} />
 					<Route path='/create-ticket' component={CreateTicketPage} />
+					<Route path='/create-project' component={CreateProjectPage} />
 					<Route path='/dashboard/tickets/single-ticket' component={SingleTicketPage} />
-					<Route path='/profile' component={ProfilePage} />
+					<Route path='/my-profile' component={ProfilePage} />
+					<Route path='/users' component={Users} />
 					<Route path='/register' component={RegisterPage} />
 					<Route path='/login' component={LoginPage} />
+					<Route path='/logout' component={SignOut} />
 					<Route path='/' component={HomePage} exact />
 				</Switch>
 			</div>

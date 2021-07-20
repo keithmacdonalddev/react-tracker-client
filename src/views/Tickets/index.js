@@ -1,12 +1,15 @@
 import React from 'react';
+import Dashboard from 'views/Dashboard';
 import MyTicketsPage from './MyTicketsPage';
 import classname from './tickets.module.css';
 
 const Tickets = () => {
 	return (
-		<div className={classname.tickets_view_container}>
-			<MyTicketsPage />
-		</div>
+		<Dashboard>
+			<div className={classname.tickets_view_container}>
+				<MyTicketsPage />
+			</div>
+		</Dashboard>
 	);
 };
 

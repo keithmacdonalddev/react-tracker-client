@@ -48,8 +48,7 @@
 	padding: 6px;
 	font-size: 12px;
 	border-radius: 5px;
-	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.2),
-		inset -1px -1px 1px rgba(0, 0, 0, 0.1);
+	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.2), inset -1px -1px 1px rgba(0, 0, 0, 0.1);
 }
 .textarea {
 	border: none;
@@ -60,8 +59,14 @@
 	padding: 6px;
 	font-size: 12px;
 	border-radius: 5px;
-	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.2),
-		inset -1px -1px 1px rgba(0, 0, 0, 0.1);
+	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.2), inset -1px -1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.radio_buttons {
+	display: flex;
+	align-items: center;
+	border: none;
+	outline: none;
 }
 
 .submit_button {

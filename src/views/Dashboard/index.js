@@ -2,7 +2,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { useSpring, animated, config } from 'react-spring';
+import { motion } from 'framer-motion';
+// import { useSpring, animated, config } from 'react-spring';
 // Components
 import Modal from 'components/Modal';
 import ToggleButton from 'components/ToggleButton';
@@ -15,16 +16,16 @@ import classname from './dashboard.module.css';
 const Dashboard = ({ children }) => {
 	const history = useHistory();
 
-	const styles = useSpring({
-		from: { y: -100, opacity: 0 },
-		to: { x: 0, y: 0, opacity: 1 },
-		config: config.slow,
-	});
+	// const styles = useSpring({
+	// 	from: { y: -100, opacity: 0 },
+	// 	to: { x: 0, y: 0, opacity: 1 },
+	// 	config: config.slow,
+	// });
 
-	const sideBarAnimation = useSpring({
-		from: { x: -400, opacity: 0, delay: 5000 },
-		to: { x: 0, opacity: 1 },
-	});
+	// const sideBarAnimation = useSpring({
+	// 	from: { x: -400, opacity: 0, delay: 5000 },
+	// 	to: { x: 0, opacity: 1 },
+	// });
 
 	const [preloader, setPreloader] = useState(true);
 	const [preloadTimer, setPreloadTimer] = useState(3);
@@ -70,7 +71,7 @@ const Dashboard = ({ children }) => {
 					{userInfo ? (
 						<div className={classname.app_container}>
 							{/* -------------------- TOP NAV BAR -------------------- */}
-							<animated.div style={styles} className={classname.appbartop_container}>
+							<motion.div className={classname.appbartop_container}>
 								<div className={classname.appbartop_container}>
 									<AppBarTop />
 
@@ -78,15 +79,14 @@ const Dashboard = ({ children }) => {
 										<ToggleButton toggleSidebar={toggleSidebar} />
 									</div>
 								</div>
-							</animated.div>
+							</motion.div>
 
 							{/* -------------------- Sidebar -------------------- */}
-							<animated.div
+							<motion.div
 								onClick={() => setToggleSidebar(false)}
-								style={sideBarAnimation}
 								className={toggleSidebar ? classname.sidebar_open : classname.sidebar_closed}>
 								<Sidebar toggleSidebar={toggleSidebar} />
-							</animated.div>
+							</motion.div>
 
 							{/* -------------------- MAIN CONTENT AREA -------------------- */}
 							<div className={classname.main_wrapper}>{children ? children : <MainView />}</div>

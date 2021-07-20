@@ -1,7 +1,6 @@
 import { faBug } from '@fortawesome/free-solid-svg-icons';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { faUsers } from '@fortawesome/free-solid-svg-icons';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faFileMedical } from '@fortawesome/free-solid-svg-icons';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
@@ -9,14 +8,14 @@ import { faProjectDiagram } from '@fortawesome/free-solid-svg-icons';
 
 const routes = [
 	{
-		path: '/',
+		path: '/dashboard',
 		exact: true,
 		title: 'Home',
 		icon: faHome,
 		component: 'home',
 	},
 	{
-		path: '/profile',
+		path: '/my-profile',
 		exact: false,
 		title: 'Profile',
 		icon: faUserCircle,
@@ -38,19 +37,13 @@ const routes = [
 	},
 
 	{
-		path: '/my-projects',
+		path: '/projects',
 		exact: false,
 		title: 'My Projects',
 		icon: faProjectDiagram,
 		component: 'My Projects',
 	},
-	{
-		path: '/create-project',
-		exact: false,
-		title: 'Create Project',
-		icon: faPlus,
-		component: 'Create Project',
-	},
+
 	{
 		path: '/activity-monitor',
 		exact: false,

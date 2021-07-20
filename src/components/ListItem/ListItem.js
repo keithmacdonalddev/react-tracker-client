@@ -5,54 +5,23 @@
  *
  */
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-import { showComponent } from '../../store/actions/navigationActions';
-
-import useMakeBackground from './useMakeBackground';
 
 import classname from './ListItem.module.css';
+import ListItemIcon from './ListItemIcon';
 
-const ListItem = ({ icon, title, componentProp }) => {
-	const dispatch = useDispatch();
-
+const ListItem = ({ icon, title, componentProp, path }) => {
 	const [active, setActive] = useState();
 	const [hover, setHover] = useState(false);
-
-	const handleClick = (clickedValue) => {
-		setActive(clickedValue);
-		dispatch(showComponent(clickedValue));
-	};
-
-	const background = useMakeBackground(active, hover);
 
 	return (
 		<li
 			onMouseEnter={() => setHover(true)}
 			onMouseLeave={() => setHover(false)}
 			className={hover ? classname.hoverLi : classname.li}
-			onClick={() => handleClick(componentProp)}>
-			<Link to='/dashboard' className={classname.a}>
-				<span className={classname.icon}>
-					<div style={{ background: background }} className={classname.container}>
-						{icon ? (
-							<FontAwesomeIcon
-								style={{
-									color: 'var(--color-primary-100)',
-									stroke: 'var(--color-primary-100)',
-									strokeWidth: '30',
-									fontSize: '22px',
-								}}
-								className={classname.fa}
-								icon={icon}
-							/>
-						) : (
-							''
-						)}
-					</div>
-				</span>
+			onClick={() => setActive(componentProp)}>
+			<Link to={path} className={classname.a}>
+				<ListItemIcon active={active} icon={icon} hover={hover} />
 				<span className={classname.title}>{title}</span>
 			</Link>
 		</li>

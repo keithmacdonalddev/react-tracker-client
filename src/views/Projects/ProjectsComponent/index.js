@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { showComponent } from 'store/actions/navigationActions';
 
@@ -10,18 +11,18 @@ import classname from './projects_component.module.css';
 const ProjectsComponent = () => {
 	const dispatch = useDispatch();
 
-	const clickHandler = () => {
-		dispatch(showComponent('Create Project'));
-	};
+	// const clickHandler = () => {
+	// 	dispatch(showComponent('Create Project'));
+	// };
 
 	return (
 		<div className={classname.projects_page_container}>
 			<div className={classname.header_container}>
 				<div className={classname.header_title}>My Projects</div>
 				<div className={classname.create_project_button_container}>
-					<div className={classname.create_project_button} onClick={() => clickHandler()}>
+					<Link to='/create-project' className={classname.create_project_button}>
 						Create Project
-					</div>
+					</Link>
 				</div>
 			</div>
 			<ProjectsList />

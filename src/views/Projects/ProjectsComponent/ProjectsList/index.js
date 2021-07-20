@@ -76,8 +76,6 @@ const ProjectsList = () => {
 							</div>
 						);
 					})}
-
-					<SingleProject project={viewSingleProject.data} />
 				</>
 			) : (
 				<h6>Loading...</h6>

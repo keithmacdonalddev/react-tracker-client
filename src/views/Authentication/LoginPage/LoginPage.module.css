@@ -14,7 +14,7 @@
 	left: 15px;
 }
 
-.backButton {
+.buttonContainer {
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
@@ -24,11 +24,11 @@
 	background: var(--clr-darkblue);
 }
 
-.backButton:hover {
+.buttonContainer:hover {
 	filter: brightness(1.2);
 }
 
-.homeLinkText {
+.buttonText {
 	font-size: 16px;
 	font-weight: 500;
 	color: white;

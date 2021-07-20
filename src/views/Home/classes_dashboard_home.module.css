@@ -15,6 +15,7 @@
 	justify-content: center;
 	height: 100%;
 	width: 100%;
+	padding: 10px;
 	border-radius: 10px;
 	overflow-x: hidden;
 }
@@ -25,8 +26,10 @@
 	max-width: 100%;
 	max-height: 500px;
 	border-radius: 10px;
-	background: var(--color-main-200);
+	padding: 20px 40px 20% 40px;
+	background: var(--color-primary-800);
 }
+
 .section_three {
 	display: grid;
 	border-radius: 10px;

@@ -9,11 +9,10 @@ import { showComponent } from 'store/actions/navigationActions';
 import { Icon, faBug, faRocket, faChevronRight } from 'components/Icon';
 
 import classname from './tickets_mapping.module.css';
+
 const TicketsMapping = ({ myTickets }) => {
 	const dispatch = useDispatch();
 
-	// const [fancy, setFancy] = useState(false);
-	let fancy;
 	const gotoTicketClickHandler = (id) => {
 		// store a reference of the id of the clicked ticket in global state
 		dispatch(singleTicketId(id));
@@ -23,21 +22,17 @@ const TicketsMapping = ({ myTickets }) => {
 
 	return (
 		<div className={classname.ticketsContainer}>
-			<div className={classname.header_wrapper}>
-				<div style={{ background: 'var(--color-primary-600)' }} className={classname.card_simple}>
-					<div className={classname.ticket_idx}>#</div>
-					<div className={classname.ticketProject}>Project</div>
-					<div className={classname.ticketTitle}>Ticket Title</div>
-					<div className={classname.ticketDate}>Date</div>
-					<div style={{ background: 'none' }} className={classname.ticketTypeIconContainer}>
-						Status
-					</div>
-					<div className={classname.editIcon}>Go</div>
-				</div>
+			<div className={classname.custom_table_header_wrapper}>
+				<div className={classname.ticket_idx}>#</div>
+				<div className={classname.ticketProject}>Project</div>
+				<div className={classname.ticketTitle}>Ticket Title</div>
+				<div className={classname.ticketDate}>Date</div>
+				<div className={classname.ticketTypeIconContainer}>Status</div>
+				<div className={classname.editIcon}>Go</div>
 			</div>
 			{myTickets.reverse().map((ticket, idx) => (
 				<div key={ticket._id} className={classname.ticket_data_map}>
-					<div className={fancy ? classname.card_fancy : classname.card_simple}>
+					<div className={classname.custom_table_row}>
 						<div className={classname.ticket_idx}> {idx + 1}</div>
 						<div className={classname.ticketProject}>{ticket.project}</div>
 						<div className={classname.ticketTitle}>{ticket.title}</div>

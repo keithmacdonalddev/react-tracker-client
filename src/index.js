@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import store from 'store/store';
 import App from 'components/App/App';
 import { ErrorBoundary } from 'react-error-boundary';
-import 'animate.css';
 
 ReactDOM.render(
 	<Provider store={store}>
