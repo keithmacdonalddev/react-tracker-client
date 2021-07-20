@@ -9,7 +9,6 @@ import { getProjects } from 'store/actions/projectActions';
 
 import classname from './projects_list.module.css';
 import { SELECTED_PROJECT } from 'store/types';
-import SingleProject from '../SingleProject';
 
 const hideElement = {
 	position: 'absolute',
@@ -22,7 +21,7 @@ const ProjectsList = () => {
 
 	const [mainView, setMainView] = useState('all-projects');
 	const [viewSingleProject, setViewSingleProject] = useState({ active: false, project: null });
-
+	console.log(viewSingleProject);
 	const { projects, loading, error } = useSelector((state) => state.projects);
 
 	useEffect(() => {
