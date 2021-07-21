@@ -24,9 +24,9 @@ const CreateProjectPage = () => {
 	const [projectNumber, setProjectNumber] = useState('');
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
-	const [category, setCategory] = useState('');
-	const [status, setStatus] = useState('Active');
-	const [priority, setPriority] = useState('');
+	const [category, setCategory] = useState('personal');
+	const [status, setStatus] = useState('active');
+	const [priority, setPriority] = useState('normal');
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
