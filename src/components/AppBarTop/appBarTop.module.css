@@ -8,6 +8,7 @@
 	transition: 500ms;
 	color: var(--color-primary-100);
 	box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+	z-index: 10;
 }
 
 .container {

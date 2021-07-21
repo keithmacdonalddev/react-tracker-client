@@ -14,6 +14,7 @@ const style = {
 
 const ListItemIcon = ({ icon, active, hover }) => {
 	const makeBackground = useMakeBackground(active, hover);
+
 	return (
 		<span className={classname.icon}>
 			<div style={{ background: makeBackground }} className={classname.container}>

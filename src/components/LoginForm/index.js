@@ -14,10 +14,7 @@ import Form from './Form';
 
 const LoginForm = () => {
 	const history = useHistory();
-
-	// global state
 	const { userInfo, loading, error } = useSelector((state) => state.userLogin);
-
 	useEffect(() => userInfo && history.push('/dashboard'), [userInfo, history]);
 
 	return (

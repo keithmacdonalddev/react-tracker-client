@@ -1,9 +1,9 @@
 // Packages
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 // Actions
-import { showComponent } from 'store/actions/navigationActions';
 import { createProject, getProjects } from '../../../../store/actions/projectActions';
 import { CREATE_PROJECT_RESET } from '../../../../store/types';
 
@@ -12,30 +12,34 @@ import classname from './create_project.module.css';
 import Dashboard from 'views/Dashboard';
 
 const CreateProjectPage = () => {
+	const history = useHistory();
 	const dispatch = useDispatch();
+
+	const { userInfo } = useSelector((state) => state.userLogin);
+
+	const project = useSelector((state) => state.project);
+	const { loading: loadingCreate, success: successCreate, error: errorCreate } = project;
+	const prodServer = true;
 
 	const [projectNumber, setProjectNumber] = useState('');
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
 	const [category, setCategory] = useState('');
 	const [status, setStatus] = useState('Active');
-
-	const { userInfo } = useSelector((state) => state.userLogin);
-	const project = useSelector((state) => state.project);
-	const { loading: loadingCreate, success: successCreate, error: errorCreate } = project;
+	const [priority, setPriority] = useState('');
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		dispatch(createProject(title, description, status, userInfo));
+		dispatch(createProject(projectNumber, title, description, category, status, priority, userInfo, prodServer));
 	};
 
 	useEffect(() => {
 		if (successCreate) {
 			dispatch({ type: CREATE_PROJECT_RESET });
 			dispatch(getProjects());
-			dispatch(showComponent('My Projects'));
+			history.push('/projects');
 		}
-	}, [dispatch, successCreate]);
+	}, [dispatch, history, successCreate]);
 
 	return (
 		<Dashboard>
@@ -69,7 +73,7 @@ const CreateProjectPage = () => {
 								/>
 							</div>
 							<div className={classname.input_container}>
-								<label className={classname.input}>Project Description:</label>
+								<label className={classname.label}>Description:</label>
 								<textarea
 									rows={5}
 									cols={10}
@@ -78,26 +82,13 @@ const CreateProjectPage = () => {
 									onChange={(event) => setDescription(event.target.value)}
 								/>
 							</div>
+
 							<div className={classname.input_container}>
 								<label className={classname.label}>Category</label>
-								<div className={classname.radio_buttons}>
-									<input
-										type='radio'
-										name='category'
-										value={category}
-										className={classname.dataField}
-										onChange={() => setCategory('personal')}
-									/>
-									<span>Personal</span>
-									<input
-										type='radio'
-										name='category'
-										value={category}
-										onChange={() => setCategory('work')}
-										className={classname.dataField}
-									/>
-									Work
-								</div>
+								<select value={category} onChange={(e) => setCategory(e.target.value)} className={classname.dataField}>
+									<option value='personal'>Personal</option>
+									<option value='work'>Work</option>
+								</select>
 							</div>
 							<div className={classname.input_container}>
 								<label className={classname.label}>Status</label>
@@ -109,6 +100,15 @@ const CreateProjectPage = () => {
 									<option value='completed'>Completed</option>
 								</select>
 							</div>
+							<div className={classname.input_container}>
+								<label className={classname.label}>Priority</label>
+								<select value={priority} onChange={(e) => setPriority(e.target.value)} className={classname.dataField}>
+									<option value='high'>High</option>
+									<option value='normal'>Normal</option>
+									<option value='low'>Low</option>
+								</select>
+							</div>
+
 							<button className={classname.submit_button} type='submit' value='submit'>
 								Submit
 							</button>

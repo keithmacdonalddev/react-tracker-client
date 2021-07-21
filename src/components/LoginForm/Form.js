@@ -7,7 +7,6 @@ import classname from './loginform.module.css';
 const Form = () => {
 	const dispatch = useDispatch();
 
-	// local state
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
@@ -15,6 +14,7 @@ const Form = () => {
 		event.preventDefault();
 		dispatch(login(email, password));
 	};
+
 	return (
 		<form className={classname.formContainer} onSubmit={handleSubmit}>
 			<Input
