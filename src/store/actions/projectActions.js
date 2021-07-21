@@ -111,12 +111,12 @@ export const getProjects = () => async (dispatch, getState) => {
 				Authorization: `Bearer ${userInfo.token}`,
 			},
 		};
-
+		const id = userInfo._id;
 		// Local development server. Use port 5000
 		// const { data } = await axios.get(`projects/${userInfo._id}`, config);
 
 		// Production server.  Hosted at Heroku
-		const { data } = await axios.get(`${apiUrl}/projects/${userInfo._id}`, config);
+		const { data } = await axios.get(`${apiUrl}/projects/${id}`, config);
 
 		dispatch({
 			type: GET_PROJECTS_SUCCESS,

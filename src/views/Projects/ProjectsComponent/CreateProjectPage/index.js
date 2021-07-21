@@ -19,7 +19,7 @@ const CreateProjectPage = () => {
 
 	const project = useSelector((state) => state.project);
 	const { loading: loadingCreate, success: successCreate, error: errorCreate } = project;
-	const prodServer = true;
+	const prodServer = false;
 
 	const [projectNumber, setProjectNumber] = useState('');
 	const [title, setTitle] = useState('');
