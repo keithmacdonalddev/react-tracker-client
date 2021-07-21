@@ -44,21 +44,18 @@ export const createProject = (
 				Authorization: `Bearer ${userInfo.token}`,
 			},
 		};
-		let response;
-		// Local development server. Use port 5000
-		if (prodServer) {
-			response = await axios.post(
-				`${apiUrl}/projects`,
-				{ projectNumber, title, description, category, status, priority, userInfo },
-				config,
-			);
-		} else {
-			response = await axios.post(
-				'projects',
-				{ projectNumber, title, description, status, priority, userInfo },
-				config,
-			);
-		}
+
+		const response = await axios.post(
+			`${apiUrl}/projects`,
+			{ projectNumber, title, description, category, status, priority, userInfo },
+			config,
+		);
+
+		// response = await axios.post(
+		// 	'projects',
+		// 	{ projectNumber, title, description, status, priority, userInfo },
+		// 	config,
+		// );
 
 		await dispatch({
 			type: CREATE_PROJECT_SUCCESS,
