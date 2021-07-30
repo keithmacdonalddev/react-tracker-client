@@ -1,20 +1,18 @@
 .project_container {
 	position: relative;
 	width: 100%;
-	transform: translateX(0px);
-	transition: all 800ms;
 	margin-top: 30px;
+	padding: 20px;
 }
 
 .dataFieldContainer {
+	max-width: 800px;
 	height: auto;
-	width: 90%;
+	padding: 20px;
 	margin: auto;
 	border-radius: 5px;
 	margin-bottom: 15px;
 	background: #f6f6f7;
-	border: 4px solid blue;
-	padding: 20px;
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
@@ -22,7 +20,9 @@
 	text-align: center;
 	font-size: 18px;
 	font-weight: 500;
+	margin-bottom: 2 0px;
 }
+
 .input_container {
 	display: grid;
 	margin-bottom: 20px;
@@ -71,11 +71,13 @@
 
 .submit_button {
 	width: 100%;
-	background-color: #66ba93;
+	/* background-color: #66ba93; */
+	background-color: var(--color-primary-700);
 	color: white;
+	font-size: 16px;
 	font-weight: 700;
-	padding: 3px;
-	border-radius: 10px;
+	padding: 8px;
+	border-radius: 5px;
 }
 
 .submit_button:hover {

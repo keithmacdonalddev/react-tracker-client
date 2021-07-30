@@ -40,19 +40,18 @@
 	width: 100%;
 	height: 40px;
 	background: var(--color-accent);
-	color: var(--color-primary-100);
+	color: var(--color-primary-800);
 	font-weight: 600;
 	font-size: 20px;
 	border-radius: 10px;
 	cursor: pointer;
 	box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
 	filter: none;
-	transition: all 500ms;
+	transition: all 300ms;
 }
 
 .cancel_edit_button:hover {
 	filter: brightness(1.2);
-	transform: scale(0.98);
 }
 
 .submit_button {
@@ -61,21 +60,20 @@
 	align-items: center;
 	width: 100%;
 	height: 40px;
-	background: var(--color-primary-300);
-	color: var(--color-primary-100);
+	background: var(--color-primary-700);
+	color: var(--color-primary-800);
 	font-weight: 600;
 	font-size: 20px;
-	border-radius: 10px;
 	cursor: pointer;
 	margin-bottom: 10px;
-	box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
+	border: none;
+	border-radius: 10px;
 	filter: none;
-	transition: all 500ms;
+	transition: all 300ms;
 }
 
 .submit_button:hover {
 	filter: brightness(1.2);
-	transform: scale(0.98);
 }
 
 .editButtonContainer:hover {

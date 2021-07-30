@@ -8,7 +8,7 @@
 	/* border: 1px dashed black !important; */
 }
 ::-webkit-scrollbar {
-	width: 10px;
+	color: inherit;
 }
 ::-webkit-scrollbar-track {
 	background-color: var(--color-primary-800);
@@ -162,62 +162,4 @@ body {
 	to {
 		opacity: 1;
 	}
-}
-.align-self-flex-start {
-	align-self: flex-start;
-}
-.align-self-flex-end {
-	align-self: flex-end;
-}
-.align-self-flex-center {
-	align-self: center;
-}
-.valign-text-middle {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-}
-.valign-text-bottom {
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-end;
-}
-input:focus {
-	outline: none;
-}
-.component-wrapper,
-.component-wrapper * {
-	pointer-events: none;
-}
-
-.component-wrapper a *,
-.component-wrapper a,
-.component-wrapper input,
-.component-wrapper video,
-.component-wrapper iframe,
-.listeners-active,
-.listeners-active * {
-	pointer-events: auto;
-}
-
-.hidden,
-.hidden * {
-	visibility: hidden;
-	pointer-events: none;
-}
-
-.smart-layers-pointers,
-.smart-layers-pointers * {
-	pointer-events: auto;
-	visibility: visible;
-}
-
-.component-wrapper.not-ready,
-.component-wrapper.not-ready * {
-	visibility: hidden !important;
-}
-
-.listeners-active-click,
-.listeners-active-click * {
-	cursor: pointer;
 }

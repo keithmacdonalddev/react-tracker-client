@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import classname from './ListItem.module.css';
 import ListItemIcon from './ListItemIcon';
 
-const ListItem = ({ icon, title, componentProp, path }) => {
+const ListItem = ({ icon, title, path }) => {
 	const [active, setActive] = useState();
 	const [hover, setHover] = useState(false);
 
@@ -19,7 +19,7 @@ const ListItem = ({ icon, title, componentProp, path }) => {
 			onMouseEnter={() => setHover(true)}
 			onMouseLeave={() => setHover(false)}
 			className={hover ? classname.hoverLi : classname.li}
-			onClick={() => setActive(componentProp)}>
+			onClick={() => setActive(null)}>
 			<Link to={path} className={classname.a}>
 				<ListItemIcon active={active} icon={icon} hover={hover} />
 				<span className={classname.title}>{title}</span>

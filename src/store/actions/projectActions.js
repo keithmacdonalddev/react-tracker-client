@@ -1,8 +1,9 @@
 /**
- *  1. createProject()
- *  2. fetchSingleProject()
- *  3. getProjects()
- *  4. deleteProjectAction()
+ *  FILE CONTENTS
+ *  1. @function createProject()
+ *  2. @function fetchSingleProject()
+ *  3. @function getProjects()
+ *  4. @function deleteProjectAction()
  */
 
 import axios from 'axios';
@@ -37,23 +38,18 @@ export const createProject = (projectNumber, title, description, category, statu
 				Authorization: `Bearer ${userInfo.token}`,
 			},
 		};
-		console.log(`projectNumber: ${projectNumber}`);
-		console.log(`category: ${category}`);
-		console.log(`status: ${status}`);
-		console.log(`priority: ${priority}`);
-		console.log(`userInfo: ${userInfo}`);
-
-		// const response = await axios.post(
-		// 	`${apiUrl}/projects`,
-		// 	{ projectNumber, title, description, category, status, priority, userInfo },
-		// 	config,
-		// );
 
 		const response = await axios.post(
-			'projects',
+			`${apiUrl}/projects`,
 			{ projectNumber, title, description, category, status, priority, userInfo },
 			config,
 		);
+
+		// const response = await axios.post(
+		// 	'projects',
+		// 	{ projectNumber, title, description, category, status, priority, userInfo },
+		// 	config,
+		// );
 
 		await dispatch({
 			type: CREATE_PROJECT_SUCCESS,

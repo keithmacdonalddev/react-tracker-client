@@ -1,13 +1,13 @@
+import Moment from 'react-moment';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Moment from 'react-moment';
 import { Icon, faChevronRight } from 'components/Icon';
 
 // Redux store ~ actions
 import { showComponent } from 'store/actions/navigationActions';
 import { getProjects } from 'store/actions/projectActions';
 
-import classname from './projects_list.module.css';
+import classname from './project_list.module.css';
 import { SELECTED_PROJECT } from 'store/types';
 
 const hideElement = {
@@ -16,26 +16,21 @@ const hideElement = {
 	left: '-1000px',
 };
 
-const ProjectsList = () => {
+const ProjectList = () => {
 	const dispatch = useDispatch();
 
 	const [mainView, setMainView] = useState('all-projects');
 	const [viewSingleProject, setViewSingleProject] = useState({ active: false, project: null });
-	console.log(viewSingleProject);
+
 	const { projects, loading, error } = useSelector((state) => state.projects);
 
 	useEffect(() => {
 		dispatch(getProjects());
 	}, [dispatch]);
 
-	// const singleProjectClickHandler = (id) => {
-	// dispatch(fetchSingleProject(id));
-	// dispatch(showComponent('project'));
-	// };
-
 	const openProject = (project) => {
-		setViewSingleProject({ active: true, data: project });
-		setMainView('single-project');
+		// setViewSingleProject({ active: true, data: project });
+		console.log('openProject');
 	};
 
 	const newTicketClickHandler = (projectTitle) => {
@@ -57,19 +52,29 @@ const ProjectsList = () => {
 								key={project._id}
 								style={mainView !== 'all-projects' ? hideElement : null}
 								className={classname.card}>
-								<div className={classname.project_title}>{project.title}</div>
-
-								<div className={classname.project_description}>{project.description}</div>
-
-								<Moment className={classname.date} format='MMM-DD'>
-									{project.date}
-								</Moment>
-
-								<div onClick={() => newTicketClickHandler(project.title)} className={classname.icon_container}>
-									<span className={classname.new_ticket_text}> New Ticket</span>
+								<div className={classname.project_title}>
+									<label htmlFor=''>Title</label>
+									<div className={classname.data_item}>{project.title}</div>
 								</div>
 
-								<div onClick={() => openProject(project)} className={classname.go_icon}>
+								<div className={classname.project_description}>
+									<label htmlFor=''>Description</label>
+									<div className={classname.data_item}>{project.description}</div>
+								</div>
+
+								<div className={classname.project_status}>
+									<label htmlFor=''>Status</label>
+									<div className={classname.data_item}>{project.status}</div>
+								</div>
+
+								<div className={classname.date}>
+									<label htmlFor=''>Date</label>
+									<Moment style={{ display: 'block' }} className={classname.data_item} format='MMM-DD'>
+										{project.date}
+									</Moment>
+								</div>
+
+								<div onClick={() => openProject(project)} className={classname.right_arrow_icon}>
 									<Icon type={faChevronRight} />
 								</div>
 							</div>
@@ -83,4 +88,4 @@ const ProjectsList = () => {
 	);
 };
 
-export default ProjectsList;
+export default ProjectList;

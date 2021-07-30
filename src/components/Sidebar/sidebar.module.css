@@ -19,9 +19,34 @@
 	z-index: 99;
 	transition: all 500ms;
 }
+.togglebutton_wrapper {
+	display: flex;
+	position: absolute;
+	align-items: center;
+	width: 60px;
+	height: 70px;
+	overflow: hidden;
+	z-index: 99;
+	background: var(--color-primary-800);
+}
+
+.sidebar_open {
+	grid-column: 1/2;
+	grid-row: 2/3;
+	width: auto;
+	transition: all 500ms;
+}
+
+.sidebar_closed {
+	grid-column: 1/2;
+	grid-row: 2/3;
+	height: 100%;
+	transition: all 300ms;
+}
 
 .togglebutton_wrapper {
 	display: flex;
+	top: 10px;
 	align-items: center;
 	width: 60px;
 	height: 50px;
@@ -43,7 +68,7 @@
 @media (min-width: 500px) {
 	.sidebar_wrapper_closed {
 		position: relative;
-		width: 60px;
+		width: 0px;
 		height: 100%;
 		overflow: hidden;
 		background: var(--color-primary-800);

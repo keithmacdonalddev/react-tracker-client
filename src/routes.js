@@ -12,28 +12,24 @@ const routes = [
 		exact: true,
 		title: 'Home',
 		icon: faHome,
-		component: 'home',
 	},
 	{
 		path: '/my-profile',
 		exact: false,
 		title: 'Profile',
 		icon: faUserCircle,
-		component: 'My Profile',
 	},
 	{
 		path: '/users',
 		exact: false,
 		title: 'users',
 		icon: faUsers,
-		component: 'Users',
 	},
 	{
 		path: '/tickets',
 		exact: false,
 		title: 'My Tickets',
 		icon: faBug,
-		component: 'My Tickets',
 	},
 
 	{
@@ -41,7 +37,6 @@ const routes = [
 		exact: false,
 		title: 'My Projects',
 		icon: faProjectDiagram,
-		component: 'My Projects',
 	},
 
 	{
@@ -49,14 +44,12 @@ const routes = [
 		exact: false,
 		title: 'Activity Monitor',
 		icon: faFileMedical,
-		component: 'Activity Monitor',
 	},
 	{
 		path: '/logout',
 		exact: false,
 		title: 'Signout',
 		icon: faSignOutAlt,
-		component: 'Signout',
 	},
 ];
 

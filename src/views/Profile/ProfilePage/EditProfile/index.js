@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 import Moment from 'react-moment';
 
 import Avatar from 'components/Avatar';
@@ -11,6 +12,7 @@ import classname from './edit_profile.module.css';
 
 const EditProfile = () => {
 	const dispatch = useDispatch();
+	const history = useHistory();
 
 	const { userInfo } = useSelector((state) => state.userLogin);
 	const { user } = useSelector((state) => state.userDetails);
@@ -38,7 +40,7 @@ const EditProfile = () => {
 
 	useEffect(() => {
 		if (success) {
-			dispatch(showComponent('My Profile'));
+			history.push('/my-profile');
 		}
 	}, [dispatch, success]);
 
@@ -48,7 +50,10 @@ const EditProfile = () => {
 				{!user || loading ? (
 					<h6>loading...</h6>
 				) : error ? (
-					<h6>{error}</h6>
+					<>
+						<h6>{error}</h6>
+						<Link to='/my-profile'>Back to my profile</Link>
+					</>
 				) : (
 					<>
 						<div className={classname.avatar}>
@@ -112,7 +117,7 @@ const EditProfile = () => {
 							<button type='submit' className={classname.submit_button}>
 								SUBMIT
 							</button>
-							<div onClick={() => dispatch(showComponent('My Profile'))} className={classname.cancel_edit_button}>
+							<div onClick={() => history.push('/my-profile')} className={classname.cancel_edit_button}>
 								CANCEL
 							</div>
 						</form>

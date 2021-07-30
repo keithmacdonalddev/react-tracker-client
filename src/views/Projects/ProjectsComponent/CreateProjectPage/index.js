@@ -17,9 +17,7 @@ const CreateProjectPage = () => {
 
 	const { userInfo } = useSelector((state) => state.userLogin);
 
-	const project = useSelector((state) => state.project);
-	const { loading: loadingCreate, success: successCreate, error: errorCreate } = project;
-	const prodServer = false;
+	const { loading: loadingCreate, success: successCreate, error: errorCreate } = useSelector((state) => state.project);
 
 	const [projectNumber, setProjectNumber] = useState('');
 	const [title, setTitle] = useState('');
@@ -30,14 +28,14 @@ const CreateProjectPage = () => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		dispatch(createProject(projectNumber, title, description, category, status, priority, userInfo, prodServer));
+		dispatch(createProject(projectNumber, title, description, category, status, priority, userInfo));
 	};
 
 	useEffect(() => {
 		if (successCreate) {
-			dispatch({ type: CREATE_PROJECT_RESET });
-			dispatch(getProjects());
-			history.push('/projects');
+			dispatch({ type: CREATE_PROJECT_RESET }); // reset success variable to default
+			dispatch(getProjects()); // fetch all projects
+			history.push('/projects'); // redirect to the projects page
 		}
 	}, [dispatch, history, successCreate]);
 
@@ -55,12 +53,8 @@ const CreateProjectPage = () => {
 						<form onSubmit={(event) => handleSubmit(event)}>
 							<div className={classname.input_container}>
 								<label className={classname.label}>Project Number:</label>
-								<input
-									value={projectNumber}
-									className={classname.dataField}
-									type='text'
-									onChange={(event) => setProjectNumber(event.target.value)}
-								/>
+								{/* prettier-ignore */}
+								<input value={projectNumber} className={classname.dataField} type='text' onChange={(event) => setProjectNumber(event.target.value)} />
 							</div>
 
 							<div className={classname.input_container}>

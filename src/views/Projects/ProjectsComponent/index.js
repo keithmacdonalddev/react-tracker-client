@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import ProjectsList from 'views/Projects/ProjectsComponent/ProjectsList';
+import ProjectList from 'views/Projects/ProjectsComponent/ProjectsList';
 
 import classname from './projects_component.module.css';
 
@@ -16,7 +16,7 @@ const ProjectsComponent = () => {
 					</Link>
 				</div>
 			</div>
-			<ProjectsList />
+			<ProjectList />
 		</div>
 	);
 };

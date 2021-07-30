@@ -7,7 +7,7 @@
 	box-shadow: 0 1px 3px 1px rgb(0 0 0 / 30%);
 }
 
-.footerButton {
+.create_project_button {
 	display: flex;
 	justify-content: center;
 	align-items: center;

@@ -16,6 +16,8 @@ import { Icon, faSun, faMoon } from 'components/Icon';
 import classname from './app.module.css';
 import CreateProjectPage from 'views/Projects/ProjectsComponent/CreateProjectPage';
 import SignOut from 'views/Authentication/SignOut';
+import EditProject from 'views/Projects/ProjectsComponent/EditProject';
+import EditProfile from 'views/Profile/ProfilePage/EditProfile';
 
 const App = () => {
 	const [lightMode, setLightMode] = useState(true);
@@ -38,8 +40,10 @@ const App = () => {
 					<Route path='/projects' component={Projects} />
 					<Route path='/create-ticket' component={CreateTicketPage} />
 					<Route path='/create-project' component={CreateProjectPage} />
+					<Route path='/edit-project/:id' component={EditProject} />
 					<Route path='/dashboard/tickets/single-ticket' component={SingleTicketPage} />
 					<Route path='/my-profile' component={ProfilePage} />
+					<Route path='/edit-profile' component={EditProfile} />
 					<Route path='/users' component={Users} />
 					<Route path='/register' component={RegisterPage} />
 					<Route path='/login' component={LoginPage} />

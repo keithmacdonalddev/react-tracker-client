@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 
 import Avatar from 'components/Avatar';
-import { SET_EDITING_TRUE, USER_UPDATE_PROFILE_RESET } from 'store/types';
+import { USER_UPDATE_PROFILE_RESET } from 'store/types';
 import { getUserDetails } from 'store/actions/userActions';
 import { showComponent } from 'store/actions/navigationActions';
 
@@ -17,14 +18,8 @@ const ProfileInfo = ({ friendProfile }) => {
 	const { success } = useSelector((state) => state.userUpdateProfile);
 
 	const [userData, setUserData] = useState({ loading: 'loading...' });
-	// const profileKey = useSelector((state) => state.profileKey);
 
 	const editClickHandler = () => {
-		// setActiveKey('edit');
-		dispatch({
-			type: SET_EDITING_TRUE,
-			payload: { isEditing: true, id: userInfo._id },
-		});
 		dispatch(showComponent('editProfile'));
 	};
 
@@ -106,9 +101,9 @@ const ProfileInfo = ({ friendProfile }) => {
 				</>
 			)}
 			{!friendProfile ? (
-				<div onClick={() => editClickHandler()} className={classname.editButtonContainer}>
+				<Link to='/edit-profile' className={classname.editButtonContainer}>
 					Edit Profile
-				</div>
+				</Link>
 			) : (
 				<div className={classname.friend_options_container}>
 					<div className={classname.friend_options_button}>MESSAGE</div>
