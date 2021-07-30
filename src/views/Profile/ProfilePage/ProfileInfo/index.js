@@ -6,7 +6,6 @@ import Moment from 'react-moment';
 import Avatar from 'components/Avatar';
 import { USER_UPDATE_PROFILE_RESET } from 'store/types';
 import { getUserDetails } from 'store/actions/userActions';
-import { showComponent } from 'store/actions/navigationActions';
 
 import classname from './profileInfo.module.css';
 import './profileInfo.module.css';
@@ -18,10 +17,6 @@ const ProfileInfo = ({ friendProfile }) => {
 	const { success } = useSelector((state) => state.userUpdateProfile);
 
 	const [userData, setUserData] = useState({ loading: 'loading...' });
-
-	const editClickHandler = () => {
-		dispatch(showComponent('editProfile'));
-	};
 
 	useEffect(() => {
 		dispatch(getUserDetails(userInfo._id));

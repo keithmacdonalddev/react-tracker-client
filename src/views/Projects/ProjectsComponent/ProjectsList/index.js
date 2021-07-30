@@ -4,11 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Icon, faChevronRight } from 'components/Icon';
 
 // Redux store ~ actions
-import { showComponent } from 'store/actions/navigationActions';
 import { getProjects } from 'store/actions/projectActions';
 
 import classname from './project_list.module.css';
-import { SELECTED_PROJECT } from 'store/types';
+// import { SELECTED_PROJECT } from 'store/types';
 
 const hideElement = {
 	position: 'absolute',
@@ -20,7 +19,7 @@ const ProjectList = () => {
 	const dispatch = useDispatch();
 
 	const [mainView, setMainView] = useState('all-projects');
-	const [viewSingleProject, setViewSingleProject] = useState({ active: false, project: null });
+	// const [viewSingleProject, setViewSingleProject] = useState({ active: false, project: null });
 
 	const { projects, loading, error } = useSelector((state) => state.projects);
 
@@ -31,11 +30,7 @@ const ProjectList = () => {
 	const openProject = (project) => {
 		// setViewSingleProject({ active: true, data: project });
 		console.log('openProject');
-	};
-
-	const newTicketClickHandler = (projectTitle) => {
-		dispatch({ type: SELECTED_PROJECT, payload: projectTitle });
-		dispatch(showComponent('createTicket'));
+		setMainView('null');
 	};
 
 	return (

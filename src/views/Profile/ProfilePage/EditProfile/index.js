@@ -6,7 +6,6 @@ import Moment from 'react-moment';
 import Avatar from 'components/Avatar';
 
 import { updateUserProfile } from 'store/actions/userActions';
-import { showComponent } from 'store/actions/navigationActions';
 
 import classname from './edit_profile.module.css';
 
@@ -42,7 +41,7 @@ const EditProfile = () => {
 		if (success) {
 			history.push('/my-profile');
 		}
-	}, [dispatch, success]);
+	}, [dispatch, history, success]);
 
 	return (
 		<div className={classname.profilePageContainer}>
