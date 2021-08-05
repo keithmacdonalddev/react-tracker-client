@@ -1,37 +1,27 @@
-import Moment from 'react-moment';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Icon, faChevronRight } from 'components/Icon';
+import Moment from 'react-moment';
 
-// Redux store ~ actions
-import { getProjects } from 'store/actions/projectActions';
+import { fetchSingleProject, getProjects } from 'store/actions/projectActions';
+import { Icon, faChevronRight, faTrash } from 'components/Icon';
 
 import classname from './project_list.module.css';
-// import { SELECTED_PROJECT } from 'store/types';
-
-const hideElement = {
-	position: 'absolute',
-	top: 0,
-	left: '-1000px',
-};
 
 const ProjectList = () => {
+	const history = useHistory();
 	const dispatch = useDispatch();
 
-	const [mainView, setMainView] = useState('all-projects');
-	// const [viewSingleProject, setViewSingleProject] = useState({ active: false, project: null });
-
 	const { projects, loading, error } = useSelector((state) => state.projects);
+
+	const handleClick = (project) => {
+		dispatch(fetchSingleProject(project._id));
+		history.push(`/project/${project._id}`);
+	};
 
 	useEffect(() => {
 		dispatch(getProjects());
 	}, [dispatch]);
-
-	const openProject = (project) => {
-		// setViewSingleProject({ active: true, data: project });
-		console.log('openProject');
-		setMainView('null');
-	};
 
 	return (
 		<div className={classname.projects_container}>
@@ -41,35 +31,31 @@ const ProjectList = () => {
 				<div>{error}</div>
 			) : projects ? (
 				<>
-					{projects.map((project, index) => {
+					{projects.map((project) => {
 						return (
-							<div
-								key={project._id}
-								style={mainView !== 'all-projects' ? hideElement : null}
-								className={classname.card}>
+							<div key={project._id} className={classname.card}>
 								<div className={classname.project_title}>
-									<label htmlFor=''>Title</label>
+									<div className={classname.data_item_label}>Title</div>
 									<div className={classname.data_item}>{project.title}</div>
 								</div>
-
 								<div className={classname.project_description}>
-									<label htmlFor=''>Description</label>
+									<div className={classname.data_item_label}>Description</div>
 									<div className={classname.data_item}>{project.description}</div>
 								</div>
-
 								<div className={classname.project_status}>
-									<label htmlFor=''>Status</label>
+									<div className={classname.data_item_label}>Status</div>
 									<div className={classname.data_item}>{project.status}</div>
 								</div>
-
 								<div className={classname.date}>
-									<label htmlFor=''>Date</label>
-									<Moment style={{ display: 'block' }} className={classname.data_item} format='MMM-DD'>
+									<div className={classname.data_item_label}>Date</div>
+									<Moment className={classname.data_item} style={{ display: 'block' }} format='MMM-DD'>
 										{project.date}
 									</Moment>
 								</div>
-
-								<div onClick={() => openProject(project)} className={classname.right_arrow_icon}>
+								<div className={classname.icon} style={{ background: '#f85656' }}>
+									<Icon type={faTrash} />
+								</div>
+								<div className={classname.icon} onClick={() => handleClick(project)}>
 									<Icon type={faChevronRight} />
 								</div>
 							</div>

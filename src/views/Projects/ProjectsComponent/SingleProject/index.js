@@ -1,26 +1,43 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
+import Dashboard from 'views/Dashboard';
 import SingleProjectJSX from './SingleProjectJSX';
 import SingleProjectNavigation from './SingleProjectNavigation';
-// import SingleProjectAssignees from './SingleProjectAssignees';
+import { fetchSingleProject } from 'store/actions/projectActions';
 
-// CSS
 import classname from './SingleProject.module.css';
 
-const SingleProject = ({ project, loading }) => {
-	if (loading) {
-		return <h6>Loading...</h6>;
-	}
+const SingleProject = () => {
+	const { id } = useParams();
+	const dispatch = useDispatch();
+
+	const { project, loading, error } = useSelector((state) => state.singleProject);
+
+	useEffect(() => {
+		if (!project) {
+			dispatch(fetchSingleProject(id));
+		}
+	}, [id, project, dispatch]);
 
 	return (
-		<div className={classname.page_layout}>
-			<SingleProjectNavigation />
-
-			<div className={classname.project_container}>
-				{/* <SingleProjectAssignees project={project} loading={loading} /> */}
-				<SingleProjectJSX />
+		<Dashboard>
+			<div className={classname.single_project_grid_layout}>
+				{loading ? (
+					<div>loading...</div>
+				) : error ? (
+					<div>{error}</div>
+				) : project ? (
+					<div className={classname.single_project_container}>
+						<SingleProjectNavigation project={project} />
+						<SingleProjectJSX project={project} />
+					</div>
+				) : (
+					<div>No data found</div>
+				)}
 			</div>
-		</div>
+		</Dashboard>
 	);
 };
 

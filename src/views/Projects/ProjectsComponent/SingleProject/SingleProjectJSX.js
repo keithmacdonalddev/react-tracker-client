@@ -1,47 +1,31 @@
 import React from 'react';
+import classname from './SingleProject.module.css';
 
-import style from './SingleProject.module.css';
-
-const SingleProjectJSX = ({ project, loading }) => {
+const SingleProjectJSX = ({ project }) => {
+	console.log(project);
 	return (
-		<div className={style.dataFieldContainer}>
-			{loading ? (
-				<div>loading...</div>
-			) : project ? (
-				<>
-					<div className={style.line_one}>
-						<div className={style.input_container}>
-							<label className={style.label}>Project Title</label>
-							<div className={style.dataField}>{project.title}</div>
-						</div>
-						<div className={style.input_container}>
-							<label className={style.label}>Status</label>
-							<div className={style.dataField}>{project.status}</div>
-						</div>
-						<div className={style.input_container}>
-							<label className={style.label}>Owner</label>
-							<div className={style.dataField}>{project.owner}</div>
-						</div>
-						<div className={style.input_container}>
-							<label className={style.label}>Project Id</label>
-							<div className={style.dataField}>{project._id}</div>
-						</div>
-						<div className={style.input_container}>
-							<label className={style.label}>Assigned Personnel</label>
-							{project.assignee.map((person) => (
-								<div className={style.dataField}>{person}</div>
-							))}
-						</div>
-					</div>
+		<div className={classname.single_project_jsx_container}>
+			<div className={classname.data_wrapper}>
+				<h1 className={classname.project_title}>{project.title}</h1>
+			</div>
+			<div className={classname.data_wrapper}>
+				<div className={classname.data_field_title}>Status</div>
+				<div className={classname.dataField}>{project.status}</div>
+			</div>
+			<div className={classname.data_wrapper}>
+				<div className={classname.data_field_title}>Owner</div>
+				<div className={classname.dataField}>{project.owner}</div>
+			</div>
+			<div className={classname.data_wrapper}>
+				<div className={classname.data_field_title}>Project Id</div>
 
-					<div className={style.input_container}>
-						<label className={style.label}>Description</label>
-						<div className={style.dataField}>{project.description}</div>
-					</div>
-				</>
-			) : (
-				<div>No data found</div>
-			)}
+				<div className={classname.dataField}>{project._id}</div>
+			</div>
+			{/*  */}
+			<div className={classname.data_wrapper}>
+				<div className={classname.data_field_title}>Description</div>
+				<div className={classname.dataField}>{project.description}</div>
+			</div>
 		</div>
 	);
 };

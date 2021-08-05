@@ -1,11 +1,18 @@
 .project_container {
 	position: relative;
 	width: 100%;
+	max-width: 800px;
+	height: auto;
 	margin-top: 30px;
+	margin-bottom: 15px;
 	padding: 20px;
+	padding: 20px;
+	border-radius: 5px;
+	background: #f6f6f7;
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-.dataFieldContainer {
+/* .dataFieldContainer {
 	max-width: 800px;
 	height: auto;
 	padding: 20px;
@@ -14,7 +21,7 @@
 	margin-bottom: 15px;
 	background: #f6f6f7;
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-}
+} */
 
 .header {
 	text-align: center;
@@ -51,14 +58,14 @@
 	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.2), inset -1px -1px 1px rgba(0, 0, 0, 0.1);
 }
 .textarea {
-	border: none;
 	width: auto;
-	background-color: #f9f9f9;
-	color: black;
-	margin-top: 5px;
 	padding: 6px;
+	margin-top: 5px;
 	font-size: 12px;
+	border: none;
 	border-radius: 5px;
+	color: black;
+	background: #f9f9f9;
 	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.2), inset -1px -1px 1px rgba(0, 0, 0, 0.1);
 }
 
@@ -71,13 +78,13 @@
 
 .submit_button {
 	width: 100%;
-	/* background-color: #66ba93; */
-	background-color: var(--color-primary-700);
-	color: white;
+	padding: 8px;
 	font-size: 16px;
 	font-weight: 700;
-	padding: 8px;
 	border-radius: 5px;
+	color: white;
+	/* background: #66ba93; */
+	background: var(--color-primary-700);
 }
 
 .submit_button:hover {

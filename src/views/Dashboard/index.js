@@ -7,7 +7,6 @@ import { useHistory } from 'react-router-dom';
 
 import Sidebar from 'components/Sidebar';
 import AppBarTop from 'components/AppBarTop';
-import MainView from './MainView';
 
 // CSS
 import classname from './dashboard.module.css';
@@ -33,7 +32,7 @@ const Dashboard = ({ children }) => {
 					</div>
 
 					{/* -------------------- MAIN CONTENT AREA -------------------- */}
-					<div className={classname.main_wrapper}>{children ? children : <MainView />}</div>
+					<div className={classname.main_wrapper}>{children}</div>
 				</div>
 			) : (
 				''

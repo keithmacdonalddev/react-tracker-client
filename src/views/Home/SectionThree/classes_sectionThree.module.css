@@ -24,7 +24,7 @@
 	width: calc(100% - 10px);
 	padding: 20px 40px 20% 40px;
 	max-height: 500px;
-	max-height: -webkit-fill-available;
+	/* max-height: -webkit-fill-available; */
 }
 
 @media (max-width: 888px) {

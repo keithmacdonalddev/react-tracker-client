@@ -22,7 +22,6 @@ import {
 	buildFormReducer,
 	currentPageReducer,
 	formDataReducer,
-	selectedProjectReducer,
 } from './reducers/ticketReducer';
 import {
 	modalStatusReducer,
@@ -80,7 +79,6 @@ const reducer = combineReducers({
 	buildForm: buildFormReducer,
 	formData: formDataReducer,
 	currentPage: currentPageReducer,
-	selectedProject: selectedProjectReducer,
 	userLogin: userLoginReducer,
 	users: userListReducer,
 	featuredUser: featuredUserReducer,

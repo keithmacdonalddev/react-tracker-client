@@ -42,9 +42,9 @@ import {
 	SAVE_FORM_DATA,
 	DELETE_FORM_DATA,
 	PAGE_THREE,
-	SELECTED_PROJECT,
-	SELECTED_PROJECT_RESET,
 	GET_TICKET_RESET,
+	// SELECTED_PROJECT,
+	// SELECTED_PROJECT_RESET,
 } from 'store/types';
 
 export const getTicketsReducer = (state = {}, action) => {
@@ -234,13 +234,13 @@ export const formDataReducer = (state = {}, action) => {
 	}
 };
 
-export const selectedProjectReducer = (state = null, action) => {
-	switch (action.type) {
-		case SELECTED_PROJECT:
-			return action.payload;
-		case SELECTED_PROJECT_RESET:
-			return null;
-		default:
-			return state;
-	}
-};
+// export const selectedProjectReducer = (state = null, action) => {
+// 	switch (action.type) {
+// 		case SELECTED_PROJECT:
+// 			return action.payload;
+// 		case SELECTED_PROJECT_RESET:
+// 			return null;
+// 		default:
+// 			return state;
+// 	}
+// };

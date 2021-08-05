@@ -1,9 +1,9 @@
 /**
  *  FILE CONTENTS
- *  1. @function createProject()
- *  2. @function fetchSingleProject()
- *  3. @function getProjects()
- *  4. @function deleteProjectAction()
+ *  1. @function createProject
+ *  2. @function fetchSingleProject
+ *  3. @function getProjects
+ *  4. @function deleteProjectAction
  */
 
 import axios from 'axios';
@@ -80,6 +80,7 @@ export const fetchSingleProject = (projectId) => async (dispatch, getState) => {
 		};
 
 		const { data } = await axios.get(`${apiUrl}/project/${projectId}`, config);
+
 		dispatch({
 			type: GET_SINGLE_PROJECT_SUCCESS,
 			payload: data,
@@ -122,7 +123,7 @@ export const getProjects = () => async (dispatch, getState) => {
 	}
 };
 
-export const deleteProjectAction = (id) => async (dispatch, getState) => {
+export const deleteProject = (id) => async (dispatch, getState) => {
 	try {
 		dispatch({ type: DELETE_PROJECT_REQUEST });
 
