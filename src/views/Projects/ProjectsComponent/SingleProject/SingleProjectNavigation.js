@@ -18,11 +18,13 @@ const SingleProjectNavigation = ({ project }) => {
 	// make the following code way better
 	// ************************************************************
 	let displayNone = {};
+
 	if (confirmDelete) {
 		displayNone = {
 			display: 'none',
 		};
 	}
+
 	if (!confirmDelete) {
 		displayNone = {
 			display: 'flex',

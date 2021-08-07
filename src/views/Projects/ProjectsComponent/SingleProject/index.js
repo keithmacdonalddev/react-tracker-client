@@ -10,13 +10,23 @@ import { fetchSingleProject } from 'store/actions/projectActions';
 import classname from './SingleProject.module.css';
 
 const SingleProject = () => {
-	const { id } = useParams();
+	const { id } = useParams(); // project id
 	const dispatch = useDispatch();
 
-	const { project, loading, error } = useSelector((state) => state.singleProject);
+	const { projects, loading, error } = useSelector((state) => state.projects); //
+
+	const project = projects.find((project) => {
+		console.log(`project id: ${project._id}`);
+		console.log(`id: ${id}`);
+
+		return project._id === id;
+	});
+
+	console.log(`project: ${project}`);
 
 	useEffect(() => {
 		if (!project) {
+			console.log(`no project found, requesting project: ${id} from API`);
 			dispatch(fetchSingleProject(id));
 		}
 	}, [id, project, dispatch]);

@@ -1,6 +1,7 @@
 import React from 'react';
-import ProjectsComponent from './ProjectsComponent';
 import Dashboard from 'views/Dashboard';
+import ProjectsComponent from './ProjectsComponent';
+
 import classname from './projects.module.css';
 
 const MyProjectsPage = () => {

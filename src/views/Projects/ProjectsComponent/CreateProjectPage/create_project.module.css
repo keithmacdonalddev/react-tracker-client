@@ -1,15 +1,19 @@
-.project_container {
-	position: relative;
+.create_project_grid {
+	display: flex;
 	width: 100%;
-	max-width: 800px;
 	height: auto;
-	margin-top: 30px;
-	margin-bottom: 15px;
-	padding: 20px;
-	padding: 20px;
-	border-radius: 5px;
-	background: #f6f6f7;
-	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+	justify-content: center;
+}
+
+.create_project_form_container {
+	width: 90%;
+	max-width: 800px;
+	height: 100%;
+	margin: 50px;
+	padding: 8vw;
+	border-radius: 10px;
+	background: var(--color-primary-800);
+	box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* .dataFieldContainer {
@@ -24,15 +28,19 @@
 } */
 
 .header {
-	text-align: center;
-	font-size: 18px;
+	font-size: 24px;
 	font-weight: 500;
-	margin-bottom: 2 0px;
+	padding: 10px;
+	margin-top: -20px;
+	margin-bottom: 10px;
+
+	/* border-bottom: 2px solid rgba(0, 0, 0, 0.2); */
+	border-left: 5px solid var(--color-accent);
 }
 
 .input_container {
 	display: grid;
-	margin-bottom: 20px;
+	padding-top: 30px;
 }
 
 .label {
@@ -55,8 +63,9 @@
 	padding: 6px;
 	font-size: 12px;
 	border-radius: 5px;
-	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.2), inset -1px -1px 1px rgba(0, 0, 0, 0.1);
+	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.2), inset -1px -1px 5px rgba(0, 0, 0, 0.1);
 }
+
 .textarea {
 	width: auto;
 	padding: 6px;
@@ -69,22 +78,17 @@
 	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.2), inset -1px -1px 1px rgba(0, 0, 0, 0.1);
 }
 
-.radio_buttons {
-	display: flex;
-	align-items: center;
-	border: none;
-	outline: none;
-}
-
 .submit_button {
 	width: 100%;
-	padding: 8px;
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: 700;
+	padding: 10px;
+	margin-top: 50px;
+	border: none;
 	border-radius: 5px;
-	color: white;
-	/* background: #66ba93; */
+	color: var(--color-primary-800);
 	background: var(--color-primary-700);
+	cursor: pointer;
 }
 
 .submit_button:hover {

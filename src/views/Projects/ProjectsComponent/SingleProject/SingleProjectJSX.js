@@ -3,6 +3,7 @@ import classname from './SingleProject.module.css';
 
 const SingleProjectJSX = ({ project }) => {
 	console.log(project);
+
 	return (
 		<div className={classname.single_project_jsx_container}>
 			<div className={classname.data_wrapper}>
@@ -18,10 +19,8 @@ const SingleProjectJSX = ({ project }) => {
 			</div>
 			<div className={classname.data_wrapper}>
 				<div className={classname.data_field_title}>Project Id</div>
-
 				<div className={classname.dataField}>{project._id}</div>
 			</div>
-			{/*  */}
 			<div className={classname.data_wrapper}>
 				<div className={classname.data_field_title}>Description</div>
 				<div className={classname.dataField}>{project.description}</div>

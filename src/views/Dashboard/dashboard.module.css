@@ -58,7 +58,7 @@ body {
 	overflow-y: auto;
 	overflow-x: hidden;
 }
-
+/* 
 .main_wrapper::-webkit-scrollbar-track {
 	background: var(--color-primary-900);
 }
@@ -69,7 +69,7 @@ body {
 .main_wrapper::-webkit-scrollbar-thumb:hover {
 	background: var(--color-primary-700);
 	transition: all 1300ms linear;
-}
+} */
 
 /*  ----- TABLET ----- */
 @media (max-width: 500px) {

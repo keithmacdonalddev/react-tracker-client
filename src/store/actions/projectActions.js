@@ -39,11 +39,12 @@ export const createProject = (projectNumber, title, description, category, statu
 			},
 		};
 
-		const response = await axios.post(
+		const { data } = await axios.post(
 			`${apiUrl}/projects`,
 			{ projectNumber, title, description, category, status, priority, userInfo },
 			config,
 		);
+		console.log(data);
 
 		// const response = await axios.post(
 		// 	'projects',
@@ -53,7 +54,7 @@ export const createProject = (projectNumber, title, description, category, statu
 
 		await dispatch({
 			type: CREATE_PROJECT_SUCCESS,
-			payload: response.data,
+			payload: data,
 		});
 	} catch (error) {
 		dispatch({
