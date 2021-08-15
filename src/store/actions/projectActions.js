@@ -39,18 +39,18 @@ export const createProject = (projectNumber, title, description, category, statu
 			},
 		};
 
-		const { data } = await axios.post(
-			`${apiUrl}/projects`,
-			{ projectNumber, title, description, category, status, priority, userInfo },
-			config,
-		);
-		console.log(data);
-
-		// const response = await axios.post(
-		// 	'projects',
+		// const { data } = await axios.post(
+		// 	`${apiUrl}/projects`,
 		// 	{ projectNumber, title, description, category, status, priority, userInfo },
 		// 	config,
 		// );
+		// console.log(data);
+
+		const { data } = await axios.post(
+			'projects',
+			{ projectNumber, title, description, category, status, priority, userInfo },
+			config,
+		);
 
 		await dispatch({
 			type: CREATE_PROJECT_SUCCESS,
@@ -80,7 +80,8 @@ export const fetchSingleProject = (projectId) => async (dispatch, getState) => {
 			},
 		};
 
-		const { data } = await axios.get(`${apiUrl}/project/${projectId}`, config);
+		// const { data } = await axios.get(`${apiUrl}/project/${projectId}`, config);
+		const { data } = await axios.get(`/project/${projectId}`, config);
 
 		dispatch({
 			type: GET_SINGLE_PROJECT_SUCCESS,
@@ -106,11 +107,9 @@ export const getProjects = () => async (dispatch, getState) => {
 			},
 		};
 
-		// Local development server. Use port 5000
-		// const { data } = await axios.get(`projects/${userInfo._id}`, config);
+		const { data } = await axios.get(`projects/${userInfo._id}`, config);
 
-		// Production server.  Hosted at Heroku
-		const { data } = await axios.get(`${apiUrl}/projects/${userInfo._id}`, config);
+		// const { data } = await axios.get(`${apiUrl}/projects/${userInfo._id}`, config);
 
 		dispatch({
 			type: GET_PROJECTS_SUCCESS,
@@ -162,8 +161,9 @@ export const editProject = (title, description, status, id) => async (dispatch, 
 				Authorization: `Bearer ${userInfo.token}`,
 			},
 		};
+		console.log(id);
 
-		await axios.put(`${apiUrl}/${id}`, { title, description, status, id }, config);
+		await axios.put(`${apiUrl}/project/${id}`, { title, description, status, id }, config);
 
 		dispatch({ type: EDIT_PROJECT_SUCCESS });
 	} catch (error) {

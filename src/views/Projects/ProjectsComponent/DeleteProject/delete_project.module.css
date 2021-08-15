@@ -1,29 +1,69 @@
+.delete_project_confirmation {
+	display: grid;
+	align-items: center;
+	justify-content: center;
+	width: 80%;
+	height: 200px;
+	margin: auto;
+	margin-top: 50px;
+	border-radius: 5px;
+	background: var(--color-primary-800);
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+	font-size: 20px;
+}
+
+.subtitle {
+	margin-top: -20px;
+	font-size: 16px;
+	color: var(--color-primary-700);
+	text-align: center;
+}
+
 .button_container {
 	display: flex;
+	justify-content: center;
+	gap: 20px;
 	width: 100%;
-	height: auto;
+	height: 50px;
 }
 
 .delete_button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: red;
+	width: 100%;
 	color: white;
+	font-size: 16px;
 	font-weight: 600;
 	padding: 5px 20px;
-	border-radius: 10px;
+	border-radius: 5px;
+	background: var(--color-accent);
 	border: 1px solid white;
+	cursor: pointer;
+}
+
+.delete_button:hover {
+	background: var(--color-accent-hover);
 }
 
 .cancel_button {
 	display: flex;
+	width: 100%;
 	justify-content: center;
 	align-items: center;
-	background: blue;
-	color: white;
+	background: var(--color-primary-800);
+	color: var(--color-primary-700);
+	font-size: 16px;
 	font-weight: 600;
 	padding: 5px 20px;
-	border-radius: 10px;
-	border: 1px solid white;
+	border-radius: 5px;
+	border: 1px solid var(--color-primary-700);
+	cursor: pointer;
+}
+
+.cancel_button:hover {
+	background: var(--color-primary-900);
 }

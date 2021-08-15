@@ -17,6 +17,7 @@ import SingleTicketPage from 'views/Tickets/MyTicketsPage/SingleTicket';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SingleProject from 'views/Projects/ProjectsComponent/SingleProject';
 import CreateProjectPage from 'views/Projects/ProjectsComponent/CreateProjectPage';
+import DeleteProject from 'views/Projects/ProjectsComponent/DeleteProject';
 
 const App = () => {
 	const [isLightMode, setIsLightMode] = useState(true);
@@ -51,8 +52,9 @@ const App = () => {
 					<Route exact path='/dashboard' component={DashBoardHome} />
 					<Route exact path='/edit-profile' component={EditProfile} />
 					<Route exact path='/project/:id' component={SingleProject} />
-					<Route exact path='/edit-project/:id' component={EditProject} />
+					<Route exact path='/project/:id/edit' component={EditProject} />
 					<Route exact path='/create-ticket' component={CreateTicketPage} />
+					<Route exact path='/project/:id/delete' component={DeleteProject} />
 					<Route exact path='/create-project' component={CreateProjectPage} />
 					<Route exact path='/single-ticket/:id' component={SingleTicketPage} />
 				</Switch>

@@ -1,51 +1,48 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-
+import { useSelector } from 'react-redux';
 import Dashboard from 'views/Dashboard';
 import SingleProjectJSX from './SingleProjectJSX';
 import SingleProjectNavigation from './SingleProjectNavigation';
-import { fetchSingleProject } from 'store/actions/projectActions';
 
 import classname from './SingleProject.module.css';
 
 const SingleProject = () => {
-	const { id } = useParams(); // project id
-	const dispatch = useDispatch();
+	// get project id from url
+	const { id } = useParams();
+	const history = useHistory();
 
-	const { projects, loading, error } = useSelector((state) => state.projects); //
+	// fetch projects from api and access from global store
+	const { project } = useSelector((state) => state.singleProjectDetails);
 
-	const project = projects.find((project) => {
-		console.log(`project id: ${project._id}`);
-		console.log(`id: ${id}`);
+	const redirectToAllProjects = () => {
+		setTimeout(function () {
+			history.push('/projects');
+		}, 2000);
+	};
 
-		return project._id === id;
-	});
-
-	console.log(`project: ${project}`);
-
-	useEffect(() => {
-		if (!project) {
-			console.log(`no project found, requesting project: ${id} from API`);
-			dispatch(fetchSingleProject(id));
-		}
-	}, [id, project, dispatch]);
+	if (!project) {
+		return (
+			<Dashboard>
+				<div className={classname.not_found_container}>
+					Project not found,
+					<span className={classname.return_link}>
+						returning to all projects...
+						{redirectToAllProjects()}
+					</span>
+				</div>
+			</Dashboard>
+		);
+	}
 
 	return (
 		<Dashboard>
 			<div className={classname.single_project_grid_layout}>
-				{loading ? (
-					<div>loading...</div>
-				) : error ? (
-					<div>{error}</div>
-				) : project ? (
-					<div className={classname.single_project_container}>
-						<SingleProjectNavigation project={project} />
-						<SingleProjectJSX project={project} />
-					</div>
-				) : (
-					<div>No data found</div>
-				)}
+				<div className={classname.single_project_container}>
+					<SingleProjectNavigation projectId={project._id} />
+					<SingleProjectJSX project={project} />
+				</div>
 			</div>
 		</Dashboard>
 	);

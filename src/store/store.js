@@ -33,7 +33,7 @@ import {
 	profileNavKeyReducer,
 	usersNavActiveReducer,
 } from './reducers/navigationReducers';
-
+import { singleProjectDetailsReducer } from './reducers/projectReducers/projectReducers';
 import {
 	fetchSingleProjectReducer,
 	createProjectReducer,
@@ -61,6 +61,7 @@ const reducer = combineReducers({
 	project: createProjectReducer,
 	projects: getProjectsReducer,
 	singleProject: fetchSingleProjectReducer,
+	singleProjectDetails: singleProjectDetailsReducer,
 	status: sidebarStatusReducer,
 	isEditing: setEditingStatusReducer,
 	widgetView: showWidgetItemReducer,

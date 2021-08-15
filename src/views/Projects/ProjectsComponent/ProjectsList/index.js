@@ -3,7 +3,8 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Moment from 'react-moment';
 
-import { fetchSingleProject, getProjects } from 'store/actions/projectActions';
+import { getProjects } from 'store/actions/projectActions';
+import { singleProjectDetails } from 'store/actions/projectActions/singleProjectDetails';
 import { Icon, faChevronRight, faTrash } from 'components/Icon';
 
 import classname from './project_list.module.css';
@@ -15,8 +16,12 @@ const ProjectList = () => {
 	const { projects, loading, error } = useSelector((state) => state.projects);
 
 	const handleClick = (project) => {
-		dispatch(fetchSingleProject(project._id));
+		dispatch(singleProjectDetails(project));
 		history.push(`/project/${project._id}`);
+	};
+
+	const handleDelete = (project) => {
+		history.push(`/project/${project._id}/delete`);
 	};
 
 	useEffect(() => {
@@ -52,7 +57,7 @@ const ProjectList = () => {
 										{project.date}
 									</Moment>
 								</div>
-								<div className={classname.icon} style={{ background: '#f85656' }}>
+								<div className={classname.icon} style={{ background: '#f85656' }} onClick={() => handleDelete(project)}>
 									<Icon type={faTrash} />
 								</div>
 								<div className={classname.icon} onClick={() => handleClick(project)}>

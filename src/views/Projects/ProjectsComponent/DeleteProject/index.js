@@ -1,46 +1,64 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { showComponent } from "store/actions/navigationActions";
-import { deleteProjectAction } from "store/actions/projectActions";
-import { DELETE_PROJECT_RESET } from "store/types";
+import React, { useEffect } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
-import classname from "./delete_project.module.css";
+import { DELETE_PROJECT_RESET } from 'store/types';
+import { deleteProject, fetchSingleProject } from 'store/actions/projectActions';
 
-const DeleteProject = ({ project }) => {
+import Dashboard from 'views/Dashboard';
+import classname from './delete_project.module.css';
+
+const DeleteProject = () => {
+	const { id } = useParams();
+	const history = useHistory();
 	const dispatch = useDispatch();
 
 	const { success } = useSelector((state) => state.projectDelete);
+	const { project, loading, error } = useSelector((state) => state.singleProject);
 
 	const deleteButtonClickHandler = () => {
-		dispatch(deleteProjectAction(project._id));
+		dispatch(deleteProject(project._id));
 	};
 
 	useEffect(() => {
 		if (success) {
 			dispatch({ type: DELETE_PROJECT_RESET });
-			dispatch(showComponent("My Projects"));
+			history.push('/dashboard');
 		}
-	}, [success, dispatch]);
+	}, [success, dispatch, history]);
+
+	useEffect(() => {
+		dispatch(fetchSingleProject(id));
+	}, [dispatch, id]);
 
 	return (
 		<>
-			<div>Are you sure you want to delete project: {project.title}?</div>
-			<div className={classname.button_container}>
-				<button
-					onClick={() => deleteButtonClickHandler()}
-					className={classname.delete_button}
-				>
-					Delete
-				</button>
-
-				<button
-					className={classname.cancel_button}
-					onClick={() => dispatch(showComponent("My Projects"))}
-				>
-					Cancel
-				</button>
-			</div>
+			<Dashboard>
+				{loading ? (
+					<div>loading...</div>
+				) : error ? (
+					<div>{Error}</div>
+				) : project ? (
+					<div className={classname.delete_project_confirmation}>
+						<div className={classname.title}>
+							Are you sure you want to delete project: <span style={{ fontWeight: 600 }}> {project.title} </span>?
+						</div>
+						<div className={classname.subtitle}>This cannot be undone.</div>
+						<div className={classname.button_container}>
+							<button className={classname.cancel_button} onClick={() => history.push('/projects')}>
+								Cancel
+							</button>
+							<button onClick={() => deleteButtonClickHandler()} className={classname.delete_button}>
+								Delete
+							</button>
+						</div>
+					</div>
+				) : (
+					<div>No data found</div>
+				)}
+			</Dashboard>
 		</>
 	);
 };
+
 export default DeleteProject;

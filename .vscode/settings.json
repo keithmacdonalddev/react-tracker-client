@@ -1,0 +1,12 @@
+{
+	"files.exclude": {
+		"src/routes.js": true,
+		"src/serviceWorker.js": true,
+		"src/img": true,
+		"src/setupTests.js": true,
+		"node_modules": true,
+		".vscode": true,
+		"package.json": true,
+		"package-lock.json": true
+	}
+}
