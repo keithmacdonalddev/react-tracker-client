@@ -1,49 +1,34 @@
 .welcome_page_container {
-	display: grid;
-	justify-content: center;
-	align-items: center;
+	display: flex;
+	flex-direction: column;
 	position: relative;
+	align-items: center;
+	justify-content: center;
 	width: 100vw;
 	height: 100vh;
-	background: var(--color-primary-900);
-	background: var(--color-primary-300);
+	background: var(--color-primary-800);
 }
 
 .site_name {
-	position: absolute;
 	top: 25px;
 	left: 25px;
-	font-size: clamp(18px, 3vw, 22px);
+	position: absolute;
 	letter-spacing: 2px;
+	font-size: clamp(18px, 3vw, 22px);
 	color: var(--color-secondary-washed-out);
 }
 
-.content_container {
-	display: grid;
-	justify-content: center;
-	align-items: center;
-	height: 50%;
-	width: 100vw;
-}
-
-.subtitle_container {
-	display: grid;
-	align-items: center;
-	justify-content: center;
+.hero_text {
+	width: calc(80vw + 40px);
 	max-width: 1000px;
-	height: 100%;
-	font-size: clamp(24px, 5vw, 46px);
-	color: var(--color-primary-100);
+	margin-bottom: 30px;
+	line-height: calc(3vw + 15px);
+	text-align: center;
+	font-size: calc(2vw + 15px);
+	color: var(--color-primary-300);
 }
 
-.hero_button_container {
-	display: grid;
-	justify-content: center;
-	width: 100%;
-	height: inherit;
-}
-
-.hero_button {
+.button {
 	color: white;
 	border-radius: 10px;
 	padding: 10px 16px;
@@ -56,52 +41,9 @@
 	box-shadow: 0 5px 5px rgb(0 0 0 / 50%), inset 0 1px 1px rgb(255 255 255 / 10%);
 }
 
-.hero_button:hover {
+.button:hover {
 	transition: 500ms;
 	cursor: pointer;
 	box-shadow: 0 5px 5px rgb(0 0 0 / 40%), inset 0 1px 1px rgb(255 255 255 / 10%);
 	background: var(--color-accent-hover);
-}
-
-.heroButton:focus {
-	background: #3e44af;
-	border: none;
-	outline: none;
-	cursor: pointer;
-}
-
-.image {
-	width: 100%;
-}
-
-/* Phone screens */
-@media (max-width: 414px) {
-	.text {
-		color: grey;
-		width: 350px;
-	}
-	.imageContainer {
-		align-items: center;
-	}
-	.image {
-		width: 300px;
-	}
-}
-
-/* Tablet screens */
-@media (min-width: 415px) and (max-width: 810px) {
-	.welcomeContainer {
-		display: grid;
-		justify-items: center;
-		width: 100vw;
-		height: 100%;
-	}
-	.imageContainer {
-		align-items: center;
-	}
-}
-@media (min-width: 1000px) {
-	.subtitle_container {
-		line-height: 16vw;
-	}
 }

@@ -8,5 +8,6 @@
 		".vscode": true,
 		"package.json": true,
 		"package-lock.json": true
-	}
+	},
+	"workspace.isHidden": true
 }
