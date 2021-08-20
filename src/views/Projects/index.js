@@ -1,7 +1,5 @@
-import React from 'react';
 import Dashboard from 'views/Dashboard';
 import ProjectsComponent from './ProjectsComponent';
-
 import classname from './projects.module.css';
 
 const MyProjectsPage = () => {

@@ -1,13 +1,16 @@
 {
 	"files.exclude": {
-		"src/routes.js": true,
-		"src/serviceWorker.js": true,
-		"src/img": true,
-		"src/setupTests.js": true,
-		"node_modules": true,
-		".vscode": true,
-		"package.json": true,
-		"package-lock.json": true
+		"src/routes.js": false,
+		"src/serviceWorker.js": false,
+		"src/img": false,
+		"src/setupTests.js": false,
+		"node_modules": false,
+		".vscode": false,
+		"package.json": false,
+		"package-lock.json": false,
+		"jsconfig.json": false,
+		"public": false,
+		".prettierignore": false
 	},
-	"workspace.isHidden": true
+	"workspace.isHidden": false
 }

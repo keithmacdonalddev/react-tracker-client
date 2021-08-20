@@ -10,36 +10,21 @@
 .header_container {
 	display: flex;
 	position: relative;
+	justify-content: space-between;
 	align-items: center;
 	width: 100%;
-	height: auto;
+	font-size: 20px;
+	font-weight: 600;
 	padding: 15px 30px;
 	z-index: 2;
 	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
 
-.header_title {
-	width: 50%;
-	font-size: 20px;
-	font-weight: 600;
-}
-
-.create_project_button_container {
-	display: grid;
-	width: 50%;
-	transition: all 500ms;
-	cursor: pointer;
-	padding: 0 10px;
-	justify-content: flex-end;
-}
-
 .create_project_button {
-	margin: auto;
-	text-align: center;
+	margin: 0;
 	color: var(--color-primary-800);
 	background: var(--color-secondary-washed-out);
-	height: auto;
-	width: auto;
+	font-size: 16px;
 	font-weight: 600;
 	padding: 8px 15px;
 	border-radius: 10px;

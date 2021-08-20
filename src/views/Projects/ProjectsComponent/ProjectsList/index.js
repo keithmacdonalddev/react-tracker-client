@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Moment from 'react-moment';
 
-import { getProjects } from 'store/actions/projectActions';
+import { getProjects } from 'store/actions/projectActions/getProjects';
 import { singleProjectDetails } from 'store/actions/projectActions/singleProjectDetails';
 import { Icon, faChevronRight, faTrash } from 'components/Icon';
 

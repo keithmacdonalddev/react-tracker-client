@@ -1,7 +1,4 @@
-/** @format */
-
 /* eslint-disable array-callback-return */
-
 import axios from 'axios';
 
 import {
@@ -26,6 +23,9 @@ import {
 	USER_UPDATE_PROFILE_SUCCESS,
 	USER_UPDATE_PROFILE_REQUEST,
 	USER_IS_LOGGED_IN,
+	CHECK_EXISTING_EMAIL_REQUEST,
+	CHECK_EXISTING_EMAIL_SUCCESS,
+	CHECK_EXISTING_EMAIL_FAIL,
 } from '../types';
 
 export const apiUrl = 'https://react-tracker-server.herokuapp.com';
@@ -34,15 +34,38 @@ export const login = (email, password) => async (dispatch) => {
 	try {
 		dispatch({ type: USER_LOGIN_REQUEST });
 		const config = { headers: { 'Content-Type': 'application/json' } };
-		const { data } = await axios.post(`${apiUrl}/login`, { email, password }, config);
+		const { data } = await axios.post(
+			`${apiUrl}/login`,
+			{ email, password },
+			config,
+		);
 		dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
 		dispatch({ type: USER_IS_LOGGED_IN, payload: true });
 		localStorage.setItem('userInfo', JSON.stringify(data));
 	} catch (error) {
 		dispatch({
 			type: USER_LOGIN_FAIL,
-			payload: error.message && error.response.data.message ? error.response.data.message : error.message,
+			payload:
+				error.message && error.response.data.message
+					? error.response.data.message
+					: error.message,
 		});
+	}
+};
+
+export const verifyExisitingEmail = (email) => async (dispatch) => {
+	try {
+		dispatch({ type: CHECK_EXISTING_EMAIL_REQUEST });
+
+		const config = { headers: { 'Content-Type': 'application/json' } };
+
+		const { data } = await axios.get('verify-email', { email }, config);
+
+		dispatch({ type: CHECK_EXISTING_EMAIL_SUCCESS, payload: data });
+
+		dispatch({ type: CHECK_EXISTING_EMAIL_FAIL });
+	} catch (error) {
+		console.log('error');
 	}
 };
 
@@ -53,7 +76,13 @@ export const logout = () => (dispatch) => {
 	dispatch({ type: USER_DETAILS_RESET });
 };
 
-export const register = (firstName, lastName, username, email, password) => async (dispatch) => {
+export const register = (
+	firstName,
+	lastName,
+	username,
+	email,
+	password,
+) => async (dispatch) => {
 	try {
 		dispatch({ type: USER_REGISTER_REQUEST });
 
@@ -63,7 +92,11 @@ export const register = (firstName, lastName, username, email, password) => asyn
 			},
 		};
 
-		const { data } = await axios.post(`${apiUrl}/register`, { firstName, lastName, username, email, password }, config);
+		const { data } = await axios.post(
+			`${apiUrl}/register`,
+			{ firstName, lastName, username, email, password },
+			config,
+		);
 
 		dispatch({
 			type: USER_REGISTER_SUCCESS,
@@ -74,7 +107,10 @@ export const register = (firstName, lastName, username, email, password) => asyn
 	} catch (error) {
 		dispatch({
 			type: USER_REGISTER_FAIL,
-			payload: error.message && error.response.data.message ? error.response.data.message : error.message,
+			payload:
+				error.message && error.response.data.message
+					? error.response.data.message
+					: error.message,
 		});
 	}
 };
@@ -103,7 +139,10 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
 	} catch (error) {
 		dispatch({
 			type: USER_DETAILS_FAIL,
-			payload: error.message && error.response.data.message ? error.response.data.message : error.message,
+			payload:
+				error.message && error.response.data.message
+					? error.response.data.message
+					: error.message,
 		});
 	}
 };
@@ -133,7 +172,10 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
 	} catch (error) {
 		dispatch({
 			type: USER_UPDATE_PROFILE_FAIL,
-			payload: error.message && error.response.data.message ? error.response.data.message : error.message,
+			payload:
+				error.message && error.response.data.message
+					? error.response.data.message
+					: error.message,
 		});
 	}
 };
@@ -198,7 +240,10 @@ export const getUsers = () => async (dispatch, getState) => {
 	} catch (error) {
 		dispatch({
 			type: USER_LIST_FAIL,
-			payload: error.message && error.response.data.message ? error.response.data.message : error.message,
+			payload:
+				error.message && error.response.data.message
+					? error.response.data.message
+					: error.message,
 		});
 	}
 };
@@ -230,7 +275,10 @@ export const setFeaturedProfile = (id) => async (dispatch, getState) => {
 	} catch (error) {
 		dispatch({
 			type: SET_FEATURED_PROFILE_FAIL,
-			payload: error.message && error.response.data.message ? error.response.data.message : error.message,
+			payload:
+				error.message && error.response.data.message
+					? error.response.data.message
+					: error.message,
 		});
 	}
 };
